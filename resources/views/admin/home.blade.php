@@ -7,7 +7,7 @@
             <div class="card" style="background: black">
                 <div class="card-header" style="font-size: 30px;color: white; padding: 20px">
                     <i class="fas fa-list" style="font-size: 60px;"></i><br><br>
-                    Categories: 12
+                    Categories: {{$categories->count()}}
                 </div>
             </div>
         </div>
@@ -15,7 +15,7 @@
             <div class="card" style="background: black">
                 <div class="card-header" style="font-size: 30px;color: white; padding: 20px">
                     <i class="fab fa-product-hunt" style="font-size: 60px;"></i><br><br>
-                    Products: 57
+                    Products: {{$products->count()}}
                 </div>
             </div>
         </div>
