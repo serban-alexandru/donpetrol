@@ -144,7 +144,9 @@
      
     </div>
   </div>
-  
+    <!-- Cart button -->
+    <button style="position: absolute; bottom: 10px; right: 10px; padding: 10px; border-radius: 20px; font-size: 20px" class="btn btn-warning"><i style="font-size: 40px" class="fas fa-shopping-cart"></i> (10)</button>
+
   <!--   Core JS Files   -->
   <script src="{{ asset('assets/js/core/jquery.min.js')}}"></script>
   <script>
