@@ -11,10 +11,22 @@
 |
 */
 
+// landin page route
 Route::get('/', function () {
     return view('welcome');
 });
 
+// auth routes 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// home page route
+Route::get('/home', 'HomeController@index')->name('Home');
+
+// categories page route
+Route::get('/categories', 'CategoriesController@index')->name('Categories');
+
+// products page route
+Route::get('/products', 'ProductsController@index')->name('Products');
+
+// order page route
+Route::get('/order', 'OrdersController@index')->name('Order');
