@@ -16,6 +16,11 @@
   <!-- <script src="{{asset('/js/charts.js')}}" charset="utf-8"></script> -->
 </head>
 <body class="">
+    <style>
+    .active>.nav-link{
+        background-color: black !important;
+    }
+    </style>
   <div class="wrapper">
     <div class="sidebar" data-color="purple" data-background-color="white">
       <div class="logo" style="background-color: white">
