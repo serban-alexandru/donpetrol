@@ -11,22 +11,21 @@
                     <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Product</th>
+                    <th scope="col">Products</th>
                     <th scope="col">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
+                @foreach($categories as $category)
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Drinks</td>
-                        <td>15</td>
+                        <th scope="row">{{$category->id}}</th>
+                        <td>{{$category->name}}</td>
+                        <td>{{$category->products->count()}}</td>
                         <td style="max-width: 300px; width: 300px">
-                        <button class="btn btn-success"><i class="fas fa-eye"></i></button>
-                        <button class="btn btn-warning" data-toggle="modal" data-target="#editModal"><i class="fas fa-edit"></i></button>
-                        <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash"></i></button>
+                            <button class="btn btn-warning">None</button>
                         </td>
                     </tr>
-
+                @endforeach
                     <!-- Modal -->
                     <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -72,7 +71,7 @@
             </table>
         </div>
 
-        <button class="btn btn-success" data-toggle="modal" data-target="#addModal">Add categories</button>
+        <!-- <button class="btn btn-success" data-toggle="modal" data-target="#addModal">Add categories</button> -->
 
         <!-- Modal -->
         <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
