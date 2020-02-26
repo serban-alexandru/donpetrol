@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Product;
+use App\Order;
 
 class HomeController extends Controller
 {
@@ -28,10 +29,12 @@ class HomeController extends Controller
 
         $categories = Category::all();
         $products = Product::all();
+        $orders = Order::all();
 
         return view('admin.home')->with([
             'categories' => $categories,
             'products' => $products,
+            'orders' => $orders,
         ]);
     }
 }

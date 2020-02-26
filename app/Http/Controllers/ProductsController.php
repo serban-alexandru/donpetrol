@@ -30,7 +30,7 @@ class ProductsController extends Controller
         // data validator
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:191',
-            'price' => 'required|regex:/^\d*(\.\d{1})?$/',
+            'price' => 'required',
             'table_number' => 'required|string',
             'table_part' => 'required|string',
             'category_id' => 'required|integer|min:1',
@@ -62,7 +62,7 @@ class ProductsController extends Controller
         // data validator
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:191',
-            'price' => 'required|regex:/^\d*(\.\d{2})?$/',
+            'price' => 'required',
             'table_number' => 'required|string',
             'table_part' => 'required|string',
         ]);

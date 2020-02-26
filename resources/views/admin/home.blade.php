@@ -23,7 +23,7 @@
         <div class="card" style="background: black">
             <div class="card-header" style="font-size: 30px;color: white; padding: 20px">
                 <i class="fas fa-shopping-cart" style="font-size: 60px;"></i><br><br>
-                Orders: 1837
+                Orders: {{$orders->count()}}
             </div>
         </div>
     </div>
