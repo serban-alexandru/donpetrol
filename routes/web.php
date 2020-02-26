@@ -13,7 +13,7 @@
 
 // landin page route
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
 
 // auth routes 
@@ -50,5 +50,8 @@ Route::group(['middleware' => 'auth'], function(){
 
     // order page route
     Route::get('/order', 'OrdersController@index')->name('Order');
+
+    // add to cart route
+    Route::post('/add_to_cart/{product_id}', 'OrdersController@add')->name('Add to cart');
 
 });
