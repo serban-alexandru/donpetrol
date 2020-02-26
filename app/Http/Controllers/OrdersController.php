@@ -8,6 +8,8 @@ use App\Product;
 use Validator;
 use App\CartItem;
 use Auth;
+use App\Order;
+use App\OrderHasProduct;
 
 class OrdersController extends Controller
 {
@@ -54,6 +56,44 @@ class OrdersController extends Controller
 
         // case product not found
         return redirect()->back()->with('error', 'Product not found');
+
+    }
+
+    /**
+     * Send order route
+     */
+    public function send(Request $request){
+
+        // data validator 
+        $validator = Validator::make($request->all(), [
+            'type' => 'required|integer|min:1|max:2', // 1 - eat in / 2 - take out
+            'time' => 'required|string', 
+        ]);
+
+        // check if data is valid
+        if($validator->fails()){
+            return redirect()->back()->with('error', 'Invalid data sent!');
+        }
+
+        $order = new Order;
+        $order->type = $request->type;
+        $order->date = $request->time;
+        $order->user_id = Auth::user()->id;
+        $order->save();
+
+        foreach(Auth::user()->cartItems as $item){
+
+            $product = new OrderHasProduct;
+            $product->order_id = $order->id;
+            $product->product_id = $item->product_id;
+            $product->quantity = $item->quantity;
+            $product->save();
+
+            $item->delete();
+
+        }
+
+        return redirect()->back()->with('success', 'Order sent!');
 
     }
 

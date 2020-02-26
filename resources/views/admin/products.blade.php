@@ -46,7 +46,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Price:</label>
-                                <input type="number" step="0.01" value="{{$product->price}}" name="price" required class="form-control">
+                                <input type="number" step="0.1" value="{{$product->price}}" name="price" required class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Table part:</label>
@@ -123,7 +123,7 @@
                 </div>
                 <div class="form-group">
                     <label>Price:</label>
-                    <input type="number" step="0.01" name="price" required class="form-control">
+                    <input type="number" step="0.1" name="price" required class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Table part:</label>

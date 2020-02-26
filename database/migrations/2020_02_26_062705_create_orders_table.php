@@ -16,7 +16,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->default('order');
-            $table->boolean('type'); // to go or eat in 
+            $table->integer('type'); // eat in = 1 / take out = 2
             $table->string('date');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();

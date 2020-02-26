@@ -54,4 +54,7 @@ Route::group(['middleware' => 'auth'], function(){
     // add to cart route
     Route::post('/add_to_cart/{product_id}', 'OrdersController@add')->name('Add to cart');
 
+    // send order route
+    Route::post('/send_order', 'OrdersController@send')->name('Send order');
+
 });
