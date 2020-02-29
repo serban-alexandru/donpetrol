@@ -100,6 +100,7 @@
                 @endforeach
                 </tbody>
             </table>
+            {{$products->links()}}
         </div>
 
         <button class="btn btn-success" data-toggle="modal" data-target="#addModal">Add products</button>

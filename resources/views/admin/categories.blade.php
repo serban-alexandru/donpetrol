@@ -69,6 +69,8 @@
                     </div>
                 </tbody>
             </table>
+            {{$categories->links()}}
+
         </div>
 
         <!-- <button class="btn btn-success" data-toggle="modal" data-target="#addModal">Add categories</button> -->
