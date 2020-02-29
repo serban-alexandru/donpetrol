@@ -44,6 +44,17 @@ class OrdersController extends Controller
         // check if product exists
         if($product){
             
+            $cartItems = Auth::user()->cartItems;
+            foreach($cartItems as $item){
+                if($item->product_id == $product->id){
+                    // case product already exists in cart
+                    $item->quantity += $request->quantity;
+                    $item->save();
+                    
+                    return redirect()->back()->with('success', 'Product added to cart');
+                }
+            }
+
             $cartItem = new CartItem;
             $cartItem->quantity = $request->quantity;
             $cartItem->product_id = $product_id;

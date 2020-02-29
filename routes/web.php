@@ -56,5 +56,5 @@ Route::group(['middleware' => 'auth'], function(){
 
     // send order route
     Route::post('/send_order', 'OrdersController@send')->name('Send order');
-
+    
 });
