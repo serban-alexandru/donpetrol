@@ -50,7 +50,7 @@ class OrdersController extends Controller
                     // case product already exists in cart
                     $item->quantity += $request->quantity;
                     $item->save();
-                    
+
                     return redirect()->back()->with('success', 'Product added to cart');
                 }
             }
@@ -67,6 +67,72 @@ class OrdersController extends Controller
 
         // case product not found
         return redirect()->back()->with('error', 'Product not found');
+
+    }
+
+    /**
+     * Function that edits the quantity of a product in cart 
+     */
+    public function edit(Request $request, $product_id){
+
+        $product = Product::find($product_id);
+
+        // data validator 
+        $validator = Validator::make($request->all(), [
+            'quantity' => 'required|integer|min:1',
+        ]);
+
+        // case validator fails
+        if($validator->fails()){
+            return redirect()->back()->with('error', 'You have to add at least one item in your cart');
+        }
+
+        if($product){
+
+            $cartItems = Auth::user()->cartItems;
+            foreach($cartItems as $item){
+                if($item->product_id == $product->id){
+                    // case product exists in cart
+                    $item->quantity = $request->quantity;
+                    $item->save();
+
+                    return redirect()->back()->with('success', 'Product quantity modified');
+                }
+            }
+
+            // case product is not in cart
+            return redirect()->back()->with('error', 'This product is not in your cart');
+
+        }
+
+        // case product not found 
+        return redirect()->back()->with('error', 'Product not found!');
+
+    }
+
+    public function delete($product_id){
+
+        $product = Product::find($product_id);
+
+        if($product){
+
+            $cartItems = Auth::user()->cartItems;
+            foreach($cartItems as $item){
+                if($item->product_id == $product->id){
+                    // case product exists in cart
+                    $item->delete();
+
+                    return redirect()->back()->with('success', 'Product removed from cart');
+                }
+            }
+
+            // case product is not in cart
+            return redirect()->back()->with('error', 'This product is not in your cart');
+
+        }
+
+        // case product not found 
+        return redirect()->back()->with('error', 'Product not found!');
 
     }
 

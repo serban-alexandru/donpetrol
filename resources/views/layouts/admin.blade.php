@@ -244,13 +244,19 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
-            
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
+          <form action="{{ url('/edit_product_quantity/'.$item->product->id) }}" method="POST">
+            @csrf
+            <div class="modal-body">
+              <div class="form-group">
+                <label>Quantity:</label>
+                <input name="quantity" type="number" min="1" reqired value="{{ $item->quantity }}" class="form-control">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-warning">Save changes</button>
+            </div>
+          </form>
         </div>
       </div>
       </div>
@@ -266,11 +272,11 @@
             </button>
           </div>
           <div class="modal-body">
-            ...
+            Are you sure you want to <tag-random class="text-danger">remove</tag-random> this product from cart?
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <a href="{{ url('/remove_product_from_cart/'.$item->product->id) }}"><button type="button" class="btn btn-danger">Remove</button></a>
           </div>
         </div>
       </div>
