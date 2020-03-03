@@ -62,5 +62,8 @@ Route::group(['middleware' => 'auth'], function(){
 
     // send order route
     Route::post('/send_order', 'OrdersController@send')->name('Send order');
-    
+
 });
+
+// Route send post request to external soap api 
+Route::get('/soap_post', 'PublicController@soap');
