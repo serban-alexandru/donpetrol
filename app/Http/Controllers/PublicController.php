@@ -51,7 +51,7 @@ class PublicController extends Controller
     public function eatIn(){
       Session::put('order_type', 'eat_in');
 
-      return redirect()->back();
+      return redirect('/menu');
     }
 
     public function takeAway(){

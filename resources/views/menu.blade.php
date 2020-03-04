@@ -2,12 +2,6 @@
 
 @section('content')
 
-@if(Session::has('order_type'))
-    <script>
-        alert('da');
-    </script>
-@endif
-
 @if(!Session::has('order_type'))
     <script>
         var url= "{{ url('/') }}"; 
@@ -88,7 +82,7 @@
                             <div class="card" style="background: black">
                                 <div class="card-header" style="font-size: 30px;color: white; padding: 20px">
                                     <i class="fab fa-product-hunt" style="font-size: 60px;"></i><br><br>
-                                    {{$product->name}}
+                                    {{$product->name}} (${{$product->price}})
                                     <form style="margin-top: 10px" action="{{ url('/add_to_cart/'.$product->id) }}" method="POST">
                                         @csrf
                                         <button style="margin-top: 1px" type="button" class="btn btn-warning" id="decrease" onclick="decreaseValue{{$product->id}}()">+</button>

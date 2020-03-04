@@ -76,9 +76,11 @@
               </select>
               </div>
               <br><br><br>
-              <button class="btn btn-success" style="padding: 17px; margin-left: -2px">
-                Send order
-              </button>
+              <a href="{{ url('/checkout') }}">
+                <button class="btn btn-success" type="button" style="padding: 17px; margin-left: -2px">
+                    Checkout
+                </button>
+              </a>
             </div>
             </form>
           </div>

@@ -178,14 +178,35 @@ class OrdersController extends Controller
 
         if($product){
 
-            $cartItems = Auth::user()->cartItems;
-            foreach($cartItems as $item){
-                if($item->product_id == $product->id){
-                    // case product exists in cart
-                    $item->delete();
+            if(Auth::user()){
 
-                    return redirect()->back()->with('success', 'Product removed from cart');
+                $cartItems = Auth::user()->cartItems;
+                foreach($cartItems as $item){
+                    if($item->product_id == $product->id){
+                        // case product exists in cart
+                        $item->delete();
+
+                        return redirect()->back()->with('success', 'Product removed from cart');
+                    }
                 }
+
+            }else{
+
+                // if there are products in this session
+                if(Session::has('cartItems')){
+                    foreach(Session::get('cartItems') as $key=>$item){
+                        if($item->product_id == $product->id){
+                            // case product already exists in cart
+                            $cartItems = Session::get('cartItems');
+                            unset($cartItems[$key]);
+                            Session::put('cartItems', $cartItems);
+
+                            return redirect()->back()->with('success', 'Product removed from cart');
+                        }
+                    }
+
+                }
+
             }
 
             // case product is not in cart
@@ -233,6 +254,51 @@ class OrdersController extends Controller
         }
 
         return redirect()->back()->with('success', 'Order sent!');
+
+    }
+
+    public function checkout(){
+
+        if(Auth::user()){
+
+            return view('checkout');
+
+        }else{
+
+            return redirect('/login')->with('error', 'You have to be logged in to be able to checkout');
+
+        }
+
+    }
+
+    public function emptyCart(){
+
+        if(Auth::user()){
+            
+             // if there are products in this session
+            if(Session::has('cartItems')){
+                // remove previous cart from last login
+                foreach(Auth::user()->cartItems as $item){
+                    $item->delete();
+                }
+
+                foreach(Session::get('cartItems') as $key=>$item){
+
+                    $cartItem = new CartItem;
+                    $cartItem->quantity = $item->quantity;
+                    $cartItem->product_id = $item->product_id;
+                    $cartItem->user_id = Auth::user()->id;
+                    $cartItem->save();
+                    
+                }
+
+                Session::forget('cartItems');
+
+            }
+
+        }
+
+        return redirect()->back();
 
     }
 

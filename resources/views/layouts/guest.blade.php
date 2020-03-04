@@ -30,7 +30,7 @@
       </div>
       <div class="sidebar-wrapper" style="background-color: white; text-align: left;">
         <ul class="nav" style="min-height: 250px">
-          @if(Route::currentRouteName() == "Home" )
+          <!-- @if(Route::currentRouteName() == "Home" )
             <li class="nav-item active">
             <a class="nav-link" href="#">
           @else
@@ -76,7 +76,7 @@
           <i class="fas fa-shopping-cart"></i>
               <p>Create order</p>
             </a>
-          </li>
+          </li> 
         </ul>
       </div>
     </div> -->
@@ -87,12 +87,14 @@
           <div class="navbar-wrapper">
             <a class="navbar-brand" href="#pablo">Don Petrol</a>
           </div>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="navbar-toggler-icon icon-bar"></span>
-            <span class="navbar-toggler-icon icon-bar"></span>
-            <span class="navbar-toggler-icon icon-bar"></span>
-          </button>
+
+          <a href="{{ url('/menu') }}">
+            <button class="d-lg-none d-xl-none
+            d-md-block
+btn btn-primary" type="button" >
+             Menu
+            </button>
+          </a>
           <div class="collapse navbar-collapse justify-content-end">
             
             <ul class="navbar-nav">
@@ -117,6 +119,9 @@
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                   <a class="dropdown-item" href="#">
                       {{Auth::user()->name}}
+                  </a>
+                  <a class="dropdown-item" href="{{ url('/home') }}">
+                      Menu
                   </a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{{ route('logout') }}"
@@ -155,6 +160,15 @@
      
     </div>
   </div>
+@auth
+  @if(Session::has('cartItems'))
+      <script>
+          var url= "{{ url('/empty_cart') }}"; 
+          window.location = url; 
+      </script>
+  @endif
+@endauth
+@if(Route::currentRouteName() != 'Checkout')
   @include('/parts/guestCart')
   
   @auth
@@ -234,9 +248,11 @@
               </select>
               </div>
               <br><br><br>
-              <button class="btn btn-success" style="padding: 17px; margin-left: -2px">
-                Send order
-              </button>
+              <a href="{{ url('/checkout') }}">
+                <button class="btn btn-success" type="button" style="padding: 17px; margin-left: -2px">
+                    Checkout
+                </button>
+              </a>
             </div>
             </form>
           </div>
@@ -398,7 +414,7 @@
     }
 
   </script>
-
+@endif
   <!--   Core JS Files   -->
   <script src="{{ asset('assets/js/core/jquery.min.js')}}"></script>
   <script>

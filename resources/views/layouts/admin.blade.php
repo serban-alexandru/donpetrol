@@ -220,9 +220,9 @@
               </select>
               </div>
               <br><br><br>
-              <button class="btn btn-success" style="padding: 17px; margin-left: -2px">
+              <!-- <button class="btn btn-success" style="padding: 17px; margin-left: -2px">
                 Send order
-              </button>
+              </button> -->
             </div>
             </form>
           </div>
@@ -282,7 +282,12 @@
       </div>
       </div>
     @endforeach
-
+    @if(Session::has('cartItems'))
+      <script>
+          var url= "{{ url('/empty_cart') }}"; 
+          window.location = url; 
+      </script>
+  @endif
   
   <script>
     var now = new Date();

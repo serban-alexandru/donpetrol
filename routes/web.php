@@ -20,7 +20,7 @@ Auth::routes(['reset' => false]);
 // home page route
 Route::get('/home', 'HomeController@index')->name('Home');
 
-Route::group(['middleware' => 'auth'], function(){
+Route::group(['middleware' => ['auth', 'admin']], function(){
 
     // categories page route
     Route::get('/categories', 'CategoriesController@index')->name('Categories');
@@ -77,3 +77,9 @@ Route::post('/edit_product_quantity/{product_id}', 'OrdersController@edit')->nam
 
 // remove product from cart
 Route::get('/remove_product_from_cart/{product_id}', 'OrdersController@delete')->name('Remove product from cart');
+
+// cheeckout page
+Route::get('/checkout', 'OrdersController@checkout')->name('Checkout');
+
+// empty cart when user logs in 
+Route::get('/empty_cart', 'OrdersController@emptyCart');

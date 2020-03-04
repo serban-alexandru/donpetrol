@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Product;
 use App\Order;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -26,7 +27,9 @@ class HomeController extends Controller
      */
     public function index()
     {   
-
+        if(Auth::user()->role_id == 1){
+            return redirect('/menu');
+        }
         $categories = Category::all();
         $products = Product::all();
         $orders = Order::all();
