@@ -10,6 +10,7 @@ use App\CartItem;
 use Auth;
 use App\Order;
 use App\OrderHasProduct;
+use Session;
 
 class OrdersController extends Controller
 {
@@ -44,22 +45,64 @@ class OrdersController extends Controller
         // check if product exists
         if($product){
             
-            $cartItems = Auth::user()->cartItems;
-            foreach($cartItems as $item){
-                if($item->product_id == $product->id){
-                    // case product already exists in cart
-                    $item->quantity += $request->quantity;
-                    $item->save();
+            if(Auth::user()){
 
-                    return redirect()->back()->with('success', 'Product added to cart');
+                $cartItems = Auth::user()->cartItems;
+                foreach($cartItems as $item){
+                    if($item->product_id == $product->id){
+                        // case product already exists in cart
+                        $item->quantity += $request->quantity;
+                        $item->save();
+    
+                        return redirect()->back()->with('success', 'Product added to cart');
+                    }
                 }
-            }
+    
+                $cartItem = new CartItem;
+                $cartItem->quantity = $request->quantity;
+                $cartItem->product_id = $product_id;
+                $cartItem->user_id = Auth::user()->id;
+                $cartItem->save();
 
-            $cartItem = new CartItem;
-            $cartItem->quantity = $request->quantity;
-            $cartItem->product_id = $product_id;
-            $cartItem->user_id = Auth::user()->id;
-            $cartItem->save();
+            }else{
+            
+                // if there are products in this session
+                if(Session::has('cartItems')){
+                    foreach(Session::get('cartItems') as $item){
+                        if($item->product_id == $product->id){
+                            // case product already exists in cart
+                            $item->quantity += $request->quantity;
+        
+                            return redirect()->back()->with('success', 'Product added to cart');
+                        }
+                    }
+
+                    $cartItem = new \stdClass();
+                    $cartItem->quantity = $request->quantity;
+                    $cartItem->product_name = $product->name;
+                    $cartItem->product_id = $product->id;
+                    $cartItem->product_price = $product->price;
+
+                    $cartItems = Session::get('cartItems');
+                    array_push($cartItems, $cartItem);
+                    Session::put('cartItems', $cartItems);
+
+                }else{
+
+                    $cartItem = new \stdClass();
+                    $cartItem->quantity = $request->quantity;
+                    $cartItem->product_name = $product->name;
+                    $cartItem->product_id = $product->id;
+                    $cartItem->product_price = $product->price;
+
+                    Session::put('cartItems', array());
+                    $cartItems = Session::get('cartItems');
+                    array_push($cartItems, $cartItem);
+                    Session::put('cartItems', $cartItems);
+
+                }
+
+            }           
 
             return redirect()->back()->with('success', 'Product added to cart');
 
@@ -89,15 +132,34 @@ class OrdersController extends Controller
 
         if($product){
 
-            $cartItems = Auth::user()->cartItems;
-            foreach($cartItems as $item){
-                if($item->product_id == $product->id){
-                    // case product exists in cart
-                    $item->quantity = $request->quantity;
-                    $item->save();
+            if(Auth::user()){
 
-                    return redirect()->back()->with('success', 'Product quantity modified');
+                $cartItems = Auth::user()->cartItems;
+                foreach($cartItems as $item){
+                    if($item->product_id == $product->id){
+                        // case product exists in cart
+                        $item->quantity = $request->quantity;
+                        $item->save();
+
+                        return redirect()->back()->with('success', 'Product quantity modified');
+                    }
                 }
+
+            }else{
+
+                // if there are products in this session
+                if(Session::has('cartItems')){
+                    foreach(Session::get('cartItems') as $item){
+                        if($item->product_id == $product->id){
+                            // case product already exists in cart
+                            $item->quantity = $request->quantity;
+        
+                            return redirect()->back()->with('success', 'Product quantity modified');
+                        }
+                    }
+
+                }
+
             }
 
             // case product is not in cart

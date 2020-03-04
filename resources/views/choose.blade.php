@@ -2,13 +2,6 @@
 
 @section('content')
 
-@if(Session::has('order_type'))
-    <script>
-        var url= "{{ url('/menu') }}"; 
-        window.location = url; 
-    </script>
-@endif
-
 <style>
 .card:hover{
     background: #339AF0;

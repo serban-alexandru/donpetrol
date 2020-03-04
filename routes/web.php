@@ -49,15 +49,6 @@ Route::group(['middleware' => 'auth'], function(){
     // order page route
     Route::get('/order', 'OrdersController@index')->name('Order');
 
-    // add to cart route
-    Route::post('/add_to_cart/{product_id}', 'OrdersController@add')->name('Add to cart');
-
-    // edit product quantity
-    Route::post('/edit_product_quantity/{product_id}', 'OrdersController@edit')->name('Edit product quantity');
-
-    // remove product from cart
-    Route::get('/remove_product_from_cart/{product_id}', 'OrdersController@delete')->name('Remove product from cart');
-
     // send order route
     Route::post('/send_order', 'OrdersController@send')->name('Send order');
 
@@ -77,3 +68,12 @@ Route::get('/soap_post', 'PublicController@soap');
 
 // Menu route
 Route::get('/menu', 'PublicController@menu');
+
+// add to cart route
+Route::post('/add_to_cart/{product_id}', 'OrdersController@add')->name('Add to cart');
+
+// edit product quantity
+Route::post('/edit_product_quantity/{product_id}', 'OrdersController@edit')->name('Edit product quantity');
+
+// remove product from cart
+Route::get('/remove_product_from_cart/{product_id}', 'OrdersController@delete')->name('Remove product from cart');

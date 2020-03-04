@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use SoapClient;
 use Session;
 use Illuminate\Session\Store;
+use App\Category;
 
 class PublicController extends Controller
 {
@@ -56,18 +57,24 @@ class PublicController extends Controller
     public function takeAway(){
       Session::put('order_type', 'take_away');
 
-      return redirect()->back();
+      return redirect('/menu');
     }
 
     public function unsetType(){
       Session::forget('order_type');
 
-      return redirect()->back();
+      return redirect('/menu');
     }
 
     public function menu(){
-       return view('menu');
-    }
+
+      $categories = Category::all();
+
+      return view('menu')->with([
+          'categories' => $categories,
+      ]);
+
+  }
 
 }
 
