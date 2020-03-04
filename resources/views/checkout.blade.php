@@ -1,6 +1,14 @@
 @extends('layouts.guest')
 
 @section('content')
+
+@if(!Session::has('order_type'))
+    <script>
+        var url= "{{ url('/') }}"; 
+        window.location = url; 
+    </script>
+@endif
+
 <style>
     .col-md-6{
         margin-bottom: 20px !important;
@@ -50,7 +58,8 @@
     </ul>
 </div>
 <div class="col-md-8 order-md-1">
-    <form action="{{ url('submit_order') }}">
+    <form action="{{ url('send_order') }}" method="POST">
+    @csrf
     <div class="form-group">
         <h3 class="mb-3">Waar wil je dat je bestelling bezorgd wordt?</h3>
     </div>
@@ -66,7 +75,7 @@
             <div class="form-group">
                 <label style="font-size: 20px">Postcode</label>
                 <br>
-                <input type="number" required name="postcode" min="1000" max="9999" placeholder="Adress" class="form-control">
+                <input type="string" required name="postcode" placeholder="Adress" class="form-control">
             </div>
         </div>
         <div class="col-md-6">
@@ -116,14 +125,12 @@
             <div class="form-group">
                 <label style="font-size: 20px">Gewenste bezorgtijd</label>
                 <br>
-                <select name="delivery_time" required class="form-control">
-                    <option value="">Zo snel mogelijk</option>
-                    <option value="">12:00</option>
-                    <option value="">12:30</option>
-                    <option value="">13:00</option>
-                    <option value="">13:30</option>
-                    <option value="">14:00</option>
-                    <option value="">14:30</option>
+                <select name="delivery_time" class="form-control" required>
+                    <option value="0">Zo snel mogelijk</option>
+                    <option value="1" required style="color: black" id="nextDate"></option>
+                    <option value="2" required style="color: black" id="afterDate"></option>
+                    <option value="3" required style="color: black" id="after2Date"></option>
+                    <option value="3" required style="color: black" id="after3Date"></option>
                 </select>
             </div>
         </div>
@@ -140,5 +147,128 @@
     </form>
 </div>
 </div>
+
+<script>
+var now = new Date();
+// var hour = now.getHours();
+// var minutes = now.getMinutes();
+// var ampm = "AM";
+// if (minutes < 30) {
+//     minutes = "30";
+// } else {
+//     minutes = "00";
+//     ++hour;
+// }
+// if (hour > 23) {
+//     hour = 12;
+// } else if (hour > 12) {
+//     hour = hour - 12;
+//     ampm = "PM";
+// } else if (hour == 12) {
+//     ampm = "PM";
+// } else if (hour == 0) {
+//     hour = 12;
+// }
+
+if(now.getMinutes() <= 30){
+
+    d1 = new Date();
+    d2 = new Date();
+    d2.setMinutes(d1.getMinutes() + 30-d1.getMinutes());
+    d2.setSeconds(0);
+    nextDate = d2;
+    console.log(nextDate);
+    if(d2.getMinutes() < 10){
+    stri = '0';
+    }else{
+    stri = '';
+    }
+    document.getElementById('nextDate').innerHTML = nextDate.getHours()+':'+nextDate.getMinutes()+stri;
+    document.getElementById('nextDate').setAttribute('value', nextDate.getHours()+':'+nextDate.getMinutes()+stri);
+
+    d2.setMinutes(d2.getMinutes() + 30);
+    afterDate = d2;
+    console.log(afterDate);
+    if(d2.getMinutes() < 10){
+    stri = '0';
+    }else{
+    stri = '';
+    }
+    document.getElementById('afterDate').innerHTML = afterDate.getHours()+':'+afterDate.getMinutes()+stri;
+    document.getElementById('afterDate').setAttribute('value', nextDate.getHours()+':'+nextDate.getMinutes()+stri);
+
+    d2.setMinutes(d2.getMinutes() + 30);
+    after2Date = d2;
+    console.log(after2Date);
+    if(d2.getMinutes() < 10){
+    stri = '0';
+    }else{
+    stri = '';
+    }
+    document.getElementById('after2Date').innerHTML = after2Date.getHours()+':'+after2Date.getMinutes()+stri;
+    document.getElementById('after2Date').setAttribute('value', nextDate.getHours()+':'+nextDate.getMinutes()+stri);
+
+    d2.setMinutes(d2.getMinutes() + 30);
+    after3Date = d2;
+    // console.log(after2Date);
+    if(d2.getMinutes() < 10){
+    stri = '0';
+    }else{
+    stri = '';
+    }
+    document.getElementById('after3Date').innerHTML = after3Date.getHours()+':'+after3Date.getMinutes()+stri;
+    document.getElementById('after3Date').setAttribute('value', nextDate.getHours()+':'+nextDate.getMinutes()+stri);
+
+}else{
+    d1 = new Date();
+    d2 = new Date();
+    d2.setHours(d1.getHours() + 1);
+    d2.setMinutes(0);
+    nextDate = d2;
+    console.log(nextDate);
+    if(d2.getMinutes() < 10){
+    stri = '0';
+    }else{
+    stri = '';
+    }
+    document.getElementById('nextDate').innerHTML = nextDate.getHours()+':'+nextDate.getMinutes()+stri;
+    document.getElementById('nextDate').setAttribute('value', nextDate.getHours()+':'+nextDate.getMinutes()+stri);
+
+    d2.setMinutes(d2.getMinutes() + 30);
+    afterDate = d2;
+    console.log(afterDate);
+    if(d2.getMinutes() < 10){
+    stri = '0';
+    }else{
+    stri = '';
+    }
+    document.getElementById('afterDate').innerHTML = afterDate.getHours()+':'+afterDate.getMinutes()+stri;
+    document.getElementById('afterDate').setAttribute('value', nextDate.getHours()+':'+nextDate.getMinutes()+stri);
+
+    d2.setMinutes(d2.getMinutes() + 30);
+    after2Date = d2;
+    console.log(after2Date);
+    if(d2.getMinutes() < 10){
+    stri = '0';
+    }else{
+    stri = '';
+    }
+    document.getElementById('after2Date').innerHTML = after2Date.getHours()+':'+after2Date.getMinutes()+stri;
+    document.getElementById('after2Date').setAttribute('value', nextDate.getHours()+':'+nextDate.getMinutes()+stri);
+
+    d2.setMinutes(d2.getMinutes() + 30);
+    after3Date = d2;
+    // console.log(after2Date);
+    if(d2.getMinutes() < 10){
+    stri = '0';
+    }else{
+    stri = '';
+    }
+    document.getElementById('after3Date').innerHTML = after3Date.getHours()+':'+after3Date.getMinutes()+stri;
+    document.getElementById('after3Date').setAttribute('value', nextDate.getHours()+':'+nextDate.getMinutes()+stri);
+
+}
+
+</script>
 
 @endsection

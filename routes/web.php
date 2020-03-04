@@ -49,9 +49,6 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
     // order page route
     Route::get('/order', 'OrdersController@index')->name('Order');
 
-    // send order route
-    Route::post('/send_order', 'OrdersController@send')->name('Send order');
-
 });
 
 // Take away option
@@ -83,3 +80,6 @@ Route::get('/checkout', 'OrdersController@checkout')->name('Checkout');
 
 // empty cart when user logs in 
 Route::get('/empty_cart', 'OrdersController@emptyCart');
+
+// send order route
+Route::post('/send_order', 'OrdersController@send')->name('Send order')->middleware('auth');

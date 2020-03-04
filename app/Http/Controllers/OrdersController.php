@@ -226,8 +226,15 @@ class OrdersController extends Controller
 
         // data validator 
         $validator = Validator::make($request->all(), [
-            'type' => 'required|integer|min:1|max:2', // 1 - eat in / 2 - take out
-            'time' => 'required|string', 
+            'street_and_house' => 'required|string|max:191',
+            'postcode' => 'required|string|max:191',
+            'place_name' => 'required|string|max:191',
+            'name' => 'required|string|max:191',
+            'email' => 'required|string|max:191',
+            'phone' => 'required|string|max:191',
+            'company_name' => 'required|string|max:191',
+            'delivery_time' => 'required|string|max:191',
+            'comments' => 'required|string|max:500',
         ]);
 
         // check if data is valid
@@ -236,8 +243,16 @@ class OrdersController extends Controller
         }
 
         $order = new Order;
-        $order->type = $request->type;
-        $order->date = $request->time;
+        $order->type = Session::get('order_type');
+        $order->street_and_house = $request->street_and_house;
+        $order->postcode = $request->postcode;
+        $order->place_name = $request->place_name;
+        $order->client_name = $request->name;
+        $order->email = $request->email;
+        $order->phone = $request->phone;
+        $order->company_name = $request->company_name;
+        $order->delivery_time = $request->delivery_time;
+        $order->comments = $request->comments;
         $order->user_id = Auth::user()->id;
         $order->save();
 
