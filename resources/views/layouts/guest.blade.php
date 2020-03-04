@@ -85,7 +85,7 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="#pablo">Don Petrol</a>
+            <a class="navbar-brand" href="{{ url('/menu') }}">Don Petrol</a>
           </div>
 
           <a href="{{ url('/menu') }}">
@@ -231,7 +231,7 @@ btn btn-primary" type="button" >
               Total: {{$sum}}$
               </div>
 
-              <div class="alert alert-success" style="width: 100px; float: left; padding: 6px; margin-left: 10px">
+              <!-- <div class="alert alert-success" style="width: 100px; float: left; padding: 6px; margin-left: 10px">
               <select name="type" class="form-control" required style="color: white">
                 <option value="" required style="color: black" hidden>Order type</option>
                 <option value="1" required style="color: black">Take out</option>
@@ -246,7 +246,7 @@ btn btn-primary" type="button" >
                 <option value="2" required style="color: black" id="afterDate"></option>
                 <option value="3" required style="color: black" id="after2Date"></option>
               </select>
-              </div>
+              </div> -->
               <br><br><br>
               <a href="{{ url('/checkout') }}">
                 <button class="btn btn-success" type="button" style="padding: 17px; margin-left: -2px">

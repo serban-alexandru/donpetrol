@@ -67,7 +67,7 @@ Route::get('/unset', 'PublicController@unsetType');
 Route::get('/soap_post', 'PublicController@soap');  
 
 // Menu route
-Route::get('/menu', 'PublicController@menu');
+Route::get('/menu', 'PublicController@menu')->name('Menu');
 
 // add to cart route
 Route::post('/add_to_cart/{product_id}', 'OrdersController@add')->name('Add to cart');
