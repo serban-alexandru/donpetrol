@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.guest')
 
 @section('content')
 <div class="container">
@@ -11,7 +11,7 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
-                        <div class="form-group row">
+                        <div class="row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
@@ -24,8 +24,8 @@
                                 @enderror
                             </div>
                         </div>
-
-                        <div class="form-group row">
+                        <br>
+                        <div class="row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
@@ -38,8 +38,8 @@
                                 @enderror
                             </div>
                         </div>
-
-                        <div class="form-group row">
+                        <br>
+                        <div class="row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
@@ -52,8 +52,8 @@
                                 @enderror
                             </div>
                         </div>
-
-                        <div class="form-group row">
+                        <br>
+                        <div class="row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">

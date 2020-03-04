@@ -12,12 +12,10 @@
 */
 
 // landin page route
-Route::get('/', function () {
-    return redirect('/login');
-});
+Route::get('/', 'PublicController@choose');
 
 // auth routes 
-Auth::routes();
+Auth::routes(['reset' => false]);
 
 // home page route
 Route::get('/home', 'HomeController@index')->name('Home');
@@ -65,5 +63,17 @@ Route::group(['middleware' => 'auth'], function(){
 
 });
 
+// Take away option
+Route::get('/eat_in', 'PublicController@eatIn');
+
+// Eat in option
+Route::get('/take_away', 'PublicController@takeAway');
+
+// unset order type
+Route::get('/unset', 'PublicController@unsetType');
+
 // Route send post request to external soap api 
-Route::get('/soap_post', 'PublicController@soap');
+Route::get('/soap_post', 'PublicController@soap');  
+
+// Menu route
+Route::get('/menu', 'PublicController@menu');
