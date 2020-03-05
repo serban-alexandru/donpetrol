@@ -17,18 +17,14 @@ class CreateOrdersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name')->default('order');
             $table->string('type'); // eat in / take out 
-            $table->unsignedBigInteger('user_id');
-            // data from form
-            $table->string('street_and_house');
-            $table->string('postcode');
-            $table->string('place_name');
-            $table->string('client_name');
-            $table->string('email');
-            $table->string('phone');
-            $table->string('company_name');
             $table->string('delivery_time');
+            $table->unsignedBigInteger('user_id');
             $table->text('comments');
-
+            $table->string('street_and_house');
+            $table->string('phone');
+            $table->string('postcode')->nullable();
+            $table->string('place_name')->nullable();
+            $table->string('company_name')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

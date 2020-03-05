@@ -4,7 +4,8 @@
 
 <style>
 .card:hover{
-    background: #339AF0;
+    background: black;
+    color: white;
 }
 
 </style>

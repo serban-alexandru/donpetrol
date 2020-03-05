@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->float('price');
+            $table->text('description')->nullable();
             $table->unsignedBigInteger('category_id');
             $table->string('table_number');
             $table->string('table_part');

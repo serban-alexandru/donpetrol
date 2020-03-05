@@ -11,6 +11,7 @@ use Auth;
 use App\Order;
 use App\OrderHasProduct;
 use Session;
+use App\User;
 
 class OrdersController extends Controller
 {
@@ -247,14 +248,18 @@ class OrdersController extends Controller
         $order->street_and_house = $request->street_and_house;
         $order->postcode = $request->postcode;
         $order->place_name = $request->place_name;
-        $order->client_name = $request->name;
-        $order->email = $request->email;
+        $user = User::find(Auth::user()->id);
+        $user->name = $request->name;
+        $user->save();
+        // $order->client_name = $request->name;
+        // $order->email = $request->email;
         $order->phone = $request->phone;
         $order->company_name = $request->company_name;
         $order->delivery_time = $request->delivery_time;
         $order->comments = $request->comments;
         $order->user_id = Auth::user()->id;
         $order->save();
+
 
         foreach(Auth::user()->cartItems as $item){
 
@@ -268,7 +273,7 @@ class OrdersController extends Controller
 
         }
 
-        return redirect()->back()->with('success', 'Order sent!');
+        return redirect('/home')->with('success', 'Order sent!');
 
     }
 
@@ -314,6 +319,29 @@ class OrdersController extends Controller
         }
 
         return redirect()->back();
+
+    }
+
+    public function orders(){
+
+        $orders = Order::all();
+
+        $sum = 0;
+        foreach($orders as $order){
+
+            foreach($order->products as $product){
+
+                $sum += $product->product->price;
+
+            }
+
+            $order->value = $sum;
+
+        }
+
+        return view('admin.allOrders')->with([
+            'orders' => $orders,
+        ]);
 
     }
 

@@ -12,7 +12,7 @@
 */
 
 // landin page route
-Route::get('/', 'PublicController@choose');
+Route::get('/', 'PublicController@choose')->name('Don petrol');
 
 // auth routes 
 Auth::routes(['reset' => false]);
@@ -21,6 +21,9 @@ Auth::routes(['reset' => false]);
 Route::get('/home', 'HomeController@index')->name('Home');
 
 Route::group(['middleware' => ['auth', 'admin']], function(){
+
+    // orders page
+    Route::get('/orders', 'OrdersController@orders')->name('Orders');
 
     // categories page route
     Route::get('/categories', 'CategoriesController@index')->name('Categories');

@@ -40,6 +40,34 @@
                         </div>
                         <br>
                         <div class="row">
+                            <label for="adress" class="col-md-4 col-form-label text-md-right">{{ __('Your adress') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="adress" type="text" class="form-control @error('adress') is-invalid @enderror" name="adress" value="{{ old('adress') }}" required autocomplete="adress">
+
+                                @error('adress')
+                                    <span class="text-danger" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone number') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone">
+
+                                @error('phone')
+                                    <span class="text-danger" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">

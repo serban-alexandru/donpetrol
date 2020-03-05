@@ -77,6 +77,18 @@
               <p>Create order</p>
             </a>
           </li>
+
+          @if(Route::currentRouteName() == "Orders" ) 
+            <li class="nav-item active">
+            <a class="nav-link" href="#">
+          @else
+            <li class="nav-item">
+            <a class="nav-link" href="{{ url('/orders') }}">
+          @endif
+          <i class="fas fa-clipboard-list"></i>
+              <p>Orders</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -220,9 +232,11 @@
               </select>
               </div> -->
               <br><br><br>
-              <!-- <button class="btn btn-success" style="padding: 17px; margin-left: -2px">
-                Send order
-              </button> -->
+              <a href="{{ url('/checkout') }}">
+                <button class="btn btn-success" type="button" style="padding: 17px; margin-left: -2px">
+                    Checkout
+                </button>
+              </a>
             </div>
             </form>
           </div>
