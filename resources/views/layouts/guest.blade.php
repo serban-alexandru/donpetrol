@@ -20,6 +20,9 @@
     .active>.nav-link{
         background-color: black !important;
     }
+    .dropdown-item:hover{
+      background: black !important;
+    }
     </style>
   <div class="wrapper">
     <!-- <div class="sidebar" data-color="purple" data-background-color="white">

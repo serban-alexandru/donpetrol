@@ -9,16 +9,12 @@
         <div id="accordion">
             <div class="buttons">
             @foreach($categories as $category)
+            @if(!$category->category_id)
                 <button class="btn btn-warning" data-toggle="collapse" data-target="#collapse{{$category->id}}" aria-expanded="true" aria-controls="collapse{{$category->id}}">
                 {{$category->name}}
                 </button>
+            @endif
             @endforeach
-                <!-- <button class="btn btn-warning" data-toggle="collapse" data-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
-                Snacks
-                </button>
-                <button class="btn btn-warning" data-toggle="collapse" data-target="#collapse3" aria-expanded="true" aria-controls="collapse3">
-                Drinks
-                </button> -->
             </div>
             @foreach($categories as $category)
                 @foreach($category->products as $product)
@@ -67,8 +63,32 @@
                 <div class="card" style="margin: 0px">
                     <div id="collapse{{$category->id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="card-body">
-
+                        <h1>{{ $category->name }}</h1>
+                        <h4>{{ $category->description }}</h4>
                         <div class="row">
+                        @foreach($category->subcategories as $subcat)
+
+                            @foreach($subcat->products as $product)
+                                <div class="col-md-4 col-sm-6 col-xs-12 text-center">
+                                    <div class="card" style="background: black">
+                                        <div class="card-header" style="font-size: 30px;color: white; padding: 20px">
+                                            <i class="{{$product->category->icon}}" style="font-size: 60px;"></i><br><br>
+                                            {{$product->name}}
+                                            <form style="margin-top: 10px" action="{{ url('/add_to_cart/'.$product->id) }}" method="POST">
+                                                @csrf
+                                                <button style="margin-top: 1px" type="button" class="btn btn-warning" id="decrease" onclick="decreaseValue{{$product->id}}()">+</button>
+                                                <input type="number" name="quantity" id="number{{$product->id}}" value="1" min="1" />
+                                                <button style="margin-top: 1px" type="button" class="btn btn-warning" id="increase" onclick="increaseValue{{$product->id}}()">+</button>
+                                                <div style="margin: 5px 0px">{{ $product->price }}$</div>
+                                                <button class="btn btn-warning">Add to cart</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+
+                        @endforeach
+
                         @foreach($category->products as $product)
                             <div class="col-md-4 col-sm-6 col-xs-12 text-center">
                                 <div class="card" style="background: black">
@@ -80,7 +100,7 @@
                                             <button style="margin-top: 1px" type="button" class="btn btn-warning" id="decrease" onclick="decreaseValue{{$product->id}}()">+</button>
                                             <input type="number" name="quantity" id="number{{$product->id}}" value="1" min="1" />
                                             <button style="margin-top: 1px" type="button" class="btn btn-warning" id="increase" onclick="increaseValue{{$product->id}}()">+</button>
-                                            <br>
+                                            <div style="margin: 5px 0px">{{ $product->price }}$</div>
                                             <button class="btn btn-warning">Add to cart</button>
                                         </form>
                                     </div>

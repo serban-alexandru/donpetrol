@@ -94,14 +94,14 @@
             <div class="form-group">
                 <label style="font-size: 20px">Naam</label>
                 <br>
-                <input type="text" required name="name" placeholder="Naam" class="form-control">
+                <input type="text" value="{{ Auth::user()->name}}" required name="name" placeholder="Naam" class="form-control">
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label style="font-size: 20px">E-mailadres</label>
                 <br>
-                <input type="text" required name="email" placeholder="E-mailadres" class="form-control">
+                <input type="text" value="{{ Auth::user()->email}}" required name="email" placeholder="E-mailadres" class="form-control">
             </div>
         </div>
         <br>
@@ -109,7 +109,7 @@
             <div class="form-group">
                 <label style="font-size: 20px">Telefoonnummer</label>
                 <br>
-                <input type="text" required name="phone" placeholder="Telefoonnummer" class="form-control">
+                <input type="text" value="{{ Auth::user()->phone}}" required name="phone" placeholder="Telefoonnummer" class="form-control">
             </div>
         </div>
         <br>
@@ -117,7 +117,7 @@
             <div class="form-group">
                 <label style="font-size: 20px">Bedrijfsnaam</label>
                 <br>
-                <input type="text" required name="company_name" placeholder="Bedrijfsnaam" class="form-control">
+                <input type="text" value="{{ Auth::user()->street_and_house}}" required name="company_name" placeholder="Bedrijfsnaam" class="form-control">
             </div>
         </div>
         <br>

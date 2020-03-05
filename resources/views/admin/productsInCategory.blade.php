@@ -3,7 +3,12 @@
 @section('content')
     <div class="container-fluid">
         <div class="alert" style="background-color: black; color: white;">
-            <h1>Products</h1>
+            <h1>
+            @if($category->category)
+            {{$category->category->name}} - 
+            @endif
+            <i class="{{ $category->icon }}"></i> {{$category->name}}</h1>
+            <h4>{{$category->description}}</h4>
         </div>
         <div class="table-responsive">
             <table class="table" style="text-align: center">
@@ -55,15 +60,6 @@
                             <div class="form-group">
                                 <label>Table number:</label>
                                 <input type="text" name="table_number" value="{{$product->table_number}}" required class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Category:</label>
-                                <select name="category_id" class="form-control" required>
-                                    <option value="" hidden>Choose</option>
-                                    @foreach($categories as $category)
-                                        <option @if($product->category_id == $category->id) selected @endif value="{{$category->id}}">{{$category->name}}</option>
-                                    @endforeach
-                                </select>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -133,16 +129,8 @@
                 <div class="form-group">
                     <label>Table number:</label>
                     <input type="text" name="table_number" required class="form-control">
-                </div>zip_entry_compressionmethod
-                <div class="form-group">
-                    <label>Category:</label>
-                    <select name="category_id" class="form-control" required>
-                        <option value="" hidden>Choose</option>
-                        @foreach($categories as $category)
-                            <option value="{{$category->id}}">{{$category->name}}</option>
-                        @endforeach
-                    </select>
                 </div>
+                <input type="text" hidden name="category_id" value="{{$category->id}}" class="form-control">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

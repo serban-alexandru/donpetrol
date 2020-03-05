@@ -20,6 +20,9 @@
     .active>.nav-link{
         background-color: black !important;
     }
+    .dropdown-item:hover{
+      background: black !important;
+    }
     </style>
   <div class="wrapper">
     <div class="sidebar" data-color="purple" data-background-color="white">
@@ -54,7 +57,7 @@
             </a>
           </li>
 
-          @if(Route::currentRouteName() == "Products" )
+          <!-- @if(Route::currentRouteName() == "Products" )
             <li class="nav-item active">
             <a class="nav-link" href="#">
           @else
@@ -64,7 +67,7 @@
           <i class="fab fa-product-hunt"></i>
               <p>Products</p>
             </a>
-          </li>
+          </li> -->
 
           @if(Route::currentRouteName() == "Order" )
             <li class="nav-item active">

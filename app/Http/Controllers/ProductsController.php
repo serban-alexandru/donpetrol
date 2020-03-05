@@ -80,7 +80,6 @@ class ProductsController extends Controller
             $product->price = $request->price;
             $product->table_number = $request->table_number;
             $product->table_part = $request->table_part;
-            $product->category_id = $request->category_id;
             $product->save();
     
             return redirect()->back()->with('success', 'Product edited!');
