@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="alert" style="background-color: black; color: white;">
-            <h1>Categories</h1>
+            <h1>Category {{$category->name}}</h1>
         </div>
         <div class="table-responsive">
             <table class="table" style="text-align: center">
@@ -12,23 +12,19 @@
                     <th scope="col">ID</th>
                     <th scope="col">Name</th>
                     <th scope="col">Products</th>
-                    <th scope="col">Categories</th>
                     <th scope="col">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($categories as $category)
+                @foreach($category->categories as $category)
                     <tr>
                         <th scope="row">{{$category->id}}</th>
                         <td>{{$category->name}}</td>
                         <td>{{$category->products->count()}}</td>
-                        <td>{{$category->subcategories->count()}}</td>
                         <td style="max-width: 300px; width: 300px">
-                            <a href="{{ url('/category/'.$category->id) }}">
-                                <button class="btn btn-success" style="padding-top: 9px; padding-bottom: 9px">
-                                    <i class="fas fa-eye" style="font-size: 20px"></i>
-                                </button>
-                            </a>
+                            <button class="btn btn-success" style="padding-top: 9px; padding-bottom: 9px">
+                                <i class="fas fa-eye" style="font-size: 20px"></i>
+                            </button>
                         </td>
                     </tr>
                 @endforeach

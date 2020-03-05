@@ -28,6 +28,9 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
     // categories page route
     Route::get('/categories', 'CategoriesController@index')->name('Categories');
 
+    // specific category page
+    Route::get('/category/{category_id}', 'CategoriesController@category')->name('Category page');
+
     // add category route
     Route::post('/add_category', 'CategoriesController@add')->name('Add category');
 
