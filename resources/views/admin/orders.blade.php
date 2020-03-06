@@ -70,16 +70,17 @@
 
                             @foreach($subcat->products as $product)
                                 <div class="col-md-4 col-sm-6 col-xs-12 text-center">
-                                    <div class="card" style="background: black">
+                                    <div class="card" style="background: black;">
                                         <div class="card-header" style="font-size: 30px;color: white; padding: 20px">
                                             <i class="{{$product->category->icon}}" style="font-size: 60px;"></i><br><br>
                                             {{$product->name}}
+                                            <p style="font-size: 19px; margin-top: 7px">{{$product->description}}</p>
                                             <form style="margin-top: 10px" action="{{ url('/add_to_cart/'.$product->id) }}" method="POST">
                                                 @csrf
-                                                <button style="margin-top: 1px" type="button" class="btn btn-warning" id="decrease" onclick="decreaseValue{{$product->id}}()">+</button>
+                                                <button style="margin-top: 1px" type="button" class="btn btn-warning" id="decrease" onclick="decreaseValue{{$product->id}}()">-</button>
                                                 <input type="number" name="quantity" id="number{{$product->id}}" value="1" min="1" />
                                                 <button style="margin-top: 1px" type="button" class="btn btn-warning" id="increase" onclick="increaseValue{{$product->id}}()">+</button>
-                                                <div style="margin: 5px 0px">{{ $product->price }}$</div>
+                                                <div style="margin: 5px 0px">{{ $product->price }}€</div>
                                                 <button class="btn btn-warning">Add to cart</button>
                                             </form>
                                         </div>
@@ -91,16 +92,17 @@
 
                         @foreach($category->products as $product)
                             <div class="col-md-4 col-sm-6 col-xs-12 text-center">
-                                <div class="card" style="background: black">
+                                <div class="card" style="background: black;">
                                     <div class="card-header" style="font-size: 30px;color: white; padding: 20px">
-                                        <i class="fab fa-product-hunt" style="font-size: 60px;"></i><br><br>
+                                        <i class="{{$product->category->icon}}" style="font-size: 60px;"></i><br><br>
                                         {{$product->name}}
+                                        <p style="font-size: 19px; margin-top: 7px">{{$product->description}}</p>
                                         <form style="margin-top: 10px" action="{{ url('/add_to_cart/'.$product->id) }}" method="POST">
                                             @csrf
-                                            <button style="margin-top: 1px" type="button" class="btn btn-warning" id="decrease" onclick="decreaseValue{{$product->id}}()">+</button>
+                                            <button style="margin-top: 1px" type="button" class="btn btn-warning" id="decrease" onclick="decreaseValue{{$product->id}}()">-</button>
                                             <input type="number" name="quantity" id="number{{$product->id}}" value="1" min="1" />
                                             <button style="margin-top: 1px" type="button" class="btn btn-warning" id="increase" onclick="increaseValue{{$product->id}}()">+</button>
-                                            <div style="margin: 5px 0px">{{ $product->price }}$</div>
+                                            <div style="margin: 5px 0px">{{ $product->price }}€</div>
                                             <button class="btn btn-warning">Add to cart</button>
                                         </form>
                                     </div>

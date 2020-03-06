@@ -23,6 +23,12 @@
     .dropdown-item:hover{
       background: black !important;
     }
+    .navbar{
+      background-color: black !important;
+      color: white !important;
+      padding-top: 5px !important;
+      padding-bottom: 5px !important;
+    }
     </style>
   <div class="wrapper">
     <!-- <div class="sidebar" data-color="purple" data-background-color="white">
@@ -85,7 +91,7 @@
     </div> -->
     <div class="main-panel" style="width: 100%">
       <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+      <nav class="navbar navbar-expand-lg navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
             <a class="navbar-brand" href="{{ url('/menu') }}">Don Petrol</a>

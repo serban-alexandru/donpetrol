@@ -25,7 +25,7 @@
                     <tr>
                         <th scope="row">{{$product->id}}</th>
                         <td>{{$product->name}}</td>
-                        <td>{{$product->price}}$</td>
+                        <td>{{$product->price}}€</td>
                         <td style="max-width: 300px; width: 300px">
                         <button class="btn btn-warning" data-toggle="modal" data-target="#editModal{{$product->id}}"><i class="fas fa-edit"></i></button>
                         <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal{{$product->id}}"><i class="fas fa-trash"></i></button>
@@ -48,6 +48,10 @@
                             <div class="form-group">
                                 <label>Name:</label>
                                 <input type="text" name="name" value="{{$product->name}}" required class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Description:</label>
+                                <textarea name="description" cols="30" rows="5" class="form-control">{{$product->description}}</textarea>
                             </div>
                             <div class="form-group">
                                 <label>Price:</label>
@@ -117,6 +121,10 @@
                 <div class="form-group">
                     <label>Name:</label>
                     <input type="text" name="name" required class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Description:</label>
+                    <textarea name="description" cols="30" rows="5" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
                     <label>Price:</label>

@@ -45,6 +45,7 @@ class ProductsController extends Controller
         $product = new Product;
         $product->name = $request->name;
         $product->price = $request->price;
+        $product->description = $request->description;
         $product->table_number = $request->table_number;
         $product->table_part = $request->table_part;
         $product->category_id = $request->category_id;
@@ -65,6 +66,7 @@ class ProductsController extends Controller
             'price' => 'required',
             'table_number' => 'required|string',
             'table_part' => 'required|string',
+            // 'description' => 'required|string|max:500',
         ]);
 
         // check if data is valid
@@ -80,6 +82,8 @@ class ProductsController extends Controller
             $product->price = $request->price;
             $product->table_number = $request->table_number;
             $product->table_part = $request->table_part;
+            $product->description = $request->description;
+            // $product->description = $request->description;
             $product->save();
     
             return redirect()->back()->with('success', 'Product edited!');

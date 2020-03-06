@@ -1,6 +1,13 @@
 @extends('layouts.guest')
 
 @section('content')
+
+<style>
+    .btn:hover{
+        background: black !important;
+    }
+</style>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

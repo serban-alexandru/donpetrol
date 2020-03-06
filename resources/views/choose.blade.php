@@ -16,7 +16,7 @@
             <a href="{{ url('/eat_in') }}">
                 <div class="card">
                 <div class="card-header" style="text-align: center; padding-top: 50px; padding-bottom: 50px">
-                    <i class="fas fa-utensils" style="font-size: 150px"></i>
+                    <i class="fas fa-home" style="font-size: 150px"></i>
                     <h1 style="margin-top: 20px; font-weight: bold">Eat in</h1>
                 </div>
                 </div>
@@ -26,7 +26,7 @@
             <a href="{{ url('/take_away') }}">
                 <div class="card">
                 <div class="card-header" style="text-align: center; padding-bottom: 50px; padding-top: 50px;">
-                    <i class="fas fa-location-arrow" style="font-size: 150px"></i>
+                    <i class="fas fa-shopping-bag" style="font-size: 150px"></i>
                     <h1 style="margin-top: 20px; font-weight: bold">Take away</h1>
                 </div>
                 </div>
