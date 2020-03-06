@@ -42,7 +42,7 @@
             </style>
             <div class="card" style="margin: 0px">
               <div class="card-header">
-                <tag-random style="font-size: 20px;">{{$item->quantity}} x {{$item->product_name}} = {{$item->product_price * $item->quantity}}$</tag-random>
+                <tag-random style="font-size: 20px;">{{$item->quantity}} x {{$item->product_name}} = {{$item->product_price * $item->quantity}}€</tag-random>
                 <div class="float-right btns-cart">
                   <button data-toggle="modal" data-target="#delete{{$item->product_id}}" class="btn btn-danger" style="margin-top: -10px"><i class="fas fa-trash"></i></button>
                   <button data-toggle="modal" data-target="#edit{{$item->product_id}}" class="btn btn-warning" style="margin-top: -10px"><i class="fas fa-edit"></i></button>
@@ -56,7 +56,7 @@
             <div class="">
 
               <div class="alert alert-success" style="float: left;font-size: 16px; padding: 17px">
-              Total: {{$sum}}$
+              Total: {{$sum}}€
               </div>
               <br><br><br>
               <a href="{{ url('/checkout') }}">
