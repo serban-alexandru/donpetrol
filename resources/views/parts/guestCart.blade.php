@@ -58,23 +58,6 @@
               <div class="alert alert-success" style="float: left;font-size: 16px; padding: 17px">
               Total: {{$sum}}$
               </div>
-
-              <!-- <div class="alert alert-success" style="width: 100px; float: left; padding: 6px; margin-left: 10px">
-              <select name="type" class="form-control" required style="color: white">
-                <option value="" required style="color: black" hidden>Order type</option>
-                <option value="1" required style="color: black">Take out</option>
-                <option value="2" required style="color: black">Eat in</option>
-              </select>
-              </div>
-
-              <div class="alert alert-success" style="width: 100px; float: left; padding: 6px; margin-left: 10px">
-              <select name="time" class="form-control" required style="color: white">
-                <option value="" required style="color: black" hidden>Choose time</option>
-                <option value="1" required style="color: black" id="nextDate"></option>
-                <option value="2" required style="color: black" id="afterDate"></option>
-                <option value="3" required style="color: black" id="after2Date"></option>
-              </select>
-              </div> -->
               <br><br><br>
               <a href="{{ url('/checkout') }}">
                 <button class="btn btn-success" type="button" style="padding: 17px; margin-left: -2px">
@@ -151,26 +134,6 @@
   
   <script>
     var now = new Date();
-    // var hour = now.getHours();
-    // var minutes = now.getMinutes();
-    // var ampm = "AM";
-    // if (minutes < 30) {
-    //     minutes = "30";
-    // } else {
-    //     minutes = "00";
-    //     ++hour;
-    // }
-    // if (hour > 23) {
-    //     hour = 12;
-    // } else if (hour > 12) {
-    //     hour = hour - 12;
-    //     ampm = "PM";
-    // } else if (hour == 12) {
-    //     ampm = "PM";
-    // } else if (hour == 0) {
-    //     hour = 12;
-    // }
-
     if(now.getMinutes() <= 30){
 
       d1 = new Date();

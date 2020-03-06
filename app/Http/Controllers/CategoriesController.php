@@ -28,7 +28,7 @@ class CategoriesController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:191',
             'icon' => 'required|string|max:191',
-            'description' => 'required|string|max:500',
+            // 'description' => 'required|string|max:500',
         ]);
 
         // case validator fails
@@ -40,7 +40,7 @@ class CategoriesController extends Controller
 
             $category->name = $request->name;
             $category->icon = $request->icon;
-            $category->description = $request->description;
+            $category->description = $request->description ?? '';
             $category->save();
 
             return redirect()->back()->with('success', 'Category modified');

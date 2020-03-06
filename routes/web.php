@@ -11,8 +11,10 @@
 |
 */
 
-// landin page route
-Route::get('/', 'PublicController@choose')->name('Don petrol');
+// Route::get('/', 'PublicController@choose')->name('Don petrol');
+Route::get('/', function(){
+    return redirect('/menu');
+})->name('Don petrol');
 
 // auth routes 
 Auth::routes(['reset' => false]);

@@ -7,7 +7,6 @@
     background: black;
     color: white;
 }
-
 </style>
 
     <div class="container">

@@ -2,12 +2,12 @@
 
 @section('content')
 
-@if(!Session::has('order_type'))
+<!-- @if(!Session::has('order_type'))
     <script>
         var url= "{{ url('/') }}"; 
         window.location = url; 
     </script>
-@endif
+@endif -->
 
 <style>
     .col-md-6{
@@ -60,10 +60,10 @@
 <div class="col-md-8 order-md-1">
     <form action="{{ url('send_order') }}" method="POST">
     @csrf
-    <div class="form-group">
+    <!-- <div class="form-group">
         <h3 class="mb-3">Waar wil je dat je bestelling bezorgd wordt?</h3>
-    </div>
-    <div class="row">
+    </div> -->
+    <!-- <div class="row">
         <div class="col-md-6">
             <div class="form-group">
                 <label style="font-size: 20px">Straatnaam en huisnummer</label>
@@ -85,7 +85,7 @@
                 <input type="text" required name="place_name" placeholder="Plaatsnaam" class="form-control">
             </div>
         </div>
-    </div>
+    </div> -->
     <div class="form-group">
         <h3 class="mb-3">Hoe ben je te bereiken?</h3>
     </div>
@@ -123,7 +123,7 @@
         <br>
         <div class="col-md-6">
             <div class="form-group">
-                <label style="font-size: 20px">Gewenste bezorgtijd</label>
+                <label style="font-size: 20px">Gewenste afhaaltijd </label>
                 <br>
                 <select name="delivery_time" class="form-control" required>
                     <option value="0">Zo snel mogelijk</option>
@@ -138,7 +138,7 @@
             <div class="form-group">
                 <label style="font-size: 20px">Opmerkingen voor het restaurant?</label>
                 <br>
-                <textarea required rows="10" name="comments" placeholder="Opmerkingen" class="form-control"></textarea>
+                <textarea rows="10" name="comments" placeholder="Opmerkingen" class="form-control"></textarea>
             </div>
         </div>
     </div>
@@ -150,26 +150,6 @@
 
 <script>
 var now = new Date();
-// var hour = now.getHours();
-// var minutes = now.getMinutes();
-// var ampm = "AM";
-// if (minutes < 30) {
-//     minutes = "30";
-// } else {
-//     minutes = "00";
-//     ++hour;
-// }
-// if (hour > 23) {
-//     hour = 12;
-// } else if (hour > 12) {
-//     hour = hour - 12;
-//     ampm = "PM";
-// } else if (hour == 12) {
-//     ampm = "PM";
-// } else if (hour == 0) {
-//     hour = 12;
-// }
-
 if(now.getMinutes() <= 30){
 
     d1 = new Date();

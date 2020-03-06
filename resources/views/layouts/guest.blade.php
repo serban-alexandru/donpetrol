@@ -98,11 +98,11 @@
           </div>
 
           <a href="{{ url('/menu') }}">
-            <button class="d-lg-none d-xl-none
+            <!-- <button class="d-lg-none d-xl-none
             d-md-block
 btn btn-primary" type="button" >
              Menu
-            </button>
+            </button> -->
           </a>
           <div class="collapse navbar-collapse justify-content-end">
             

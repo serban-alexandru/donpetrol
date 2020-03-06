@@ -133,7 +133,7 @@
                 <div class="form-group">
                     <label>Table number:</label>
                     <input type="text" name="table_number" required class="form-control">
-                </div>zip_entry_compressionmethod
+                </div>
                 <div class="form-group">
                     <label>Category:</label>
                     <select name="category_id" class="form-control" required>

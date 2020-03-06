@@ -1,13 +1,13 @@
 @extends('layouts.guest')
 
 @section('content')
-
+<!-- 
 @if(!Session::has('order_type'))
     <script>
         var url= "{{ url('/') }}"; 
         window.location = url; 
     </script>
-@endif
+@endif -->
 
 <div class="container-fluid">
         <div class="alert" style="background-color: black; color: white;">
