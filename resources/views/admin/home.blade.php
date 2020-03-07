@@ -8,7 +8,7 @@
             <div class="card" style="background: black">
                 <div class="card-header" style="font-size: 30px;color: white; padding: 20px">
                     <i class="fas fa-list" style="font-size: 60px;"></i><br><br>
-                    Categories: {{$categories->count()}}
+                    Categorieën: {{$categories->count()}}
                 </div>
             </div>
         </a>
@@ -18,7 +18,7 @@
             <div class="card" style="background: black">
                 <div class="card-header" style="font-size: 30px;color: white; padding: 20px">
                     <i class="fab fa-product-hunt" style="font-size: 60px;"></i><br><br>
-                    Products: {{$products->count()}}
+                    Producten: {{$products->count()}}
                 </div>
             </div>
         </a>
@@ -28,7 +28,7 @@
             <div class="card" style="background: black">
                 <div class="card-header" style="font-size: 30px;color: white; padding: 20px">
                     <i class="fas fa-shopping-cart" style="font-size: 60px;"></i><br><br>
-                    Orders: {{$orders->count()}}
+                    Bestellingen: {{$orders->count()}}
                 </div>
             </div>
         <a>

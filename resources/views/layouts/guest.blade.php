@@ -111,11 +111,11 @@ btn btn-primary" type="button" >
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
-                    @if (Route::has('register'))
+                    <!-- @if (Route::has('register'))
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
-                    @endif
+                    @endif -->
             @endguest
             @auth
               <li class="nav-item dropdown">
@@ -236,8 +236,8 @@ btn btn-primary" type="button" >
             @csrf
             <div class="">
 
-              <div class="alert alert-success" style="float: left;font-size: 16px; padding: 17px">
-              Total: {{$sum}}€
+              <div class="alert alert-success" style="float: left;font-size: 16px; padding: 17px;background:black">
+              Totaal: {{$sum}}€
               </div>
 
               <!-- <div class="alert alert-success" style="width: 100px; float: left; padding: 6px; margin-left: 10px">
@@ -258,15 +258,15 @@ btn btn-primary" type="button" >
               </div> -->
               <br><br><br>
               <a href="{{ url('/checkout') }}">
-                <button class="btn btn-success" type="button" style="padding: 17px; margin-left: -2px">
-                    Checkout
+                <button class="btn btn-success" type="button" style="padding: 17px; margin-left: -2px;background-color:black">
+                  Afrekenen 
                 </button>
               </a>
             </div>
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-success" style="background-color: black" data-dismiss="modal">Sluiten</button>
           </div>
         </div>
       </div>
@@ -278,7 +278,7 @@ btn btn-primary" type="button" >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Edit {{$item->product->name}}</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Bewerk {{$item->product->name}}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -287,13 +287,13 @@ btn btn-primary" type="button" >
             @csrf
             <div class="modal-body">
               <div class="form-group">
-                <label>Quantity:</label>
+                <label>Hoeveelheid:</label>
                 <input name="quantity" type="number" min="1" reqired value="{{ $item->quantity }}" class="form-control">
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-warning">Save changes</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
+              <button type="submit" class="btn btn-warning">Wijzigingen opslaan</button>
             </div>
           </form>
         </div>
@@ -314,7 +314,7 @@ btn btn-primary" type="button" >
             Are you sure you want to <tag-random class="text-danger">remove</tag-random> this product from cart?
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
             <a href="{{ url('/remove_product_from_cart/'.$item->product->id) }}"><button type="button" class="btn btn-danger">Remove</button></a>
           </div>
         </div>

@@ -53,7 +53,7 @@
             <a class="nav-link" href="{{ url('/categories') }}">
           @endif
           <i class="fas fa-list"></i>
-              <p>Categories</p>
+              <p>Categorieën</p>
             </a>
           </li>
 
@@ -77,7 +77,7 @@
             <a class="nav-link" href="{{ url('/order') }}">
           @endif
           <i class="fas fa-shopping-cart"></i>
-              <p>Create order</p>
+              <p>Bestelling aanmaken</p>
             </a>
           </li>
 
@@ -89,7 +89,7 @@
             <a class="nav-link" href="{{ url('/orders') }}">
           @endif
           <i class="fas fa-clipboard-list"></i>
-              <p>Orders</p>
+              <p>Bestellingen</p>
             </a>
           </li>
         </ul>
@@ -215,7 +215,7 @@
             <div class="">
 
               <div class="alert alert-success" style="float: left;font-size: 16px; padding: 17px">
-              Total: {{$sum}}€
+              Totaal: {{$sum}}€
               </div>
 
               <!-- <div class="alert alert-success" style="width: 100px; float: left; padding: 6px; margin-left: 10px">
@@ -237,7 +237,7 @@
               <br><br><br>
               <a href="{{ url('/checkout') }}">
                 <button class="btn btn-success" type="button" style="padding: 17px; margin-left: -2px">
-                    Checkout
+                Afrekenen
                 </button>
               </a>
             </div>
@@ -256,7 +256,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Edit {{$item->product->name}}</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Bewerk {{$item->product->name}}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -265,13 +265,13 @@
             @csrf
             <div class="modal-body">
               <div class="form-group">
-                <label>Quantity:</label>
+                <label>Hoeveelheid:</label>
                 <input name="quantity" type="number" min="1" reqired value="{{ $item->quantity }}" class="form-control">
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-warning">Save changes</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
+              <button type="submit" class="btn btn-warning">Wijzigingen opslaan</button>
             </div>
           </form>
         </div>

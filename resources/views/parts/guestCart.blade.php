@@ -56,19 +56,19 @@
             <div class="">
 
               <div class="alert alert-success" style="float: left;font-size: 16px; padding: 17px">
-              Total: {{$sum}}€
+              Totaal: {{$sum}}€
               </div>
               <br><br><br>
               <a href="{{ url('/checkout') }}">
                 <button class="btn btn-success" type="button" style="padding: 17px; margin-left: -2px">
-                    Checkout
+                Afrekenen
                 </button>
               </a>
             </div>
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-success" data-dismiss="modal">Sluiten</button>
           </div>
         </div>
       </div>
@@ -80,7 +80,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Edit {{$item->product_name}}</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Bewerk {{$item->product_name}}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -89,13 +89,13 @@
             @csrf
             <div class="modal-body">
               <div class="form-group">
-                <label>Quantity:</label>
+                <label>Hoeveelheid:</label>
                 <input name="quantity" type="number" min="1" reqired value="{{ $item->quantity }}" class="form-control">
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-warning">Save changes</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
+              <button type="submit" class="btn btn-warning">Wijzigingen opslaan</button>
             </div>
           </form>
         </div>
@@ -116,7 +116,7 @@
             Ben je zeker dat je<tag-random class="text-danger">dit product</tag-random> wilt annuleren?
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
             <a href="{{ url('/remove_product_from_cart/'.$item->product_id) }}"><button type="button" class="btn btn-danger">Remove</button></a>
           </div>
         </div>

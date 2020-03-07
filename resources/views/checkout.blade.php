@@ -16,7 +16,7 @@
 </style>
 <div class="container">
 <div class="text-center">
-<h2>{{Route::currentRouteName()}}</h2>
+<h2>Afrekenen</h2>
 <br>
 <p class="lead"></p>
 </div>
@@ -104,7 +104,6 @@
                 <input type="text" value="{{ Auth::user()->email}}" required name="email" placeholder="E-mailadres" class="form-control">
             </div>
         </div>
-        <br>
         <div class="col-md-6">
             <div class="form-group">
                 <label style="font-size: 20px">Telefoonnummer</label>
@@ -112,17 +111,16 @@
                 <input type="text" value="{{ Auth::user()->phone}}" required name="phone" placeholder="Telefoonnummer" class="form-control">
             </div>
         </div>
-        <br>
-        <div class="col-md-6">
+        <!-- <div class="col-md-6">
             <div class="form-group">
                 <label style="font-size: 20px">Bedrijfsnaam</label>
                 <br>
                 <input type="text" value="{{ Auth::user()->street_and_house}}" required name="company_name" placeholder="Bedrijfsnaam" class="form-control">
             </div>
         </div>
-        <br>
+        <br> -->
         <div class="col-md-6">
-            <div class="form-group">
+            <div class="form-group" style="margin-top: -10px">
                 <label style="font-size: 20px">Gewenste afhaaltijd </label>
                 <br>
                 <select name="delivery_time" class="form-control" required>
@@ -134,6 +132,18 @@
                 </select>
             </div>
         </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label style="font-size: 20px">Gewenste betaalmethode</label>
+                <br>
+                <select name="payment_method" required class="form-control">
+                    <option value="" hidden>Choose</option>
+                    <option value="cash">Cash</option>
+                    <option value="online">Online</option>
+                </select>
+            </div>
+        </div>
+        <br>
         <div class="col-md-6">
             <div class="form-group">
                 <label style="font-size: 20px">Opmerkingen voor het restaurant?</label>

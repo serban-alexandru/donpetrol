@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="alert" style="background-color: black; color: white;">
-            <h1>Orders</h1>
+            <h1>Menu</h1>
         </div>
 
         <div id="accordion">
@@ -63,11 +63,15 @@
                 <div class="card" style="margin: 0px">
                     <div id="collapse{{$category->id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="card-body">
-                        <h1>{{ $category->name }}</h1>
+                        <h2>{{ $category->name }}</h2>
                         <h4>{{ $category->description }}</h4>
                         <div class="row">
+                        <div class="col-md-12">
                         @foreach($category->subcategories as $subcat)
-
+                            @if($subcat->products->count() > 0)
+                            <h2 style="margin-bottom: -20px">{{ $subcat->name }}</h2>
+                            @endif
+                            <div class="row">
                             @foreach($subcat->products as $product)
                                 <div class="col-md-4 col-sm-6 col-xs-12 text-center">
                                     <div class="card" style="background: black;">
@@ -87,8 +91,10 @@
                                     </div>
                                 </div>
                             @endforeach
-
+                            </div>
                         @endforeach
+                        </div>
+                        
 
                         @foreach($category->products as $product)
                             <div class="col-md-4 col-sm-6 col-xs-12 text-center">

@@ -71,11 +71,15 @@
                 <div class="card" style="margin: 0px">
                     <div id="collapse{{$category->id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="card-body">
-                        <h1>{{ $category->name }}</h1>
+                        <h2>{{ $category->name }}</h2>
                         <h4>{{ $category->description }}</h4>
                         <div class="row">
+                        <div class="col-md-12">
                         @foreach($category->subcategories as $subcat)
-
+                            @if($subcat->products->count() > 0)
+                            <h2 style="margin-bottom: -20px">{{ $subcat->name }}</h2>
+                            @endif
+                            <div class="row">
                             @foreach($subcat->products as $product)
                                 <div class="col-md-4 col-sm-6 col-xs-12 text-center">
                                     <div class="card" style="background: black;">
@@ -95,8 +99,10 @@
                                     </div>
                                 </div>
                             @endforeach
-
+                            </div>
                         @endforeach
+                        </div>
+                        
 
                         @foreach($category->products as $product)
                             <div class="col-md-4 col-sm-6 col-xs-12 text-center">
@@ -123,47 +129,6 @@
                     </div>
                 </div>
             @endforeach
-                <!-- <div class="card" style="margin: 0px">
-                    <div id="collapse2" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                    <div class="card-body">
-
-                        <div class="row">
-                            <div class="col-md-4 col-sm-6 col-xs-12 text-center">
-                                <div class="card" style="background: black">
-                                    <div class="card-header" style="font-size: 30px;color: white; padding: 20px">
-                                        <i class="fab fa-product-hunt" style="font-size: 60px;"></i><br><br>
-                                        Product name
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6 col-xs-12 text-center">
-                                <div class="card" style="background: black">
-                                    <div class="card-header" style="font-size: 30px;color: white; padding: 20px">
-                                        <i class="fab fa-product-hunt" style="font-size: 60px;"></i><br><br>
-                                        Product name
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6 col-xs-12 text-center">
-                                <div class="card" style="background: black">
-                                    <div class="card-header" style="font-size: 30px;color: white; padding: 20px">
-                                        <i class="fab fa-product-hunt" style="font-size: 60px;"></i><br><br>
-                                        Product name
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    </div>
-                </div>
-                <div class="card" style="margin: 0px">
-                    <div id="collapse3" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                    <div class="card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                    </div>
-                    </div>
-                </div> -->
             </div>
         </div> 
 

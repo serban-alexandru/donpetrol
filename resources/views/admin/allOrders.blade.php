@@ -4,7 +4,7 @@
 
 <div class="container-fluid">
     <div class="alert" style="background-color: black; color: white;">
-        <h1>Orders</h1>
+        <h1>Bestellingen</h1>
     </div>
 
     <div class="table-responsive">
@@ -21,14 +21,23 @@
         </thead>
         <tbody>
         @foreach($orders as $key=>$order)
+            @php
+                $sum = 0;
+            @endphp
+            @foreach($order->products as $product)
+                @php
+                    $sum += $product->quantity * $product->product->price
+                @endphp
+            @endforeach
             <tr>
                 <th scope="row">{{ $key+1 }}</th>
                 <td>
-                @if($order->type == 'eat_in')
+                <!-- @if($order->type == 'eat_in')
                 Eat in
                 @else
                 Take out
-                @endif
+                @endif -->
+                Take away
                 </td>
                 <td>
                 @if($order->delivery_time == '0')
@@ -37,7 +46,7 @@
                     {{$order->delivery_time}}
                 @endif
                 </td>
-                <td>{{$order->value}} €</td>
+                <td>{{$sum}} €</td>
                 <td>
                     <button data-toggle="modal" data-target="#view{{$order->id}}" class="btn" style="padding-top: 9px; padding-bottom: 9px">
                         <i class="fas fa-list-alt" style="font-size: 20px"></i>
@@ -80,14 +89,16 @@
                     <div class="card" style="margin: 10px 0px">
                         <div class="card-header" style="font-size: 20px; border: 1px solid black">
                             {{$product->product->name}} <tag-random class="text-warning">X</tag-random> {{$product->quantity}}
-                            <tag-random class="float-right">{{$product->product->price * $product->product->price}} €</tag-random>
+                            <tag-random class="float-right">{{$product->quantity * $product->product->price}} €</tag-random>
                         </div>
                     </div>   
                     @endforeach
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" style="background:black" class="btn btn-primary">Save changes</button>
+                    <a href="{{ url('/delete_order/'.$order->id) }}">
+                        <button type="button" style="background:black" class="btn btn-primary">Delete order</button>
+                    </a>
                 </div>
                 </div>
             </div>

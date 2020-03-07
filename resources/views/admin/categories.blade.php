@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="alert" style="background-color: black; color: white;">
-            <h1>Categories</h1>
+            <h1>Categorieën</h1>
         </div>
         <div class="table-responsive">
             <table class="table" style="text-align: center">

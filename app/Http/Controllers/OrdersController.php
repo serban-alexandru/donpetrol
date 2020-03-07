@@ -55,7 +55,7 @@ class OrdersController extends Controller
                         $item->quantity += $request->quantity;
                         $item->save();
     
-                        return redirect()->back()->with('success', 'Product added to cart');
+                        return redirect()->back()->with('success', 'Product toegevoegd aan uw bestelling');
                     }
                 }
     
@@ -74,7 +74,7 @@ class OrdersController extends Controller
                             // case product already exists in cart
                             $item->quantity += $request->quantity;
         
-                            return redirect()->back()->with('success', 'Product added to cart');
+                            return redirect()->back()->with('success', 'Product toegevoegd aan uw bestelling');
                         }
                     }
 
@@ -105,7 +105,7 @@ class OrdersController extends Controller
 
             }           
 
-            return redirect()->back()->with('success', 'Product added to cart');
+            return redirect()->back()->with('success', 'Product toegevoegd aan uw bestelling');
 
         }
 
@@ -234,6 +234,10 @@ class OrdersController extends Controller
      * Send order route
      */
     public function send(Request $request){
+        // return $request->payment_method;
+        if($request->payment_method != 'cash' && $request->payment_method != 'online'){
+            return redirect()->back()->with('error', 'Select payment method');
+        } 
 
         $secret = $this->quickRandom();
 
@@ -245,7 +249,8 @@ class OrdersController extends Controller
             'name' => 'required|string|max:191',
             'email' => 'required|string|max:191',
             'phone' => 'required|string|max:191',
-            'company_name' => 'required|string|max:191',
+            // 'company_name' => 'required|string|max:191',
+            'payment_method' => 'required|string|max:191',
             'delivery_time' => 'required|string|max:191',
             // 'comments' => 'required|string|max:500',
         ]);
@@ -266,14 +271,14 @@ class OrdersController extends Controller
         // $order->client_name = $request->name;
         // $order->email = $request->email;
         $order->phone = $request->phone;
-        $order->company_name = $request->company_name;
+        $order->payment_method = $request->payment_method;
         $order->delivery_time = $request->delivery_time;
         $order->comments = $request->comments ?? '';
         $order->user_id = Auth::user()->id;
         $order->secret = $secret;
         $order->save();
 
-
+        // return $order;
         foreach(Auth::user()->cartItems as $item){
 
             $product = new OrderHasProduct;
@@ -355,6 +360,25 @@ class OrdersController extends Controller
         return view('admin.allOrders')->with([
             'orders' => $orders,
         ]);
+
+    }
+
+    /** 
+     * Delete order function
+     */
+    public function deleteOrder($order_id){
+
+        $order = Order::find($order_id);
+        
+        if($order){
+
+            $order->delete();
+            
+            return redirect()->back()->with('success', 'Order deleted');
+
+        }
+
+        return redirect()->back()->with('error', 'Order not found');
 
     }
 

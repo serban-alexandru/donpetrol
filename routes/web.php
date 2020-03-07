@@ -57,6 +57,8 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
     // order page route
     Route::get('/order', 'OrdersController@index')->name('Order');
 
+    Route::get('/delete_order/{order_id}', 'OrdersController@deleteOrder')->name('Delete order');
+
 });
 
 // Take away option

@@ -19,7 +19,7 @@
                         @csrf
 
                         <div class="row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">E-mail</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -33,7 +33,7 @@
                         </div>
                         <br>
                         <div class="row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">Wachtwoord</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
@@ -52,7 +52,7 @@
                                     <input type="checkbox" style="height: 15px; width: 15px" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember" style="padding-left: 5px; font-size: 20px">
-                                        {{ __('Remember Me') }}
+                                        Onthoud mijn account
                                     </label>
                                 </div>
                             </div>

@@ -10,12 +10,12 @@
 
 <div class="container-fluid">
     <div class="alert" style="background-color: black; color: white;">
-        <h1>Order #{{$order->id}} paid!</h1>
+        <h1>Bestelling #{{$order->id}} betaald</h1>
         <p>Wij hebben uw bestelling goed ontvangen!</p>
     </div>
 
     <div class="card">
-        <div class="card-header">Mijn bestelling:</div>
+        <div class="card-header"></div>
         <div class="card-body">
             <div class="row">
             @foreach($order->products as $product)
