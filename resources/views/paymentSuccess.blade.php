@@ -35,8 +35,9 @@
 
             @endforeach 
             </div>
-
-            <button class="btn btn-primary">Menu</button>
+            <a href="{{ url('/menu') }}">
+                <button class="btn btn-primary">Menu</button>
+            </a>
         </div>
     </div>
 

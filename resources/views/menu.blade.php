@@ -10,9 +10,9 @@
 @endif -->
 
 <div class="container-fluid">
-        <div class="alert" style="background-color: black; color: white;">
+        <!-- <div class="alert" style="background-color: black; color: white;">
             <h1>Menu</h1>
-        </div>
+        </div> -->
 
         <div id="accordion">
             <div class="buttons">

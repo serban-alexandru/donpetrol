@@ -94,7 +94,7 @@
       <nav class="navbar navbar-expand-lg navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="{{ url('/menu') }}">Don Petrol</a>
+            <a class="navbar-brand" href="{{ url('/menu') }}">Menu</a>
           </div>
 
           <a href="{{ url('/menu') }}">
