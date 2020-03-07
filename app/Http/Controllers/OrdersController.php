@@ -290,8 +290,12 @@ class OrdersController extends Controller
             $item->delete();
 
         }
+
+        if($request->payment_method == 'cash'){
+            return redirect('/home')->with('success', 'Order sent!');
+        }
+
         return redirect('/mollie');
-        return redirect('/home')->with('success', 'Order sent!');
 
     }
 
