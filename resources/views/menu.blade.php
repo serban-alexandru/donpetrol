@@ -89,7 +89,7 @@
                                                 <input type="number" name="quantity" id="number{{$product->id}}" value="1" min="1" />
                                                 <button style="margin-top: 1px" type="button" class="btn btn-warning" id="increase" onclick="increaseValue{{$product->id}}()">+</button>
                                                 <div style="margin: 5px 0px">{{ $product->price }}€</div>
-                                                <button class="btn btn-warning">Add to cart</button>
+                                                <button class="btn btn-warning">Voeg toe</button>
                                             </form>
                                         </div>
                                     </div>
@@ -111,7 +111,7 @@
                                             <input type="number" name="quantity" id="number{{$product->id}}" value="1" min="1" />
                                             <button style="margin-top: 1px" type="button" class="btn btn-warning" id="increase" onclick="increaseValue{{$product->id}}()">+</button>
                                             <div style="margin: 5px 0px">{{ $product->price }}€</div>
-                                            <button class="btn btn-warning">Add to cart</button>
+                                            <button class="btn btn-warning">Voeg toe</button>
                                         </form>
                                     </div>
                                 </div>
