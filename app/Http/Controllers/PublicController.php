@@ -7,6 +7,8 @@ use SoapClient;
 use Session;
 use Illuminate\Session\Store;
 use App\Category;
+use Auth;
+use App\Order;
 
 class PublicController extends Controller
 {
@@ -73,6 +75,57 @@ class PublicController extends Controller
       return view('menu')->with([
           'categories' => $categories,
       ]);
+
+  }
+
+  public function payTest(){
+
+    $last_orders = Auth::user()->orders;
+
+    $order_products = $last_orders[$last_orders->count() - 1]->products;
+
+    $orderr = $last_orders[$last_orders->count() - 1];
+
+    if($order_products->count() < 1){
+      return redirect('/checkout')->with('error', 'Your order is empty');
+    }
+
+    $sum = 0;
+    foreach($order_products as $order_product){
+
+      $sum += $order_product->quantity * $order_product->product->price;
+
+    }
+    $nr = $last_orders[$last_orders->count() - 1]->id;
+    $sum = number_format($sum , 2);
+
+    $mollie = new \Mollie\Api\MollieApiClient();
+    // Test Key
+    $mollie->setApiKey("test_MDHCmNRtRuaCt5gwtFJQ29QfSMBf4n");
+    // Live API key
+    // $mollie->setApiKey("live_xBwjKC5AAtExkG2tbN5jqtekvfmh29");
+
+    $payment = $mollie->payments->create([
+        "amount" => [
+            "currency" => "EUR",
+            "value" => $sum,
+        ],
+        "description" => "Order #".$nr,
+        "redirectUrl" => url('/payment_success/'.$orderr->secret),
+        "webhookUrl"  => "https://webshop.example.org/mollie-webhook/",
+    ]);
+    // return $payment;
+    return redirect($payment->_links->checkout->href);
+
+  }
+
+  public function paymentSuccess($secret){
+
+    $order = Order::where('secret', '=', $secret)->first();
+
+    return view('paymentSuccess')->with([
+      'order' => $order,
+    ]);
 
   }
 

@@ -91,3 +91,9 @@ Route::get('/empty_cart', 'OrdersController@emptyCart');
 
 // send order route
 Route::post('/send_order', 'OrdersController@send')->name('Send order')->middleware('auth');
+
+// Payment route test
+Route::get('/mollie', 'PublicController@payTest');
+
+// Payment success route
+Route::get('/payment_success/{order_secret}', 'PublicController@paymentSuccess');

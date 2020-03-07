@@ -221,9 +221,21 @@ class OrdersController extends Controller
     }
 
     /**
+     * Generate random string
+     */
+    public static function quickRandom($length = 128)
+    {
+        $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+        return substr(str_shuffle(str_repeat($pool, 5)), 0, $length);
+    }
+
+    /**
      * Send order route
      */
     public function send(Request $request){
+
+        $secret = $this->quickRandom();
 
         // data validator 
         $validator = Validator::make($request->all(), [
@@ -258,6 +270,7 @@ class OrdersController extends Controller
         $order->delivery_time = $request->delivery_time;
         $order->comments = $request->comments ?? '';
         $order->user_id = Auth::user()->id;
+        $order->secret = $secret;
         $order->save();
 
 
@@ -272,7 +285,7 @@ class OrdersController extends Controller
             $item->delete();
 
         }
-
+        return redirect('/mollie');
         return redirect('/home')->with('success', 'Order sent!');
 
     }

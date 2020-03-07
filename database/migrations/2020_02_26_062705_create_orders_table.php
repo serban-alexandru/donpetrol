@@ -26,6 +26,7 @@ class CreateOrdersTable extends Migration
             $table->string('place_name')->nullable();
             $table->string('company_name')->nullable();
             $table->timestamps();
+            $table->string('secret');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
