@@ -65,7 +65,7 @@
                                 </button>
 
                                 <a href="{{ url('/register') }}">
-                                    <button class="btn btn-primary" type="button">Dont have an accout?</button>
+                                    <button class="btn btn-primary" type="button">Nog geen account?</button>
                                 </a>
 
                                 @if (Route::has('password.request'))

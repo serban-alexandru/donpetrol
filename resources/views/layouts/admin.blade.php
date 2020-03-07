@@ -175,7 +175,7 @@
       <div class="modal-dialog" role="document" style="margin: 0px">
         <div class="modal-content" style="width: 100vw; min-height: 100vh">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Your cart</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Uw bestelling</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>

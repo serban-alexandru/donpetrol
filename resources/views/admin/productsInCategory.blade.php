@@ -37,7 +37,7 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Bewerk</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
@@ -67,8 +67,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-warning">Save changes</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
+                            <button type="submit" class="btn btn-warning">Wijzigingen opslaan</button>
                         </div>
                         </form>
                     </div>
@@ -80,18 +80,18 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Verwijder</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            Are you sure you want to delete this product?
+                            Bent u zeker dat u dit product wilt verwijderen?
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
                             <a href="{{ url('/delete_product/'.$product->id) }}">
-                                <button type="button" class="btn btn-danger">Delete</button>
+                                <button type="button" class="btn btn-danger">Verwijderen</button>
                             </a>
                         </div>
                         </div>
@@ -103,14 +103,14 @@
             {{$products->links()}}
         </div>
 
-        <button class="btn btn-success" data-toggle="modal" data-target="#addModal">Add products</button>
+        <button class="btn btn-success" data-toggle="modal" data-target="#addModal">Product toevoegen</button>
 
         <!-- Modal -->
         <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add product</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Product toevoegen</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -119,15 +119,15 @@
             @csrf
             <div class="modal-body">
                 <div class="form-group">
-                    <label>Name:</label>
+                    <label>Naam:</label>
                     <input type="text" name="name" required class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>Description:</label>
+                    <label>Beschrijving:</label>
                     <textarea name="description" cols="30" rows="5" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
-                    <label>Price:</label>
+                    <label>Prijs:</label>
                     <input type="number" step="0.1" name="price" required class="form-control">
                 </div>
                 <div class="form-group">
@@ -141,8 +141,8 @@
                 <input type="text" hidden name="category_id" value="{{$category->id}}" class="form-control">
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-success">Add product</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
+                <button type="submit" class="btn btn-success">Product toevoegen</button>
             </div>
             </form>
             </div>
