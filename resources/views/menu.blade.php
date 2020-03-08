@@ -69,7 +69,7 @@
             <div style="margin-top: 20px">
             @foreach($categories as $category)
                 <div class="card" style="margin: 0px">
-                    <div id="collapse{{$category->id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div id="collapse{{$category->id}}" class="collapse  @if($category->id == $openCat) show @endif" aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="card-body">
                         <h2>{{ $category->name }}</h2>
                         <h4>{{ $category->description }}</h4>

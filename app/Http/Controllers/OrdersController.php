@@ -18,10 +18,16 @@ class OrdersController extends Controller
     
     public function index(){
 
+        $openCat = 1;
+        if(Session::has('openCat')){
+          $openCat = Session::get('openCat');
+        }
+  
         $categories = Category::all();
-
+  
         return view('admin.orders')->with([
             'categories' => $categories,
+            'openCat' => $openCat,
         ]);
 
     }
@@ -45,7 +51,11 @@ class OrdersController extends Controller
 
         // check if product exists
         if($product){
-            
+            Session::put('openCat', $product->category_id);
+            // Subcategory case
+            if($product->category->category_id){
+                Session::put('openCat', $product->category->category_id);
+            }
             if(Auth::user()){
 
                 $cartItems = Auth::user()->cartItems;

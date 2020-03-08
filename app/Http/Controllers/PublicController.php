@@ -70,10 +70,16 @@ class PublicController extends Controller
 
     public function menu(){
 
+      $openCat = 1;
+      if(Session::has('openCat')){
+        $openCat = Session::get('openCat');
+      }
+
       $categories = Category::all();
 
       return view('menu')->with([
           'categories' => $categories,
+          'openCat' => $openCat,
       ]);
 
   }
