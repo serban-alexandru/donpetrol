@@ -160,14 +160,28 @@ btn btn-primary" type="button" >
       <div class="content">
         <div class="container-fluid">
         @if(Session::has('success'))
-        <div class="alert alert-warning" role="alert">
+        <div class="alert alert-warning" role="alert" id="error">
           {{Session::get('success')}}
         </div>
+        <script>
+        setTimeout(function(){
+          // if (document.getElementById('error').length > 0) {
+            document.getElementById('error').remove();
+          // }
+        }, 4000);
+        </script>
         @endif
         @if(Session::has('error'))
-        <div class="alert alert-danger" role="alert">
+        <div class="alert alert-danger" role="alert" id="error">
           {{Session::get('error')}}
         </div>
+        <script>
+        setTimeout(function(){
+          // if (document.getElementById('error').length > 0) {
+            document.getElementById('error').remove();
+          // }
+        }, 4000);
+        </script>
         @endif
            @yield('content')
           
