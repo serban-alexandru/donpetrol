@@ -46,7 +46,7 @@
                     {{$order->delivery_time}}
                 @endif
                 </td>
-                <td>{{$sum}} €</td>
+                <td>€ {{$sum}} </td>
                 <td>
                     <button data-toggle="modal" data-target="#view{{$order->id}}" class="btn" style="padding-top: 9px; padding-bottom: 9px">
                         <i class="fas fa-list-alt" style="font-size: 20px"></i>
@@ -89,7 +89,7 @@
                     <div class="card" style="margin: 10px 0px">
                         <div class="card-header" style="font-size: 20px; border: 1px solid black">
                             {{$product->product->name}} <tag-random class="text-warning">X</tag-random> {{$product->quantity}}
-                            <tag-random class="float-right">{{$product->quantity * $product->product->price}} €</tag-random>
+                            <tag-random class="float-right">€ {{$product->quantity * $product->product->price}} </tag-random>
                         </div>
                     </div>   
                     @endforeach

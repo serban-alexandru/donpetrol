@@ -45,15 +45,15 @@
         <h6 class="my-0">{{$item->product->name}} <tag-random class="text-warning">x</tag-random> {{$item->quantity}}</h6>
         <small class="text-muted">({{$item->product->category->name}})</small>
         </div>
-        <span class="text-muted">${{$item->quantity * $item->product->price}}</span>
+        <span class="text-muted">€ {{$item->quantity * $item->product->price}}</span>
     </li>
     @php
         $sum += $item->quantity * $item->product->price;
     @endphp
     @endforeach
     <li class="list-group-item d-flex justify-content-between">
-        <span>Total (USD)</span>
-        <strong>${{$sum}}</strong>
+        <span>Total (EURO)</span>
+        <strong>€ {{$sum}}</strong>
     </li>
     </ul>
 </div>

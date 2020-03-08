@@ -42,7 +42,7 @@
             </style>
             <div class="card" style="margin: 0px">
               <div class="card-header">
-                <tag-random style="font-size: 20px;">{{$item->quantity}} x {{$item->product_name}} = {{$item->product_price * $item->quantity}}€</tag-random>
+                <tag-random style="font-size: 20px;">{{$item->quantity}} x {{$item->product_name}} = € {{$item->product_price * $item->quantity}}</tag-random>
                 <div class="float-right btns-cart">
                   <button data-toggle="modal" data-target="#delete{{$item->product_id}}" class="btn btn-danger" style="margin-top: -10px"><i class="fas fa-trash"></i></button>
                   <button data-toggle="modal" data-target="#edit{{$item->product_id}}" class="btn btn-warning" style="margin-top: -10px"><i class="fas fa-edit"></i></button>
@@ -55,12 +55,12 @@
             @csrf
             <div class="">
 
-              <div class="alert alert-success" style="float: left;font-size: 16px; padding: 17px">
-              Totaal: {{$sum}}€
+              <div class="alert alert-success" style="float: left;font-size: 16px; padding: 17px;background-color:black">
+              Totaal:€ {{$sum}}
               </div>
               <br><br><br>
               <a href="{{ url('/checkout') }}">
-                <button class="btn btn-success" type="button" style="padding: 17px; margin-left: -2px">
+                <button class="btn btn-success" type="button" style="padding: 17px; margin-left: -2px;background-color:black">
                 Afrekenen
                 </button>
               </a>
@@ -68,7 +68,7 @@
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-dismiss="modal">Sluiten</button>
+            <button type="button" class="btn btn-success" style="background-color:black" data-dismiss="modal">Sluiten</button>
           </div>
         </div>
       </div>

@@ -25,7 +25,7 @@
                     <tr>
                         <th scope="row">{{$product->id}}</th>
                         <td>{{$product->name}}</td>
-                        <td>{{$product->price}}€</td>
+                        <td>€ {{$product->price}}</td>
                         <td style="max-width: 300px; width: 300px">
                         <button class="btn btn-warning" data-toggle="modal" data-target="#editModal{{$product->id}}"><i class="fas fa-edit"></i></button>
                         <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal{{$product->id}}"><i class="fas fa-trash"></i></button>

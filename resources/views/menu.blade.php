@@ -9,7 +9,7 @@
     </script>
 @endif -->
 
-<div class="container-fluid">
+<!-- <div class="container-fluid"> -->
         <!-- <div class="alert" style="background-color: black; color: white;">
             <h1>Menu</h1>
         </div> -->
@@ -92,7 +92,7 @@
                                                 <button style="margin-top: 1px" type="button" class="btn btn-warning" id="decrease" onclick="decreaseValue{{$product->id}}()">-</button>
                                                 <input type="number" name="quantity" id="number{{$product->id}}" value="1" min="1" />
                                                 <button style="margin-top: 1px" type="button" class="btn btn-warning" id="increase" onclick="increaseValue{{$product->id}}()">+</button>
-                                                <div style="margin: 5px 0px">{{ $product->price }}€</div>
+                                                <div style="margin: 5px 0px">€ {{ $product->price }}</div>
                                                 <button class="btn btn-warning">Voeg toe</button>
                                             </form>
                                         </div>
@@ -116,7 +116,7 @@
                                             <button style="margin-top: 1px" type="button" class="btn btn-warning" id="decrease" onclick="decreaseValue{{$product->id}}()">-</button>
                                             <input type="number" name="quantity" id="number{{$product->id}}" value="1" min="1" />
                                             <button style="margin-top: 1px" type="button" class="btn btn-warning" id="increase" onclick="increaseValue{{$product->id}}()">+</button>
-                                            <div style="margin: 5px 0px">{{ $product->price }}€</div>
+                                            <div style="margin: 5px 0px">€ {{ $product->price }}</div>
                                             <button class="btn btn-warning">Voeg toe</button>
                                         </form>
                                     </div>
@@ -132,5 +132,5 @@
             </div>
         </div> 
 
-    </div>
+    <!-- </div> -->
 @endsection
