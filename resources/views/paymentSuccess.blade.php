@@ -28,7 +28,7 @@
                             <i class="{{$product->category->icon}}" style="font-size: 60px;"></i><br><br>
                             {{$product->name}}
                             <p style="font-size: 19px; margin-top: 7px">{{$product->description}}</p>
-                            <div style="margin: 5px 0px">{{ $product->price }}€</div>
+                            <div style="margin: 5px 0px">€ {{ $product->price }}</div>
                         </div>
                     </div>
                 </div>

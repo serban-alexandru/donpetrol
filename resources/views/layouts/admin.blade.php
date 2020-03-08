@@ -30,6 +30,9 @@
     /* .text-warning{
       
     } */
+    .btn-danger, .btn-success{
+      background: black !important;
+    }
     </style>
   <div class="wrapper">
     <div class="sidebar" data-color="purple" data-background-color="white">

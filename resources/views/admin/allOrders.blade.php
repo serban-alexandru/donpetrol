@@ -16,6 +16,7 @@
             <th scope="col">Type</th>
             <th scope="col">Afhaaltijd</th>
             <th scope="col">Waarde</th>
+            <th scope="col">Typ</th>
             <th scope="col">Alle orders</th>
             </tr>
         </thead>
@@ -47,6 +48,7 @@
                 @endif
                 </td>
                 <td>€ {{$sum}} </td>
+                <td>{{ $order->payment_method }}</td>
                 <td>
                     <button data-toggle="modal" data-target="#view{{$order->id}}" class="btn" style="padding-top: 9px; padding-bottom: 9px">
                         <i class="fas fa-list-alt" style="font-size: 20px"></i>

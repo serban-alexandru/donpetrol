@@ -301,8 +301,10 @@ class OrdersController extends Controller
 
         }
 
+        // return $order;
+
         if($request->payment_method == 'cash'){
-            return redirect('/home')->with('success', 'Order sent!');
+            return redirect('/payment_success/'.$order->secret)->with('success', 'Order sent!');
         }
 
         return redirect('/mollie');

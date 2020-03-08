@@ -120,15 +120,25 @@ class PublicController extends Controller
         "redirectUrl" => url('/payment_success/'.$orderr->secret),
         "webhookUrl"  => "https://webshop.example.org/mollie-webhook/",
     ]);
-    // return $payment;
-    return redirect($payment->_links->checkout->href);
-
+    // return print_r($payment);
+    try{
+      return redirect($payment->_links->checkout->href);
+    }catch(Exception $e){
+      return 'fail';
+    }
   }
 
   public function paymentSuccess($secret){
 
     $order = Order::where('secret', '=', $secret)->first();
 
+    if($order->payment_method == 'cash'){
+      // return 1;
+      // return $order->products;
+      return view('paymentSuccessCash')->with([
+        'order' => $order,
+      ]);
+    }
     return view('paymentSuccess')->with([
       'order' => $order,
     ]);
