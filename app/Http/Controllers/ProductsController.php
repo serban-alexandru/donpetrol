@@ -31,8 +31,16 @@ class ProductsController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:191',
             'price' => 'required',
-            'table_number' => 'required|string',
-            'table_part' => 'required|string',
+            'article_id' => 'required|string|max:191',
+            'article_number' => 'required|string|max:191',
+            'article_name' => 'required|string|max:191',
+            'department_id' => 'required|string|max:191',
+            'department_number' => 'required|string|max:191',
+            'department_name' => 'required|string|max:191',
+            'group_name' => 'required|string|max:191',
+            'category_name' => 'required|string|max:191',
+            // 'table_number' => 'required|string',
+            // 'table_part' => 'required|string',
             'category_id' => 'required|integer|min:1',
         ]);
 
@@ -46,8 +54,16 @@ class ProductsController extends Controller
         $product->name = $request->name;
         $product->price = $request->price;
         $product->description = $request->description;
-        $product->table_number = $request->table_number;
-        $product->table_part = $request->table_part;
+        $product->article_id = $request->article_id;
+        $product->article_number = $request->article_number;
+        $product->article_name = $request->article_name;
+        $product->department_id = $request->department_id;
+        $product->department_number = $request->department_number;
+        $product->department_name = $request->department_name;
+        $product->group_name = $request->group_name;
+        $product->category_name = $request->category_name;
+        $product->table_number = '';
+        $product->table_part = '';
         $product->category_id = $request->category_id;
         $product->save();
 
@@ -64,8 +80,16 @@ class ProductsController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:191',
             'price' => 'required',
-            'table_number' => 'required|string',
-            'table_part' => 'required|string',
+            'article_id' => 'required|string|max:191',
+            'article_number' => 'required|string|max:191',
+            'article_name' => 'required|string|max:191',
+            'department_id' => 'required|string|max:191',
+            'department_number' => 'required|string|max:191',
+            'department_name' => 'required|string|max:191',
+            'group_name' => 'required|string|max:191',
+            'category_name' => 'required|string|max:191',
+            // 'table_number' => 'required|string',
+            // 'table_part' => 'required|string',
             // 'description' => 'required|string|max:500',
         ]);
 
@@ -80,8 +104,16 @@ class ProductsController extends Controller
         if($product){
             $product->name = $request->name;
             $product->price = $request->price;
-            $product->table_number = $request->table_number;
-            $product->table_part = $request->table_part;
+            $product->article_id = $request->article_id;
+            $product->article_number = $request->article_number;
+            $product->article_name = $request->article_name;
+            $product->department_id = $request->department_id;
+            $product->department_number = $request->department_number;
+            $product->department_name = $request->department_name;
+            $product->group_name = $request->group_name;
+            $product->category_name = $request->category_name;
+            // $product->table_number = $request->table_number;
+            // $product->table_part = $request->table_part;
             $product->description = $request->description;
             // $product->description = $request->description;
             $product->save();
