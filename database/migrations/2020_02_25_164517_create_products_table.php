@@ -21,6 +21,18 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('category_id');
             $table->string('table_number');
             $table->string('table_part');
+
+            // Bonus fields
+            $table->string('article_id');
+            $table->string('article_number');
+            $table->string('article_name');
+            $table->string('department_id');
+            $table->string('department_number');
+            $table->string('department_name');
+            $table->string('group_name');
+            $table->string('category_name');
+            // end bonus fields
+
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');

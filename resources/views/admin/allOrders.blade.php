@@ -13,10 +13,10 @@
         <thead>
             <tr>
             <th scope="col">#</th>
-            <th scope="col">Type</th>
+            <th scope="col">Typ</th>
             <th scope="col">Afhaaltijd</th>
             <th scope="col">Waarde</th>
-            <th scope="col">Typ</th>
+            <th scope="col">Zahlungsmethode</th>
             <th scope="col">Alle orders</th>
             </tr>
         </thead>

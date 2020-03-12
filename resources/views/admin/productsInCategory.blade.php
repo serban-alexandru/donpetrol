@@ -57,13 +57,45 @@
                                 <label>Price:</label>
                                 <input type="number" step="0.1" value="{{$product->price}}" name="price" required class="form-control">
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label>Table part:</label>
                                 <input type="text" name="table_part" value="{{$product->table_part}}" required class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Table number:</label>
                                 <input type="text" name="table_number" value="{{$product->table_number}}" required class="form-control">
+                            </div> -->
+                            <div class="form-group">
+                                <label>Article id:</label>
+                                <input type="text" name="article_id" required value="{{$product->article_id}}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Article number:</label>
+                                <input type="text" name="article_number" required value="{{$product->article_number}}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Article name:</label>
+                                <input type="text" name="article_name" required value="{{$product->article_name}}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Department id:</label>
+                                <input type="text" name="department_id" required value="{{$product->department_id}}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Department number:</label>
+                                <input type="text" name="department_number" required value="{{$product->department_number}}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Department name:</label>
+                                <input type="text" name="department_name" required value="{{$product->department_name}}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Group name:</label>
+                                <input type="text" name="group_name" required value="{{$product->group_name}}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Category name:</label>
+                                <input type="text" name="category_name" required value="{{$product->category_name}}" class="form-control">
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -130,13 +162,45 @@
                     <label>Prijs:</label>
                     <input type="number" step="0.1" name="price" required class="form-control">
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label>Table part:</label>
                     <input type="text" name="table_part" required class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Table number:</label>
                     <input type="text" name="table_number" required class="form-control">
+                </div> -->
+                <div class="form-group">
+                    <label>Article id:</label>
+                    <input type="text" name="article_id" required class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Article number:</label>
+                    <input type="text" name="article_number" required class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Article name:</label>
+                    <input type="text" name="article_name" required class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Department id:</label>
+                    <input type="text" name="department_id" required class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Department number:</label>
+                    <input type="text" name="department_number" required class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Department name:</label>
+                    <input type="text" name="department_name" required class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Group name:</label>
+                    <input type="text" name="group_name" required class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Category name:</label>
+                    <input type="text" name="category_name" required class="form-control">
                 </div>
                 <input type="text" hidden name="category_id" value="{{$category->id}}" class="form-control">
             </div>
