@@ -22,7 +22,7 @@ class CreateProductsTable extends Migration
             $table->string('table_number');
             $table->string('table_part');
 
-            // Bonus fields
+            // bonus fields
             $table->string('article_id');
             $table->string('article_number');
             $table->string('article_name');

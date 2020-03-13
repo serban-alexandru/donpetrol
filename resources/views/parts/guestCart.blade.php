@@ -30,6 +30,8 @@
             @foreach(Session::get('cartItems') as $item)
             @php
               $sum+=$item->product_price * $item->quantity;
+              $sum+=$item->potatoes * env("FRIES_PRICE");
+              $sum+=$item->mayo * env("MAYO_PRICE");
             @endphp
             <style>
               @media screen and (max-width: 441px){
@@ -47,6 +49,8 @@
                   <button data-toggle="modal" data-target="#delete{{$item->product_id}}" class="btn btn-danger" style="margin-top: -10px"><i class="fas fa-trash"></i></button>
                   <button data-toggle="modal" data-target="#edit{{$item->product_id}}" class="btn btn-warning" style="margin-top: -10px"><i class="fas fa-edit"></i></button>
                 </div>
+                <br>
+                + {{$item->potatoes}} x {{env("FRIES_NAME")}} (€ {{$item->potatoes * env("FRIES_PRICE")}}) <br> + {{$item->mayo}} x {{env("MAYO_NAME")}} (€ {{$item->mayo * env("MAYO_PRICE")}})
               </div>
             </div>
             <br>

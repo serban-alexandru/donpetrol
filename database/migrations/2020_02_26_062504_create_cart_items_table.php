@@ -16,6 +16,12 @@ class CreateCartItemsTable extends Migration
         Schema::create('cart_items', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('quantity');
+
+            // bonus fields
+            $table->integer('potatoes');
+            $table->integer('mayo');
+            // end bonus fields
+
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('product_id');
             $table->timestamps();

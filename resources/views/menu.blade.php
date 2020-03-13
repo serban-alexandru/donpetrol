@@ -32,7 +32,7 @@
                     padding: 0px;
                     }
 
-                    input#number{{$product->id}} {
+                    input#number{{$product->id}}, input#numberpota{{$product->id}}, input#numbermayo{{$product->id}} {
                     text-align: center;
                     border: none;
                     border-top: 1px solid #ddd;
@@ -59,9 +59,41 @@
                     function decreaseValue{{$product->id}}() {
                     var value = parseInt(document.getElementById('number{{$product->id}}').value, 10);
                     value = isNaN(value) ? 0 : value;
-                    value < 1 ? value = 1 : '';
+                    value < 2 ? value = 1 : '';
                     value--;
                     document.getElementById('number{{$product->id}}').value = value;
+                    }
+                    
+                    // potatoes script
+                    function increaseValuepota{{$product->id}}() {
+                    var value = parseInt(document.getElementById('numberpota{{$product->id}}').value, 10);
+                    value = isNaN(value) ? 0 : value;
+                    value++;
+                    document.getElementById('numberpota{{$product->id}}').value = value;
+                    }
+
+                    function decreaseValuepota{{$product->id}}() {
+                    var value = parseInt(document.getElementById('numberpota{{$product->id}}').value, 10);
+                    value = isNaN(value) ? 0 : value;
+                    value < 1 ? value = 1 : '';
+                    value--;
+                    document.getElementById('numberpota{{$product->id}}').value = value;
+                    }
+
+                    // mayo script
+                    function increaseValuemayo{{$product->id}}() {
+                    var value = parseInt(document.getElementById('numbermayo{{$product->id}}').value, 10);
+                    value = isNaN(value) ? 0 : value;
+                    value++;
+                    document.getElementById('numbermayo{{$product->id}}').value = value;
+                    }
+
+                    function decreaseValuemayo{{$product->id}}() {
+                    var value = parseInt(document.getElementById('numbermayo{{$product->id}}').value, 10);
+                    value = isNaN(value) ? 0 : value;
+                    value < 1 ? value = 1 : '';
+                    value--;
+                    document.getElementById('numbermayo{{$product->id}}').value = value;
                     }
                     </script>
                 @endforeach
@@ -93,7 +125,29 @@
                                                 <input type="number" name="quantity" id="number{{$product->id}}" value="1" min="1" />
                                                 <button style="margin-top: 1px" type="button" class="btn btn-warning" id="increase" onclick="increaseValue{{$product->id}}()">+</button>
                                                 <div style="margin: 5px 0px">€ {{ $product->price }}</div>
-                                                <button class="btn btn-warning">Voeg toe</button>
+                                                <button type="button" data-toggle="modal" data-target="#bonus{{$product->id}}" class="btn btn-warning">Voeg toe</button>
+
+                                                <!-- Modal bonus -->
+                                                <div class="modal fade" id="bonus{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        ...
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                                </div>
+
                                             </form>
                                         </div>
                                     </div>
@@ -105,22 +159,79 @@
                         
 
                         @foreach($category->products as $product)
+                      
                             <div class="col-md-4 col-sm-6 col-xs-12 text-center">
+                            <form style="margin-top: 10px" action="{{ url('/add_to_cart/'.$product->id) }}" method="POST">
+                            @csrf
                                 <div class="card" style="background: black;">
                                     <div class="card-header" style="font-size: 30px;color: white; padding: 20px">
                                         <i class="{{$product->category->icon}}" style="font-size: 60px;"></i><br><br>
                                         {{$product->name}}
                                         <p style="font-size: 19px; margin-top: 7px">{{$product->description}}</p>
-                                        <form style="margin-top: 10px" action="{{ url('/add_to_cart/'.$product->id) }}" method="POST">
-                                            @csrf
+                                        
                                             <button style="margin-top: 1px" type="button" class="btn btn-warning" id="decrease" onclick="decreaseValue{{$product->id}}()">-</button>
                                             <input type="number" name="quantity" id="number{{$product->id}}" value="1" min="1" />
                                             <button style="margin-top: 1px" type="button" class="btn btn-warning" id="increase" onclick="increaseValue{{$product->id}}()">+</button>
                                             <div style="margin: 5px 0px">€ {{ $product->price }}</div>
-                                            <button class="btn btn-warning">Voeg toe</button>
-                                        </form>
+                                            <button type="button" data-toggle="modal" data-target="#bonus{{$product->id}}" class="btn btn-warning">Voeg toe</button>
                                     </div>
                                 </div>
+
+                            <!-- Modal bonus -->
+                            <div class="modal fade" id="bonus{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document" style="margin: 10px 5%">
+                                <div class="modal-content" style="width: 90vw">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Do you want fries and mayonnaise too?</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                        
+                                        <div class="card" style="background: black;">
+                                            <div class="card-header" style="font-size: 30px;color: white; padding: 20px">
+                                                <i class="{{$product->category->icon}}" style="font-size: 60px;"></i><br><br>
+                                                    French fries
+                                                <p style="font-size: 19px; margin-top: 7px">Fried potatoes</p>
+                                                
+                                                    <button style="margin-top: 1px" type="button" class="btn btn-warning" id="decrease" onclick="decreaseValuepota{{$product->id}}()">-</button>
+                                                    <input type="number" name="potatoes" id="numberpota{{$product->id}}" value="0" />
+                                                    <button style="margin-top: 1px" type="button" class="btn btn-warning" id="increase" onclick="increaseValuepota{{$product->id}}()">+</button>
+                                                    <div style="margin: 5px 0px">€ 2</div>
+                                            </div>
+                                        </div>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                        
+                                        <div class="card" style="background: black;">
+                                            <div class="card-header" style="font-size: 30px;color: white; padding: 20px">
+                                                <i class="{{$product->category->icon}}" style="font-size: 60px;"></i><br><br>
+                                                    Mayonnaise
+                                                <p style="font-size: 19px; margin-top: 7px">Mayonnaise</p>
+                                                
+                                                    <button style="margin-top: 1px" type="button" class="btn btn-warning" id="decrease" onclick="decreaseValuemayo{{$product->id}}()">-</button>
+                                                    <input type="number" name="mayo" id="numbermayo{{$product->id}}" value="0" />
+                                                    <button style="margin-top: 1px" type="button" class="btn btn-warning" id="increase" onclick="increaseValuemayo{{$product->id}}()">+</button>
+                                                    <div style="margin: 5px 0px">€ 1</div>
+                                            </div>
+                                        </div>
+                                        
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn" style="background-color: black">Save changes</button>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                        </form>
+
                             </div>
                         @endforeach
                         </div>

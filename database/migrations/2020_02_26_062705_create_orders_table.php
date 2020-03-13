@@ -25,6 +25,10 @@ class CreateOrdersTable extends Migration
             $table->string('postcode')->nullable();
             $table->string('place_name')->nullable();
             $table->string('payment_method')->nullable();
+
+            // bonus fields
+            $table->boolean('paid')->default(0); // 0 - no / 1 - yes
+            
             $table->timestamps();
             $table->string('secret');
 

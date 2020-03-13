@@ -9,6 +9,64 @@
     </script>
 @endif -->
 
+<script>
+
+// var d = new Date();
+// var day = d.getDay();
+
+// if(day >= 1 && day <= 3){
+//     window.location = "{{ url('/service_closed') }}";
+// }
+
+// if(day == 4 || day == 5){
+//     if(d.getHours() < 18 || d.getHours() >= 23){
+//         window.location = "{{ url('/service_closed') }}";
+//     }
+// }
+
+// if(day == 6){
+//     if(d.getHours() < 12 || d.getHours() >= 23){
+//         window.location = "{{ url('/service_closed') }}";
+//     }
+// }
+
+// if(day == 0){
+//     if(d.getHours() < 12 || d.getHours() >= 21){
+//         window.location = "{{ url('/service_closed') }}";
+//     }
+// }
+
+// setInterval(function(){
+    
+//     // console.log('da');
+//     var d = new Date();
+//     var day = d.getDay();
+
+//     if(day >= 1 && day <= 3){
+//         window.location = "{{ url('/service_closed') }}";
+//     }
+
+//     if(day == 4 || day == 5){
+//         if(d.getHours() < 18 || d.getHours() >= 23){
+//             window.location = "{{ url('/service_closed') }}";
+//         }
+//     }
+
+//     if(day == 6){
+//         if(d.getHours() < 12 || d.getHours() >= 23){
+//             window.location = "{{ url('/service_closed') }}";
+//         }
+//     }
+
+//     if(day == 0){
+//         if(d.getHours() < 12 || d.getHours() >= 21){
+//             window.location = "{{ url('/service_closed') }}";
+//         }
+//     }
+
+// }, 3000);
+</script>
+
 <style>
     .col-md-6{
         margin-bottom: 20px !important;
@@ -43,12 +101,17 @@
     <li class="list-group-item d-flex justify-content-between lh-condensed">
         <div>
         <h6 class="my-0">{{$item->product->name}} <tag-random class="text-warning">x</tag-random> {{$item->quantity}}</h6>
-        <small class="text-muted">({{$item->product->category->name}})</small>
+        <!-- <small class="text-muted">({{$item->product->category->name}})</small> -->
+        <small class="text-muted">
+        + {{$item->potatoes}} x {{env("FRIES_NAME")}} (€ {{$item->potatoes * env("FRIES_PRICE")}}) <br> + {{$item->mayo}} x {{env("MAYO_NAME")}} (€ {{$item->mayo * env("MAYO_PRICE")}})
+        </small>
         </div>
         <span class="text-muted">€ {{$item->quantity * $item->product->price}}</span>
     </li>
     @php
         $sum += $item->quantity * $item->product->price;
+        $sum += $item->potatoes * env("FRIES_PRICE");
+        $sum += $item->mayo * env("MAYO_PRICE");
     @endphp
     @endforeach
     <li class="list-group-item d-flex justify-content-between">
@@ -132,7 +195,7 @@
                 </select>
             </div>
         </div>
-        <div class="col-md-6">
+        <!-- <div class="col-md-6">
             <div class="form-group">
                 <label style="font-size: 20px">Gewenste betaalmethode</label>
                 <br>
@@ -142,7 +205,7 @@
                     <option value="online">Online</option>
                 </select>
             </div>
-        </div>
+        </div> -->
         <br>
         <div class="col-md-6">
             <div class="form-group">

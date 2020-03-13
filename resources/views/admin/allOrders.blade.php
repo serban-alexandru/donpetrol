@@ -16,6 +16,7 @@
             <th scope="col">Typ</th>
             <th scope="col">Afhaaltijd</th>
             <th scope="col">Waarde</th>
+            <th scope="col">Paid</th>
             <th scope="col">Zahlungsmethode</th>
             <th scope="col">Alle orders</th>
             </tr>
@@ -27,7 +28,9 @@
             @endphp
             @foreach($order->products as $product)
                 @php
-                    $sum += $product->quantity * $product->product->price
+                    $sum += $product->quantity * $product->product->price;
+                    $sum += $product->potatoes * env("FRIES_PRICE");
+                    $sum += $product->mayo * env("MAYO_PRICE");
                 @endphp
             @endforeach
             <tr>
@@ -48,7 +51,9 @@
                 @endif
                 </td>
                 <td>€ {{$sum}} </td>
-                <td>{{ $order->payment_method }}</td>
+                <td>@if($order->paid == 1) Yes @else No @endif</td>
+                <!-- <td>{{ $order->payment_method }}</td> -->
+                <td>Online</td>
                 <td>
                     <button data-toggle="modal" data-target="#view{{$order->id}}" class="btn" style="padding-top: 9px; padding-bottom: 9px">
                         <i class="fas fa-list-alt" style="font-size: 20px"></i>
@@ -91,17 +96,48 @@
                     <div class="card" style="margin: 10px 0px">
                         <div class="card-header" style="font-size: 20px; border: 1px solid black">
                             {{$product->product->name}} <tag-random class="text-warning">X</tag-random> {{$product->quantity}}
-                            <tag-random class="float-right">€ {{$product->quantity * $product->product->price}} </tag-random>
+                            (€ {{$product->quantity * $product->product->price}})
+                            <br>
+                            + {{$product->potatoes}} <tag-random class="text-warning">X</tag-random> {{env("FRIES_NAME")}} (€ {{$product->potatoes * env("FRIES_PRICE")}}) <br> + {{$product->mayo}} <tag-random class="text-warning">X</tag-random> {{env("MAYO_NAME")}} (€ {{$product->mayo * env("MAYO_PRICE")}})
+
                         </div>
                     </div>   
                     @endforeach
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button class="btn btn-success" data-toggle="modal" data-target="#print{{$order->id}}">Print order</button>
                     <a href="{{ url('/delete_order/'.$order->id) }}">
                         <button type="button" style="background:black" class="btn btn-primary">Delete order</button>
                     </a>
                 </div>
+                </div>
+            </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="print{{$order->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Print Order #{{$order->id}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ url('/print_order/'.$order->id) }}" method="POST">
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Table number:</label>
+                        <input name="table_number" type="number" min="50" max="62" required class="form-control">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Print</button>
+                </div>
+                </form>
                 </div>
             </div>
             </div>

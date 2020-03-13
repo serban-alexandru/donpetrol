@@ -18,7 +18,7 @@ class OrdersController extends Controller
     
     public function index(){
 
-        $openCat = 1;
+        $openCat = 2;
         if(Session::has('openCat')){
           $openCat = Session::get('openCat');
         }
@@ -36,7 +36,7 @@ class OrdersController extends Controller
      * Function that adds a product to cart
      */
     public function add(Request $request, $product_id){
-
+        
         $product = Product::find($product_id);
 
         // data validator 
@@ -63,6 +63,8 @@ class OrdersController extends Controller
                     if($item->product_id == $product->id){
                         // case product already exists in cart
                         $item->quantity += $request->quantity;
+                        $item->potatoes += $request->potatoes;
+                        $item->mayo += $request->mayo;
                         $item->save();
     
                         return redirect()->back()->with('success', 'Product toegevoegd aan uw bestelling');
@@ -71,6 +73,8 @@ class OrdersController extends Controller
     
                 $cartItem = new CartItem;
                 $cartItem->quantity = $request->quantity;
+                $cartItem->potatoes = $request->potatoes;
+                $cartItem->mayo = $request->mayo;
                 $cartItem->product_id = $product_id;
                 $cartItem->user_id = Auth::user()->id;
                 $cartItem->save();
@@ -83,13 +87,17 @@ class OrdersController extends Controller
                         if($item->product_id == $product->id){
                             // case product already exists in cart
                             $item->quantity += $request->quantity;
-        
+                            $item->potatoes += $request->potatoes;
+                            $item->mayo += $request->mayo;
+
                             return redirect()->back()->with('success', 'Product toegevoegd aan uw bestelling');
                         }
                     }
 
                     $cartItem = new \stdClass();
                     $cartItem->quantity = $request->quantity;
+                    $cartItem->potatoes = $request->potatoes;
+                    $cartItem->mayo = $request->mayo;
                     $cartItem->product_name = $product->name;
                     $cartItem->product_id = $product->id;
                     $cartItem->product_price = $product->price;
@@ -102,6 +110,8 @@ class OrdersController extends Controller
 
                     $cartItem = new \stdClass();
                     $cartItem->quantity = $request->quantity;
+                    $cartItem->potatoes = $request->potatoes;
+                    $cartItem->mayo = $request->mayo;
                     $cartItem->product_name = $product->name;
                     $cartItem->product_id = $product->id;
                     $cartItem->product_price = $product->price;
@@ -150,6 +160,8 @@ class OrdersController extends Controller
                     if($item->product_id == $product->id){
                         // case product exists in cart
                         $item->quantity = $request->quantity;
+                        $item->potatoes = $request->potatoes;
+                        $item->mayo = $request->mayo;
                         $item->save();
 
                         return redirect()->back()->with('success', 'Product quantity modified');
@@ -164,6 +176,8 @@ class OrdersController extends Controller
                         if($item->product_id == $product->id){
                             // case product already exists in cart
                             $item->quantity = $request->quantity;
+                            $item->potatoes = $request->potatoes;
+                            $item->mayo = $request->mayo;
         
                             return redirect()->back()->with('success', 'Product quantity modified');
                         }
@@ -245,9 +259,9 @@ class OrdersController extends Controller
      */
     public function send(Request $request){
         // return $request->payment_method;
-        if($request->payment_method != 'cash' && $request->payment_method != 'online'){
-            return redirect()->back()->with('error', 'Select payment method');
-        } 
+        // if($request->payment_method != 'cash' && $request->payment_method != 'online'){
+        //     return redirect()->back()->with('error', 'Select payment method');
+        // } 
 
         $secret = $this->quickRandom();
 
@@ -260,7 +274,7 @@ class OrdersController extends Controller
             'email' => 'required|string|max:191',
             'phone' => 'required|string|max:191',
             // 'company_name' => 'required|string|max:191',
-            'payment_method' => 'required|string|max:191',
+            // 'payment_method' => 'required|string|max:191',
             'delivery_time' => 'required|string|max:191',
             // 'comments' => 'required|string|max:500',
         ]);
@@ -295,6 +309,8 @@ class OrdersController extends Controller
             $product->order_id = $order->id;
             $product->product_id = $item->product_id;
             $product->quantity = $item->quantity;
+            $product->potatoes = $item->potatoes;
+            $product->mayo = $item->mayo;
             $product->save();
 
             $item->delete();
@@ -303,9 +319,9 @@ class OrdersController extends Controller
 
         // return $order;
 
-        if($request->payment_method == 'cash'){
-            return redirect('/payment_success/'.$order->secret)->with('success', 'Order sent!');
-        }
+        // if($request->payment_method == 'cash'){
+        //     return redirect('/payment_success/'.$order->secret)->with('success', 'Order sent!');
+        // }
 
         return redirect('/mollie');
 
@@ -358,7 +374,7 @@ class OrdersController extends Controller
 
     public function orders(){
 
-        $orders = Order::all();
+        $orders = Order::all()->reverse();
 
         $sum = 0;
         foreach($orders as $order){
@@ -395,6 +411,77 @@ class OrdersController extends Controller
         }
 
         return redirect()->back()->with('error', 'Order not found');
+
+    }
+
+    public function print(Request $request, $order_id){
+
+        $order = Order::find($order_id);
+
+        if(!$order){
+            return redirect()->back()->with('error', 'Order not found');
+        }
+
+        // return $order->products;
+
+        foreach($order->products as $product){
+            echo($product->product);
+        }
+
+        return;
+
+        // start xml creation
+
+        $xml_data = '
+        <soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:TPAPIPosIntfU-ITPAPIPOS" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+        <soapenv:Header/>
+        <soapenv:Body>
+            <urn:CreateOrder soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+                <Request xsi:type="urn:TCreateOrderRequest" xmlns:urn="urn:TPAPIPosIntfU">
+                    <Password xsi:type="xsd:string">Gempemolen2016</Password>
+                    <UserName xsi:type="xsd:string">TPAPI</UserName>
+                    <AppToken xsi:type="xsd:string">c0JTU2baFYtc</AppToken>
+                    <AppName xsi:type="xsd:string">Futurize</AppName>
+                    <TableNumber xsi:type="xsd:int">'
+                    .$request->table_number.
+                    '</TableNumber>
+                    <TablePart xsi:type="xsd:string">a</TablePart>
+                    <Items soapenc:arrayType="urn1:TOrderItem[1]" xsi:type="urn1:TOrderItemArray" xmlns:urn1="urn:TPAPIPosTypesU">
+                        <item xsi:type="urn:TOrderItem">
+                                    <ArticleId xsi:type="xsd:long">5000001013</ArticleId>
+                        <PriceId xsi:type="xsd:long">5000000206</PriceId>
+                            <OrderItemType xsi:type="xsd:int">0</OrderItemType>
+                                    <ArticleNumber xsi:type="xsd:int">201</ArticleNumber>
+                            <ArticleName xsi:type="xsd:string">Koffie</ArticleName>
+                                    <DepartmentId xsi:type="xsd:long">5000000171</DepartmentId>
+                            <DepartmentNumber xsi:type="xsd:int">3</DepartmentNumber>
+                                    <DepartmentName xsi:type="xsd:string">Hot</DepartmentName>
+                                    <GroupName xsi:type="xsd:string">1.Without Alcohol</GroupName>
+                        <CategoryName xsi:type="xsd:string">1.Bar</CategoryName>
+                            <Quantity xsi:type="xsd:int">1</Quantity>
+                            <SalesAreaNumber xsi:type="xsd:int">1</SalesAreaNumber>
+                                    <SalesAreaName xsi:type="xsd:string">Take Away</SalesAreaName>
+                        </item>
+                    </Items>
+                </Request>
+            </urn:CreateOrder>
+        </soapenv:Body>
+        </soapenv:Envelope>
+        ';
+
+        // End xml creation
+     $URL = "http://testapi.untill.com:3063/soap/ITPAPIPOS";
+
+        $ch = curl_init($URL);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: text/xml'));
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, "$xml_data");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $output = curl_exec($ch);
+        curl_close($ch);
+
+
+        print_r($output);
 
     }
 

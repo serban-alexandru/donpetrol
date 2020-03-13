@@ -59,6 +59,9 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
 
     Route::get('/delete_order/{order_id}', 'OrdersController@deleteOrder')->name('Delete order');
 
+    // Print order route
+    Route::post('/print_order/{order_id}', 'OrdersController@print')->name('Print order route');
+
 });
 
 // Take away option
@@ -99,3 +102,6 @@ Route::get('/mollie', 'PublicController@payTest');
 
 // Payment success route
 Route::get('/payment_success/{order_secret}', 'PublicController@paymentSuccess');
+
+// Service closed route
+Route::get('/service_closed', 'PublicController@closed')->name('Service closed');

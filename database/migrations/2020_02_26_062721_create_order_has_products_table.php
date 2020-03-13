@@ -18,6 +18,11 @@ class CreateOrderHasProductsTable extends Migration
             $table->unsignedBigInteger('order_id');
             $table->unsignedBigInteger('product_id');
             $table->integer('quantity');
+                       
+            // bonus fields
+            $table->integer('potatoes');
+            $table->integer('mayo');
+            
             $table->timestamps();
 
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');

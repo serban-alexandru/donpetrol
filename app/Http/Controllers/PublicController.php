@@ -70,7 +70,7 @@ class PublicController extends Controller
 
     public function menu(){
 
-      $openCat = 1;
+      $openCat = 2;
       if(Session::has('openCat')){
         $openCat = Session::get('openCat');
       }
@@ -100,6 +100,8 @@ class PublicController extends Controller
     foreach($order_products as $order_product){
 
       $sum += $order_product->quantity * $order_product->product->price;
+      $sum += $order_product->potatoes * env("FRIES_PRICE");
+      $sum += $order_product->mayo * env("MAYO_PRICE");
 
     }
     $nr = $last_orders[$last_orders->count() - 1]->id;
@@ -132,6 +134,12 @@ class PublicController extends Controller
 
     $order = Order::where('secret', '=', $secret)->first();
 
+    if($order){
+      $order->paid = 1;
+      $order->save();
+    }else{
+      return redirect('/')->with('error', 'Invalid code');
+    }
     if($order->payment_method == 'cash'){
       // return 1;
       // return $order->products;
@@ -142,6 +150,12 @@ class PublicController extends Controller
     return view('paymentSuccess')->with([
       'order' => $order,
     ]);
+
+  }
+
+  public function closed(){
+
+    return view('serviceClosed');
 
   }
 
