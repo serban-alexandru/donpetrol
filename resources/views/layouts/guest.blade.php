@@ -33,6 +33,9 @@
       background-color: #E0BE7E !important;
       /* color: black !important; */
     }
+    .btn-danger{
+      background-color: black !important;
+    }
     /* .text-warning{
 
     } */

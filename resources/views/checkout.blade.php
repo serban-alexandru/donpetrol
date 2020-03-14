@@ -11,60 +11,60 @@
 
 <script>
 
-// var d = new Date();
-// var day = d.getDay();
+var d = new Date();
+var day = d.getDay();
 
-// if(day >= 1 && day <= 3){
-//     window.location = "{{ url('/service_closed') }}";
-// }
+if(day >= 1 && day <= 3){
+    window.location = "{{ url('/service_closed') }}";
+}
 
-// if(day == 4 || day == 5){
-//     if(d.getHours() < 18 || d.getHours() >= 23){
-//         window.location = "{{ url('/service_closed') }}";
-//     }
-// }
+if(day == 4 || day == 5){
+    if(d.getHours() < 18 || d.getHours() >= 23){
+        window.location = "{{ url('/service_closed') }}";
+    }
+}
 
-// if(day == 6){
-//     if(d.getHours() < 12 || d.getHours() >= 23){
-//         window.location = "{{ url('/service_closed') }}";
-//     }
-// }
+if(day == 6){
+    if(d.getHours() < 12 || d.getHours() >= 23){
+        window.location = "{{ url('/service_closed') }}";
+    }
+}
 
-// if(day == 0){
-//     if(d.getHours() < 12 || d.getHours() >= 21){
-//         window.location = "{{ url('/service_closed') }}";
-//     }
-// }
+if(day == 0){
+    if(d.getHours() < 12 || d.getHours() >= 21){
+        window.location = "{{ url('/service_closed') }}";
+    }
+}
 
-// setInterval(function(){
+setInterval(function(){
     
-//     // console.log('da');
-//     var d = new Date();
-//     var day = d.getDay();
+    // console.log('da');
+    var d = new Date();
+    var day = d.getDay();
 
-//     if(day >= 1 && day <= 3){
-//         window.location = "{{ url('/service_closed') }}";
-//     }
+    if(day >= 1 && day <= 3){
+        window.location = "{{ url('/service_closed') }}";
+    }
 
-//     if(day == 4 || day == 5){
-//         if(d.getHours() < 18 || d.getHours() >= 23){
-//             window.location = "{{ url('/service_closed') }}";
-//         }
-//     }
+    if(day == 4 || day == 5){
+        if(d.getHours() < 18 || d.getHours() >= 23){
+            window.location = "{{ url('/service_closed') }}";
+        }
+    }
 
-//     if(day == 6){
-//         if(d.getHours() < 12 || d.getHours() >= 23){
-//             window.location = "{{ url('/service_closed') }}";
-//         }
-//     }
+    if(day == 6){
+        if(d.getHours() < 12 || d.getHours() >= 23){
+            window.location = "{{ url('/service_closed') }}";
+        }
+    }
 
-//     if(day == 0){
-//         if(d.getHours() < 12 || d.getHours() >= 21){
-//             window.location = "{{ url('/service_closed') }}";
-//         }
-//     }
+    if(day == 0){
+        if(d.getHours() < 12 || d.getHours() >= 21){
+            window.location = "{{ url('/service_closed') }}";
+        }
+    }
 
-// }, 3000);
+}, 3000);
 </script>
 
 <style>

@@ -358,6 +358,8 @@ class OrdersController extends Controller
                     $cartItem->quantity = $item->quantity;
                     $cartItem->product_id = $item->product_id;
                     $cartItem->user_id = Auth::user()->id;
+                    $cartItem->potatoes = $item->potatoes;
+                    $cartItem->mayo = $item->mayo;
                     $cartItem->save();
                     
                 }
