@@ -152,7 +152,7 @@
                             <div class="modal-dialog" role="document" style="margin: 10px 5%">
                                 <div class="modal-content" style="width: 90vw">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Do you want fries and mayonnaise too?</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Wilt u graag ook frietjes & mayo bij uw burger?</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
@@ -164,13 +164,15 @@
                                         <div class="card" style="background: black;">
                                             <div class="card-header" style="font-size: 30px;color: white; padding: 20px">
                                                 <i class="{{$product->category->icon}}" style="font-size: 60px;"></i><br><br>
-                                                    French fries
-                                                <p style="font-size: 19px; margin-top: 7px">Fried potatoes</p>
+                                                {{ env("FRIES_NAME") }}
+
+                                                    <br><br>
+                                                <!-- <p style="font-size: 19px; margin-top: 7px">Fried potatoes</p> -->
                                                 
                                                     <button style="margin-top: 1px" type="button" class="btn btn-warning" id="decrease" onclick="decreaseValuepota{{$product->id}}()">-</button>
                                                     <input type="number" name="potatoes" id="numberpota{{$product->id}}" value="0" />
                                                     <button style="margin-top: 1px" type="button" class="btn btn-warning" id="increase" onclick="increaseValuepota{{$product->id}}()">+</button>
-                                                    <div style="margin: 5px 0px">€ 2</div>
+                                                    <div style="margin: 5px 0px">€ {{ env("FRIES_PRICE") }}</div>
                                             </div>
                                         </div>
 
@@ -180,13 +182,15 @@
                                         <div class="card" style="background: black;">
                                             <div class="card-header" style="font-size: 30px;color: white; padding: 20px">
                                                 <i class="{{$product->category->icon}}" style="font-size: 60px;"></i><br><br>
-                                                    Mayonnaise
-                                                <p style="font-size: 19px; margin-top: 7px">Mayonnaise</p>
+                                                {{ env("MAYO_NAME") }}
+
+                                                    <br><br>
+                                                <!-- <p style="font-size: 19px; margin-top: 7px">Mayonnaise</p> -->
                                                 
                                                     <button style="margin-top: 1px" type="button" class="btn btn-warning" id="decrease" onclick="decreaseValuemayo{{$product->id}}()">-</button>
                                                     <input type="number" name="mayo" id="numbermayo{{$product->id}}" value="0" />
                                                     <button style="margin-top: 1px" type="button" class="btn btn-warning" id="increase" onclick="increaseValuemayo{{$product->id}}()">+</button>
-                                                    <div style="margin: 5px 0px">€ 1</div>
+                                                    <div style="margin: 5px 0px">€ {{ env("MAYO_PRICE") }}</div>
                                             </div>
                                         </div>
                                         

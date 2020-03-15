@@ -426,16 +426,143 @@ class OrdersController extends Controller
 
         // return $order->products;
 
+        $potatoes = 0;
+        $mayo = 0;
+            
         foreach($order->products as $product){
-            echo($product->product);
+            $potatoes += $product->potatoes;
+            $mayo += $product->mayo;
         }
 
-        return;
+        $xml_all_items = '';
+
+        if($potatoes > 0){
+            $xml_potato = '
+            <item xsi:type="urn:TOrderItem">
+                <ArticleId xsi:type="xsd:long">10000000513</ArticleId>
+                <ManualPrice xsi:type="xsd:double">'.env("FRIES_PRICE").'</ManualPrice>
+                <OrderItemType xsi:type="xsd:int">0</OrderItemType>
+                <ArticleNumber xsi:type="xsd:int">601</ArticleNumber>
+                <ArticleName xsi:type="xsd:string">Extra Frietjes</ArticleName>
+                <DepartmentId xsi:type="xsd:long">10000000499</DepartmentId>
+                <DepartmentNumber xsi:type="xsd:int">20</DepartmentNumber>
+                <DepartmentName xsi:type="xsd:string">Suppl. Keuken</DepartmentName>
+                <GroupName xsi:type="xsd:string">4.Keuken</GroupName>
+                <CategoryName xsi:type="xsd:string">2.Keuken</CategoryName>
+                <Quantity xsi:type="xsd:int">'.$potatoes.'</Quantity>
+                <SalesAreaNumber xsi:type="xsd:int">1</SalesAreaNumber>
+                <SalesAreaName xsi:type="xsd:string">Take Away</SalesAreaName>
+            </item>
+            ';
+            $xml_all_items .=$xml_potato;
+        }
+        
+        if($mayo > 0){
+            $xml_mayo  ='
+            <item xsi:type="urn:TOrderItem">
+                <ArticleId xsi:type="xsd:long">10000000563</ArticleId>
+                <ArticleName xsi:type="xsd:string">Extra Mayo</ArticleName>
+                <ArticleNumber xsi:type="xsd:int">603</ArticleNumber>            
+                <ManualPrice xsi:type="xsd:double">'.env("MAYO_PRICE").'</ManualPrice>
+                <OrderItemType xsi:type="xsd:int">0</OrderItemType>
+                <DepartmentId xsi:type="xsd:long">10000000499</DepartmentId>
+                <DepartmentNumber xsi:type="xsd:int">20</DepartmentNumber>
+                <DepartmentName xsi:type="xsd:string">Suppl. Keuken</DepartmentName>
+                <GroupName xsi:type="xsd:string">4.Keuken</GroupName>
+                <CategoryName xsi:type="xsd:string">2.Keuken</CategoryName>
+                <Quantity xsi:type="xsd:int">'.$mayo.'</Quantity>
+                <SalesAreaNumber xsi:type="xsd:int">1</SalesAreaNumber>
+                <SalesAreaName xsi:type="xsd:string">Take Away</SalesAreaName>
+            </item>
+            ';
+            $xml_all_items .=$xml_mayo;
+        }
+
+        // Item example
+        // <item xsi:type="urn:TOrderItem">
+        //     <ArticleId xsi:type="xsd:long">5000001013</ArticleId>
+        //     <PriceId xsi:type="xsd:long">5000000206</PriceId>
+        //     <OrderItemType xsi:type="xsd:int">0</OrderItemType>
+        //     <ArticleNumber xsi:type="xsd:int">201</ArticleNumber>
+        //     <ArticleName xsi:type="xsd:string">Koffie</ArticleName>
+        //     <DepartmentId xsi:type="xsd:long">5000000171</DepartmentId>
+        //     <DepartmentNumber xsi:type="xsd:int">3</DepartmentNumber>
+        //     <DepartmentName xsi:type="xsd:string">Hot</DepartmentName>
+        //     <GroupName xsi:type="xsd:string">1.Without Alcohol</GroupName>
+        //     <CategoryName xsi:type="xsd:string">1.Bar</CategoryName>
+        //     <Quantity xsi:type="xsd:int">1</Quantity>
+        //     <SalesAreaNumber xsi:type="xsd:int">1</SalesAreaNumber>
+        //     <SalesAreaName xsi:type="xsd:string">Take Away</SalesAreaName>
+        // </item>
+        
+        // Fries
+        // <item xsi:type="urn:TOrderItem">
+        //     <ArticleId xsi:type="xsd:long">10000000513</ArticleId>
+        //     <ManualPrice xsi:type="xsd:double">.env("FRIES_PRICE").</ManualPrice>
+        //     <OrderItemType xsi:type="xsd:int">0</OrderItemType>
+        //     <ArticleNumber xsi:type="xsd:int">601</ArticleNumber>
+        //     <ArticleName xsi:type="xsd:string">Extra Frietjes</ArticleName>
+        //     <DepartmentId xsi:type="xsd:long">10000000499</DepartmentId>
+        //     <DepartmentNumber xsi:type="xsd:int">20</DepartmentNumber>
+        //     <DepartmentName xsi:type="xsd:string">Suppl. Keuken</DepartmentName>
+        //     <GroupName xsi:type="xsd:string">4.Keuken</GroupName>
+        //     <CategoryName xsi:type="xsd:string">2.Keuken</CategoryName>
+        //     <Quantity xsi:type="xsd:int">.$potatoes.</Quantity>
+        //     <SalesAreaNumber xsi:type="xsd:int">1</SalesAreaNumber>
+        //     <SalesAreaName xsi:type="xsd:string">Take Away</SalesAreaName>
+        // </item>
+
+        //Mayo
+        // <item xsi:type="urn:TOrderItem">
+        //     <ArticleId xsi:type="xsd:long">10000000563</ArticleId>
+        //     <ArticleName xsi:type="xsd:string">Extra Mayo</ArticleName>
+        //     <ArticleNumber xsi:type="xsd:int">603</ArticleNumber>            
+        //     <ManualPrice xsi:type="xsd:double">.env("MAYO_PRICE").</ManualPrice>
+        //     <OrderItemType xsi:type="xsd:int">0</OrderItemType>
+        //     <DepartmentId xsi:type="xsd:long">10000000499</DepartmentId>
+        //     <DepartmentNumber xsi:type="xsd:int">20</DepartmentNumber>
+        //     <DepartmentName xsi:type="xsd:string">Suppl. Keuken</DepartmentName>
+        //     <GroupName xsi:type="xsd:string">4.Keuken</GroupName>
+        //     <CategoryName xsi:type="xsd:string">2.Keuken</CategoryName>
+        //     <Quantity xsi:type="xsd:int">.$mayo.</Quantity>
+        //     <SalesAreaNumber xsi:type="xsd:int">1</SalesAreaNumber>
+        //     <SalesAreaName xsi:type="xsd:string">Take Away</SalesAreaName>
+        // </item>
 
         // start xml creation
 
-        $xml_data = '
-        <soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:TPAPIPosIntfU-ITPAPIPOS" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+        // $xml_data = '
+        $item = 'asd';
+        $item .='aaa';
+        // return $item;
+        // return $xml_all_items;
+        // return $order->products;
+        // return $order->products[0]->product;
+
+        foreach($order->products as $product){
+
+            $xml_item = '
+                <item xsi:type="urn:TOrderItem">
+                    <ArticleId xsi:type="xsd:long">'.$product->product->article_id.'</ArticleId>
+                    <ManualPrice xsi:type="xsd:double">'.$product->product->price.'</ManualPrice>
+                    <OrderItemType xsi:type="xsd:int">0</OrderItemType>
+                    <ArticleNumber xsi:type="xsd:int">'.$product->product->article_number.'</ArticleNumber>
+                    <ArticleName xsi:type="xsd:string">'.$product->product->article_name.'</ArticleName>
+                    <DepartmentId xsi:type="xsd:long">'.$product->product->department_id.'</DepartmentId>
+                    <DepartmentNumber xsi:type="xsd:int">'.$product->product->department_number.'</DepartmentNumber>
+                    <DepartmentName xsi:type="xsd:string">'.$product->product->department_name.'</DepartmentName>
+                    <GroupName xsi:type="xsd:string">'.$product->product->group_name.'</GroupName>
+                    <CategoryName xsi:type="xsd:string">'.$product->product->group_name.'</CategoryName>
+                    <Quantity xsi:type="xsd:int">'.$product->quantity.'</Quantity>
+                    <SalesAreaNumber xsi:type="xsd:int">1</SalesAreaNumber>
+                    <SalesAreaName xsi:type="xsd:string">Take Away</SalesAreaName>
+                </item>
+            ';
+            $xml_all_items .= $xml_item;
+        }
+
+
+        $xml_top ='<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:TPAPIPosIntfU-ITPAPIPOS" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
         <soapenv:Header/>
         <soapenv:Body>
             <urn:CreateOrder soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
@@ -447,43 +574,35 @@ class OrdersController extends Controller
                     <TableNumber xsi:type="xsd:int">'
                     .$request->table_number.
                     '</TableNumber>
-                    <TablePart xsi:type="xsd:string">a</TablePart>
-                    <Items soapenc:arrayType="urn1:TOrderItem[1]" xsi:type="urn1:TOrderItemArray" xmlns:urn1="urn:TPAPIPosTypesU">
-                        <item xsi:type="urn:TOrderItem">
-                                    <ArticleId xsi:type="xsd:long">5000001013</ArticleId>
-                        <PriceId xsi:type="xsd:long">5000000206</PriceId>
-                            <OrderItemType xsi:type="xsd:int">0</OrderItemType>
-                                    <ArticleNumber xsi:type="xsd:int">201</ArticleNumber>
-                            <ArticleName xsi:type="xsd:string">Koffie</ArticleName>
-                                    <DepartmentId xsi:type="xsd:long">5000000171</DepartmentId>
-                            <DepartmentNumber xsi:type="xsd:int">3</DepartmentNumber>
-                                    <DepartmentName xsi:type="xsd:string">Hot</DepartmentName>
-                                    <GroupName xsi:type="xsd:string">1.Without Alcohol</GroupName>
-                        <CategoryName xsi:type="xsd:string">1.Bar</CategoryName>
-                            <Quantity xsi:type="xsd:int">1</Quantity>
-                            <SalesAreaNumber xsi:type="xsd:int">1</SalesAreaNumber>
-                                    <SalesAreaName xsi:type="xsd:string">Take Away</SalesAreaName>
-                        </item>
-                    </Items>
-                </Request>
+                    <TablePart xsi:type="xsd:string">a</TablePart>';
+                    
+
+                    
+                    $xml_items='<Items soapenc:arrayType="urn1:TOrderItem[1]" xsi:type="urn1:TOrderItemArray" xmlns:urn1="urn:TPAPIPosTypesU">
+                        '.$xml_all_items.'
+                    </Items>';
+                    
+                $xml_bottom='</Request>
             </urn:CreateOrder>
         </soapenv:Body>
         </soapenv:Envelope>
         ';
-
+        
+        $xml_top .= $xml_items;
+        $xml_top .= $xml_bottom;
         // End xml creation
-     $URL = "http://testapi.untill.com:3063/soap/ITPAPIPOS";
+     $URL = "http://donpetrol.mine.nu:3063/soap/ITPAPIPOS";
 
         $ch = curl_init($URL);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: text/xml'));
         curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, "$xml_data");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, "$xml_top");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         $output = curl_exec($ch);
         curl_close($ch);
 
-
         print_r($output);
+        // return redirect()->back()->with('success', 'Order sent to POS');
 
     }
 
