@@ -143,7 +143,7 @@
                                             <input type="number" name="quantity" id="number{{$product->id}}" value="1" min="1" />
                                             <button style="margin-top: 1px" type="button" class="btn btn-warning" id="increase" onclick="increaseValue{{$product->id}}()">+</button>
                                             <div style="margin: 5px 0px">€ {{ $product->price }}</div>
-                                            <button type="button" data-toggle="modal" data-target="#bonus{{$product->id}}" class="btn btn-warning">Voeg toe</button>
+                                            <button @if($category->id == 2) type="button" @else type="submit" @endif data-toggle="modal" data-target="#bonus{{$product->id}}" class="btn btn-warning">Voeg toe</button>
                                     </div>
                                 </div>
 
@@ -199,7 +199,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn" style="background-color: black">Save changes</button>
+                                    <button type="submit" class="btn" style="background-color: black">Voeg toe</button>
                                 </div>
                                 </div>
                             </div>

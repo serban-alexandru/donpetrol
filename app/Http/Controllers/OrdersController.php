@@ -12,6 +12,7 @@ use App\Order;
 use App\OrderHasProduct;
 use Session;
 use App\User;
+use App\WeekDay;
 
 class OrdersController extends Controller
 {
@@ -23,7 +24,7 @@ class OrdersController extends Controller
           $openCat = Session::get('openCat');
         }
   
-        $categories = Category::all();
+        $categories = Category::all()->reverse();
   
         return view('admin.orders')->with([
             'categories' => $categories,
@@ -331,7 +332,11 @@ class OrdersController extends Controller
 
         if(Auth::user()){
 
-            return view('checkout');
+            $days = WeekDay::all();
+
+            return view('checkout')->with([
+                'days' => $days,
+            ]);
 
         }else{
 

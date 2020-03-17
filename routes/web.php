@@ -62,6 +62,12 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
     // Print order route
     Route::post('/print_order/{order_id}', 'OrdersController@print')->name('Print order route');
 
+    // Schedule page route
+    Route::get('/schedule', 'ScheduleController@index')->name('Schedule page');
+
+    // edit date route
+    Route::post('/edit_date/{date_id}', 'ScheduleController@edit')->name('Edit date');
+
 });
 
 // Take away option

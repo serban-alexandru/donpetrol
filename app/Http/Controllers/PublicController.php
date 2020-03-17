@@ -75,7 +75,7 @@ class PublicController extends Controller
         $openCat = Session::get('openCat');
       }
 
-      $categories = Category::all();
+      $categories = Category::all()->reverse();
 
       return view('menu')->with([
           'categories' => $categories,

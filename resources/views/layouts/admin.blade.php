@@ -105,6 +105,18 @@
               <p>Bestellingen</p>
             </a>
           </li>
+
+          @if(Route::currentRouteName() == "Schedule" ) 
+            <li class="nav-item active">
+            <a class="nav-link" href="#">
+          @else
+            <li class="nav-item">
+            <a class="nav-link" href="{{ url('/schedule') }}">
+          @endif
+            <i class="fas fa-clock"></i>
+            <p>Openingstijden</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
