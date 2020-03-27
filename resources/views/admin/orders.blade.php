@@ -24,7 +24,7 @@
                     padding: 0px;
                     }
 
-                    input#number{{$product->id}}, input#numberpota{{$product->id}}, input#numbermayo{{$product->id}} {
+                    input#numberx{{$product->id}}, input#number{{$product->id}}, input#numberpota{{$product->id}}, input#numbermayo{{$product->id}} {
                     text-align: center;
                     border: none;
                     border-top: 1px solid #ddd;
@@ -54,6 +54,21 @@
                     value < 1 ? value = 1 : '';
                     value--;
                     document.getElementById('number{{$product->id}}').value = value;
+                    }
+
+                    function increaseValuex{{$product->id}}() {
+                    var value = parseInt(document.getElementById('numberx{{$product->id}}').value, 10);
+                    value = isNaN(value) ? 0 : value;
+                    value++;
+                    document.getElementById('numberx{{$product->id}}').value = value;
+                    }
+
+                    function decreaseValuex{{$product->id}}() {
+                    var value = parseInt(document.getElementById('numberx{{$product->id}}').value, 10);
+                    value = isNaN(value) ? 0 : value;
+                    value < 1 ? value = 1 : '';
+                    value--;
+                    document.getElementById('numberx{{$product->id}}').value = value;
                     }
 
                     // potatoes script
@@ -105,23 +120,83 @@
                             @endif
                             <div class="row">
                             @foreach($subcat->products as $product)
-                                <div class="col-md-4 col-sm-6 col-xs-12 text-center">
-                                    <div class="card" style="background: black;">
-                                        <div class="card-header" style="font-size: 30px;color: white; padding: 20px">
-                                            <i class="{{$product->category->icon}}" style="font-size: 60px;"></i><br><br>
-                                            {{$product->name}}
-                                            <p style="font-size: 19px; margin-top: 7px">{{$product->description}}</p>
-                                            <form style="margin-top: 10px" action="{{ url('/add_to_cart/'.$product->id) }}" method="POST">
-                                                @csrf
-                                                <button style="margin-top: 1px" type="button" class="btn btn-warning" id="decrease" onclick="decreaseValue{{$product->id}}()">-</button>
-                                                <input type="number" name="quantity" id="number{{$product->id}}" value="1" min="1" />
-                                                <button style="margin-top: 1px" type="button" class="btn btn-warning" id="increase" onclick="increaseValue{{$product->id}}()">+</button>
-                                                <div style="margin: 5px 0px">€ {{ $product->price }}</div>
-                                                <button class="btn btn-warning">Voeg toe</button>
-                                            </form>
+                            <div class="col-md-4 col-sm-6 col-xs-12 text-center">
+                            <form style="margin-top: 10px" action="{{ url('/add_to_cart/'.$product->id) }}" method="POST">
+                            @csrf
+                                <div class="card" style="background: black;">
+                                    <div class="card-header" style="font-size: 30px;color: white; padding: 20px">
+                                        <i class="{{$product->category->icon}}" style="font-size: 60px;"></i><br><br>
+                                        {{$product->name}}
+                                        <p style="font-size: 19px; margin-top: 7px">{{$product->description}}</p>
+                                        
+                                            <button style="margin-top: 1px" type="button" class="btn btn-warning" id="decrease" onclick="decreaseValuex{{$product->id}}()">-</button>
+                                            <input type="number" name="quantity" id="numberx{{$product->id}}" value="1" min="1" />
+                                            <button style="margin-top: 1px" type="button" class="btn btn-warning" id="increase" onclick="increaseValuex{{$product->id}}()">+</button>
+                                            <div style="margin: 5px 0px">€ {{ $product->price }}</div>
+                                            <button @if($category->id == 2) type="button" data-toggle="modal" data-target="#bonus{{$product->id}}" @else type="submit" @endif class="btn btn-warning">Voeg toe</button>
+                                    </div>
+                                </div>
+
+                            <!-- Modal bonus -->
+                            <div class="modal fade" id="bonus{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document" style="margin: 10px 5%">
+                                <div class="modal-content" style="width: 90vw">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Wilt u graag ook frietjes & mayo bij uw burger?</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                        
+                                        <div class="card" style="background: black;">
+                                            <div class="card-header" style="font-size: 30px;color: white; padding: 20px">
+                                                <i class="{{$product->category->icon}}" style="font-size: 60px;"></i><br><br>
+                                                {{ env("FRIES_NAME") }}
+
+                                                    <br><br>
+                                                <!-- <p style="font-size: 19px; margin-top: 7px">Fried potatoes</p> -->
+                                                
+                                                    <button style="margin-top: 1px" type="button" class="btn btn-warning" id="decrease" onclick="decreaseValuepota{{$product->id}}()">-</button>
+                                                    <input type="number" name="potatoes" id="numberpota{{$product->id}}" value="0" />
+                                                    <button style="margin-top: 1px" type="button" class="btn btn-warning" id="increase" onclick="increaseValuepota{{$product->id}}()">+</button>
+                                                    <div style="margin: 5px 0px">€ {{ env("FRIES_PRICE") }}</div>
+                                            </div>
+                                        </div>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                        
+                                        <div class="card" style="background: black;">
+                                            <div class="card-header" style="font-size: 30px;color: white; padding: 20px">
+                                                <i class="{{$product->category->icon}}" style="font-size: 60px;"></i><br><br>
+                                                {{ env("MAYO_NAME") }}
+
+                                                    <br><br>
+                                                <!-- <p style="font-size: 19px; margin-top: 7px">Mayonnaise</p> -->
+                                                
+                                                    <button style="margin-top: 1px" type="button" class="btn btn-warning" id="decrease" onclick="decreaseValuemayo{{$product->id}}()">-</button>
+                                                    <input type="number" name="mayo" id="numbermayo{{$product->id}}" value="0" />
+                                                    <button style="margin-top: 1px" type="button" class="btn btn-warning" id="increase" onclick="increaseValuemayo{{$product->id}}()">+</button>
+                                                    <div style="margin: 5px 0px">€ {{ env("MAYO_PRICE") }}</div>
+                                            </div>
+                                        </div>
+                                        
                                         </div>
                                     </div>
                                 </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn" style="background-color: black">Voeg toe</button>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                        </form>
+
+                            </div>
                             @endforeach
                             </div>
                         @endforeach
@@ -143,7 +218,7 @@
                                             <input type="number" name="quantity" id="number{{$product->id}}" value="1" min="1" />
                                             <button style="margin-top: 1px" type="button" class="btn btn-warning" id="increase" onclick="increaseValue{{$product->id}}()">+</button>
                                             <div style="margin: 5px 0px">€ {{ $product->price }}</div>
-                                            <button @if($category->id == 2) type="button" @else type="submit" @endif data-toggle="modal" data-target="#bonus{{$product->id}}" class="btn btn-warning">Voeg toe</button>
+                                            <button @if($category->id == 2) type="button" data-toggle="modal" data-target="#bonus{{$product->id}}" @else type="submit" @endif class="btn btn-warning">Voeg toe</button>
                                     </div>
                                 </div>
 

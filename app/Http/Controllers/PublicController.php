@@ -9,6 +9,7 @@ use Illuminate\Session\Store;
 use App\Category;
 use Auth;
 use App\Order;
+use Mail;
 
 class PublicController extends Controller
 {
@@ -109,9 +110,9 @@ class PublicController extends Controller
 
     $mollie = new \Mollie\Api\MollieApiClient();
     // Test Key
-    $mollie->setApiKey("test_MDHCmNRtRuaCt5gwtFJQ29QfSMBf4n");
+    // $mollie->setApiKey("test_MDHCmNRtRuaCt5gwtFJQ29QfSMBf4n");
     // Live API key
-    // $mollie->setApiKey("live_xBwjKC5AAtExkG2tbN5jqtekvfmh29");
+    $mollie->setApiKey("live_xBwjKC5AAtExkG2tbN5jqtekvfmh29");
 
     $payment = $mollie->payments->create([
         "amount" => [
@@ -135,6 +136,20 @@ class PublicController extends Controller
     $order = Order::where('secret', '=', $secret)->first();
 
     if($order){
+
+      if($order->confirmation_email == 0){
+        $order->confirmation_email = 1;
+        $user = Auth::user();
+        $message = new \stdClass();
+        $message->link = url('/payment_success/'.$secret);
+        Mail::send('email.message', ['msg' => $message], function ($m) use ($user) {
+            $m->from('donpetrolapp@gmail.com', '🔺Your order!🔺');
+  
+            $m->to(Auth::user()->email, Auth::user()->email)
+                ->subject('🔺Your order!🔺');
+        });
+      }
+      
       $order->paid = 1;
       $order->save();
     }else{

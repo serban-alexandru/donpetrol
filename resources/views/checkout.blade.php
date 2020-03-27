@@ -11,217 +11,217 @@
 <script>
 </script>
 <script>
-var d = new Date();
-var day = d.getDay();
+// var d = new Date();
+// var day = d.getDay();
 
-@foreach($days as $key=>$day)
+// @foreach($days as $key=>$day)
 
-    // monday
-    @if($key == 0)
-        if(day == 1){
-            if(d.getHours() < {{$day->hour_start}} || d.getHours() > {{$day->hour_end}}){
-                window.location = "{{ url('/service_closed') }}";
-            }else{
-                if((d.getHours() == {{$day->hour_start}} && d.getMinutes() < {{$day->minutes_start}}) || (d.getHours() == {{$day->hour_end}} && d.getMinutes() > {{$day->minutes_end}})){
-                    window.location = "{{ url('/service_closed') }}";
-                }
-            }
-        }
-    @endif
+//     // monday
+//     @if($key == 0)
+//         if(day == 1){
+//             if(d.getHours() < {{$day->hour_start}} || d.getHours() > {{$day->hour_end}}){
+//                 window.location = "{{ url('/service_closed') }}";
+//             }else{
+//                 if((d.getHours() == {{$day->hour_start}} && d.getMinutes() < {{$day->minutes_start}}) || (d.getHours() == {{$day->hour_end}} && d.getMinutes() > {{$day->minutes_end}})){
+//                     window.location = "{{ url('/service_closed') }}";
+//                 }
+//             }
+//         }
+//     @endif
 
-    @if($key == 1)
-        if(day == 2){
-            if(d.getHours() < {{$day->hour_start}} || d.getHours() > {{$day->hour_end}}){
-                window.location = "{{ url('/service_closed') }}";
-            }else{
-                if((d.getHours() == {{$day->hour_start}} && d.getMinutes() < {{$day->minutes_start}}) || (d.getHours() == {{$day->hour_end}} && d.getMinutes() > {{$day->minutes_end}})){
-                    window.location = "{{ url('/service_closed') }}";
-                }
-            }
-        }
-    @endif
+//     @if($key == 1)
+//         if(day == 2){
+//             if(d.getHours() < {{$day->hour_start}} || d.getHours() > {{$day->hour_end}}){
+//                 window.location = "{{ url('/service_closed') }}";
+//             }else{
+//                 if((d.getHours() == {{$day->hour_start}} && d.getMinutes() < {{$day->minutes_start}}) || (d.getHours() == {{$day->hour_end}} && d.getMinutes() > {{$day->minutes_end}})){
+//                     window.location = "{{ url('/service_closed') }}";
+//                 }
+//             }
+//         }
+//     @endif
 
-    @if($key == 2)
-        if(day == 3){
-            if(d.getHours() < {{$day->hour_start}} || d.getHours() > {{$day->hour_end}}){
-                window.location = "{{ url('/service_closed') }}";
-            }else{
-                if((d.getHours() == {{$day->hour_start}} && d.getMinutes() < {{$day->minutes_start}}) || (d.getHours() == {{$day->hour_end}} && d.getMinutes() > {{$day->minutes_end}})){
-                    window.location = "{{ url('/service_closed') }}";
-                }
-            }
-        }
-    @endif
+//     @if($key == 2)
+//         if(day == 3){
+//             if(d.getHours() < {{$day->hour_start}} || d.getHours() > {{$day->hour_end}}){
+//                 window.location = "{{ url('/service_closed') }}";
+//             }else{
+//                 if((d.getHours() == {{$day->hour_start}} && d.getMinutes() < {{$day->minutes_start}}) || (d.getHours() == {{$day->hour_end}} && d.getMinutes() > {{$day->minutes_end}})){
+//                     window.location = "{{ url('/service_closed') }}";
+//                 }
+//             }
+//         }
+//     @endif
 
-    @if($key == 3)
-        if(day == 4){
-            if(d.getHours() < {{$day->hour_start}} || d.getHours() > {{$day->hour_end}}){
-                window.location = "{{ url('/service_closed') }}";
-            }else{
-                if((d.getHours() == {{$day->hour_start}} && d.getMinutes() < {{$day->minutes_start}}) || (d.getHours() == {{$day->hour_end}} && d.getMinutes() > {{$day->minutes_end}})){
-                    window.location = "{{ url('/service_closed') }}";
-                }
-            }
-        }
-    @endif
+//     @if($key == 3)
+//         if(day == 4){
+//             if(d.getHours() < {{$day->hour_start}} || d.getHours() > {{$day->hour_end}}){
+//                 window.location = "{{ url('/service_closed') }}";
+//             }else{
+//                 if((d.getHours() == {{$day->hour_start}} && d.getMinutes() < {{$day->minutes_start}}) || (d.getHours() == {{$day->hour_end}} && d.getMinutes() > {{$day->minutes_end}})){
+//                     window.location = "{{ url('/service_closed') }}";
+//                 }
+//             }
+//         }
+//     @endif
 
-    @if($key == 4)
-        if(day == 5){
-            if(d.getHours() < {{$day->hour_start}} || d.getHours() > {{$day->hour_end}}){
-                window.location = "{{ url('/service_closed') }}";
-            }else{
-                if((d.getHours() == {{$day->hour_start}} && d.getMinutes() < {{$day->minutes_start}}) || (d.getHours() == {{$day->hour_end}} && d.getMinutes() > {{$day->minutes_end}})){
-                    window.location = "{{ url('/service_closed') }}";
-                }
-            }
-        }
-    @endif
+//     @if($key == 4)
+//         if(day == 5){
+//             if(d.getHours() < {{$day->hour_start}} || d.getHours() > {{$day->hour_end}}){
+//                 window.location = "{{ url('/service_closed') }}";
+//             }else{
+//                 if((d.getHours() == {{$day->hour_start}} && d.getMinutes() < {{$day->minutes_start}}) || (d.getHours() == {{$day->hour_end}} && d.getMinutes() > {{$day->minutes_end}})){
+//                     window.location = "{{ url('/service_closed') }}";
+//                 }
+//             }
+//         }
+//     @endif
 
-    @if($key == 5)
-        if(day == 6){
-            if(d.getHours() < {{$day->hour_start}} || d.getHours() > {{$day->hour_end}}){
-                window.location = "{{ url('/service_closed') }}";
-            }else{
-                if((d.getHours() == {{$day->hour_start}} && d.getMinutes() < {{$day->minutes_start}}) || (d.getHours() == {{$day->hour_end}} && d.getMinutes() > {{$day->minutes_end}})){
-                    window.location = "{{ url('/service_closed') }}";
-                }
-            }
-        }
-    @endif
+//     @if($key == 5)
+//         if(day == 6){
+//             if(d.getHours() < {{$day->hour_start}} || d.getHours() > {{$day->hour_end}}){
+//                 window.location = "{{ url('/service_closed') }}";
+//             }else{
+//                 if((d.getHours() == {{$day->hour_start}} && d.getMinutes() < {{$day->minutes_start}}) || (d.getHours() == {{$day->hour_end}} && d.getMinutes() > {{$day->minutes_end}})){
+//                     window.location = "{{ url('/service_closed') }}";
+//                 }
+//             }
+//         }
+//     @endif
 
-    @if($key == 6)
-        if(day == 0){
-            if(d.getHours() < {{$day->hour_start}} || d.getHours() > {{$day->hour_end}}){
-                window.location = "{{ url('/service_closed') }}";
-            }else{
-                if((d.getHours() == {{$day->hour_start}} && d.getMinutes() < {{$day->minutes_start}}) || (d.getHours() == {{$day->hour_end}} && d.getMinutes() > {{$day->minutes_end}})){
-                    window.location = "{{ url('/service_closed') }}";
-                }
-            }
-        }
-    @endif
+//     @if($key == 6)
+//         if(day == 0){
+//             if(d.getHours() < {{$day->hour_start}} || d.getHours() > {{$day->hour_end}}){
+//                 window.location = "{{ url('/service_closed') }}";
+//             }else{
+//                 if((d.getHours() == {{$day->hour_start}} && d.getMinutes() < {{$day->minutes_start}}) || (d.getHours() == {{$day->hour_end}} && d.getMinutes() > {{$day->minutes_end}})){
+//                     window.location = "{{ url('/service_closed') }}";
+//                 }
+//             }
+//         }
+//     @endif
 
-@endforeach
+// @endforeach
 
-// if(day >= 1 && day <= 3){
-//     window.location = "{{ url('/service_closed') }}";
-// }
+// // if(day >= 1 && day <= 3){
+// //     window.location = "{{ url('/service_closed') }}";
+// // }
 
-// if(day == 4 || day == 5){
-//     if(d.getHours() < 18 || d.getHours() >= 23){
-//         window.location = "{{ url('/service_closed') }}";
-//     }
-// }
+// // if(day == 4 || day == 5){
+// //     if(d.getHours() < 18 || d.getHours() >= 23){
+// //         window.location = "{{ url('/service_closed') }}";
+// //     }
+// // }
 
-// if(day == 6){
-//     if(d.getHours() < 12 || d.getHours() >= 23){
-//         window.location = "{{ url('/service_closed') }}";
-//     }
-// }
+// // if(day == 6){
+// //     if(d.getHours() < 12 || d.getHours() >= 23){
+// //         window.location = "{{ url('/service_closed') }}";
+// //     }
+// // }
 
-// if(day == 0){
-//     if(d.getHours() < 12 || d.getHours() >= 21){
-//         window.location = "{{ url('/service_closed') }}";
-//     }
-// }
+// // if(day == 0){
+// //     if(d.getHours() < 12 || d.getHours() >= 21){
+// //         window.location = "{{ url('/service_closed') }}";
+// //     }
+// // }
 
-setInterval(function(){
+// setInterval(function(){
     
-    // console.log('da');
-    var d = new Date();
-    var day = d.getDay();
+//     // console.log('da');
+//     var d = new Date();
+//     var day = d.getDay();
     
-    @foreach($days as $key=>$day)
+//     @foreach($days as $key=>$day)
 
-    // monday
-    @if($key == 0)
-        if(day == 1){
-            if(d.getHours() < {{$day->hour_start}} || d.getHours() > {{$day->hour_end}}){
-                window.location = "{{ url('/service_closed') }}";
-            }else{
-                if((d.getHours() == {{$day->hour_start}} && d.getMinutes() < {{$day->minutes_start}}) || (d.getHours() == {{$day->hour_end}} && d.getMinutes() > {{$day->minutes_end}})){
-                    window.location = "{{ url('/service_closed') }}";
-                }
-            }
-        }
-    @endif
+//     // monday
+//     @if($key == 0)
+//         if(day == 1){
+//             if(d.getHours() < {{$day->hour_start}} || d.getHours() > {{$day->hour_end}}){
+//                 window.location = "{{ url('/service_closed') }}";
+//             }else{
+//                 if((d.getHours() == {{$day->hour_start}} && d.getMinutes() < {{$day->minutes_start}}) || (d.getHours() == {{$day->hour_end}} && d.getMinutes() > {{$day->minutes_end}})){
+//                     window.location = "{{ url('/service_closed') }}";
+//                 }
+//             }
+//         }
+//     @endif
 
-    @if($key == 1)
-        if(day == 2){
-            if(d.getHours() < {{$day->hour_start}} || d.getHours() > {{$day->hour_end}}){
-                window.location = "{{ url('/service_closed') }}";
-            }else{
-                if((d.getHours() == {{$day->hour_start}} && d.getMinutes() < {{$day->minutes_start}}) || (d.getHours() == {{$day->hour_end}} && d.getMinutes() > {{$day->minutes_end}})){
-                    window.location = "{{ url('/service_closed') }}";
-                }
-            }
-        }
-    @endif
+//     @if($key == 1)
+//         if(day == 2){
+//             if(d.getHours() < {{$day->hour_start}} || d.getHours() > {{$day->hour_end}}){
+//                 window.location = "{{ url('/service_closed') }}";
+//             }else{
+//                 if((d.getHours() == {{$day->hour_start}} && d.getMinutes() < {{$day->minutes_start}}) || (d.getHours() == {{$day->hour_end}} && d.getMinutes() > {{$day->minutes_end}})){
+//                     window.location = "{{ url('/service_closed') }}";
+//                 }
+//             }
+//         }
+//     @endif
 
-    @if($key == 2)
-        if(day == 3){
-            if(d.getHours() < {{$day->hour_start}} || d.getHours() > {{$day->hour_end}}){
-                window.location = "{{ url('/service_closed') }}";
-            }else{
-                if((d.getHours() == {{$day->hour_start}} && d.getMinutes() < {{$day->minutes_start}}) || (d.getHours() == {{$day->hour_end}} && d.getMinutes() > {{$day->minutes_end}})){
-                    window.location = "{{ url('/service_closed') }}";
-                }
-            }
-        }
-    @endif
+//     @if($key == 2)
+//         if(day == 3){
+//             if(d.getHours() < {{$day->hour_start}} || d.getHours() > {{$day->hour_end}}){
+//                 window.location = "{{ url('/service_closed') }}";
+//             }else{
+//                 if((d.getHours() == {{$day->hour_start}} && d.getMinutes() < {{$day->minutes_start}}) || (d.getHours() == {{$day->hour_end}} && d.getMinutes() > {{$day->minutes_end}})){
+//                     window.location = "{{ url('/service_closed') }}";
+//                 }
+//             }
+//         }
+//     @endif
 
-    @if($key == 3)
-        if(day == 4){
-            if(d.getHours() < {{$day->hour_start}} || d.getHours() > {{$day->hour_end}}){
-                window.location = "{{ url('/service_closed') }}";
-            }else{
-                if((d.getHours() == {{$day->hour_start}} && d.getMinutes() < {{$day->minutes_start}}) || (d.getHours() == {{$day->hour_end}} && d.getMinutes() > {{$day->minutes_end}})){
-                    window.location = "{{ url('/service_closed') }}";
-                }
-            }
-        }
-    @endif
+//     @if($key == 3)
+//         if(day == 4){
+//             if(d.getHours() < {{$day->hour_start}} || d.getHours() > {{$day->hour_end}}){
+//                 window.location = "{{ url('/service_closed') }}";
+//             }else{
+//                 if((d.getHours() == {{$day->hour_start}} && d.getMinutes() < {{$day->minutes_start}}) || (d.getHours() == {{$day->hour_end}} && d.getMinutes() > {{$day->minutes_end}})){
+//                     window.location = "{{ url('/service_closed') }}";
+//                 }
+//             }
+//         }
+//     @endif
 
-    @if($key == 4)
-        if(day == 5){
-            if(d.getHours() < {{$day->hour_start}} || d.getHours() > {{$day->hour_end}}){
-                window.location = "{{ url('/service_closed') }}";
-            }else{
-                if((d.getHours() == {{$day->hour_start}} && d.getMinutes() < {{$day->minutes_start}}) || (d.getHours() == {{$day->hour_end}} && d.getMinutes() > {{$day->minutes_end}})){
-                    window.location = "{{ url('/service_closed') }}";
-                }
-            }
-        }
-    @endif
+//     @if($key == 4)
+//         if(day == 5){
+//             if(d.getHours() < {{$day->hour_start}} || d.getHours() > {{$day->hour_end}}){
+//                 window.location = "{{ url('/service_closed') }}";
+//             }else{
+//                 if((d.getHours() == {{$day->hour_start}} && d.getMinutes() < {{$day->minutes_start}}) || (d.getHours() == {{$day->hour_end}} && d.getMinutes() > {{$day->minutes_end}})){
+//                     window.location = "{{ url('/service_closed') }}";
+//                 }
+//             }
+//         }
+//     @endif
 
-    @if($key == 5)
-        if(day == 6){
-            if(d.getHours() < {{$day->hour_start}} || d.getHours() > {{$day->hour_end}}){
-                window.location = "{{ url('/service_closed') }}";
-            }else{
-                if((d.getHours() == {{$day->hour_start}} && d.getMinutes() < {{$day->minutes_start}}) || (d.getHours() == {{$day->hour_end}} && d.getMinutes() > {{$day->minutes_end}})){
-                    window.location = "{{ url('/service_closed') }}";
-                }
-            }
-        }
-    @endif
+//     @if($key == 5)
+//         if(day == 6){
+//             if(d.getHours() < {{$day->hour_start}} || d.getHours() > {{$day->hour_end}}){
+//                 window.location = "{{ url('/service_closed') }}";
+//             }else{
+//                 if((d.getHours() == {{$day->hour_start}} && d.getMinutes() < {{$day->minutes_start}}) || (d.getHours() == {{$day->hour_end}} && d.getMinutes() > {{$day->minutes_end}})){
+//                     window.location = "{{ url('/service_closed') }}";
+//                 }
+//             }
+//         }
+//     @endif
 
-    @if($key == 6)
-        if(day == 0){
-            if(d.getHours() < {{$day->hour_start}} || d.getHours() > {{$day->hour_end}}){
-                window.location = "{{ url('/service_closed') }}";
-            }else{
-                if((d.getHours() == {{$day->hour_start}} && d.getMinutes() < {{$day->minutes_start}}) || (d.getHours() == {{$day->hour_end}} && d.getMinutes() > {{$day->minutes_end}})){
-                    window.location = "{{ url('/service_closed') }}";
-                }
-            }
-        }
-    @endif
+//     @if($key == 6)
+//         if(day == 0){
+//             if(d.getHours() < {{$day->hour_start}} || d.getHours() > {{$day->hour_end}}){
+//                 window.location = "{{ url('/service_closed') }}";
+//             }else{
+//                 if((d.getHours() == {{$day->hour_start}} && d.getMinutes() < {{$day->minutes_start}}) || (d.getHours() == {{$day->hour_end}} && d.getMinutes() > {{$day->minutes_end}})){
+//                     window.location = "{{ url('/service_closed') }}";
+//                 }
+//             }
+//         }
+//     @endif
 
-    @endforeach
+//     @endforeach
 
-}, 3000);
-</script>
+// }, 3000);
+// </script>
 
 <style>
     .col-md-6{
@@ -392,8 +392,10 @@ if(now.getMinutes() <= 30){
     }else{
     stri = '';
     }
+    var diffMs = (nextDate - new Date()); // milliseconds between dates
+    var diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000); // minutes
     document.getElementById('nextDate').innerHTML = nextDate.getHours()+':'+nextDate.getMinutes()+stri;
-    document.getElementById('nextDate').setAttribute('value', nextDate.getHours()+':'+nextDate.getMinutes()+stri);
+    document.getElementById('nextDate').setAttribute('value', diffMins);
 
     d2.setMinutes(d2.getMinutes() + 30);
     afterDate = d2;
@@ -403,8 +405,10 @@ if(now.getMinutes() <= 30){
     }else{
     stri = '';
     }
+    var diffMs = (afterDate - new Date()); // milliseconds between dates
+    var diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000); // minutes
     document.getElementById('afterDate').innerHTML = afterDate.getHours()+':'+afterDate.getMinutes()+stri;
-    document.getElementById('afterDate').setAttribute('value', nextDate.getHours()+':'+nextDate.getMinutes()+stri);
+    document.getElementById('afterDate').setAttribute('value', diffMins);
 
     d2.setMinutes(d2.getMinutes() + 30);
     after2Date = d2;
@@ -414,8 +418,10 @@ if(now.getMinutes() <= 30){
     }else{
     stri = '';
     }
+    var diffMs = (after2Date - new Date()); // milliseconds between dates
+    var diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000) + 60; // minutes
     document.getElementById('after2Date').innerHTML = after2Date.getHours()+':'+after2Date.getMinutes()+stri;
-    document.getElementById('after2Date').setAttribute('value', nextDate.getHours()+':'+nextDate.getMinutes()+stri);
+    document.getElementById('after2Date').setAttribute('value', diffMins);
 
     d2.setMinutes(d2.getMinutes() + 30);
     after3Date = d2;
@@ -425,8 +431,10 @@ if(now.getMinutes() <= 30){
     }else{
     stri = '';
     }
+    var diffMs = (after3Date - new Date()); // milliseconds between dates
+    var diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000) + 60; // minutes
     document.getElementById('after3Date').innerHTML = after3Date.getHours()+':'+after3Date.getMinutes()+stri;
-    document.getElementById('after3Date').setAttribute('value', nextDate.getHours()+':'+nextDate.getMinutes()+stri);
+    document.getElementById('after3Date').setAttribute('value', diffMins);
 
 }else{
     d1 = new Date();
@@ -440,8 +448,10 @@ if(now.getMinutes() <= 30){
     }else{
     stri = '';
     }
+    var diffMs = (nextDate - new Date()); // milliseconds between dates
+    var diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000); // minutes
     document.getElementById('nextDate').innerHTML = nextDate.getHours()+':'+nextDate.getMinutes()+stri;
-    document.getElementById('nextDate').setAttribute('value', nextDate.getHours()+':'+nextDate.getMinutes()+stri);
+    document.getElementById('nextDate').setAttribute('value', diffMins);
 
     d2.setMinutes(d2.getMinutes() + 30);
     afterDate = d2;
@@ -451,8 +461,10 @@ if(now.getMinutes() <= 30){
     }else{
     stri = '';
     }
+    var diffMs = (afterDate - new Date()); // milliseconds between dates
+    var diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000); // minutes
     document.getElementById('afterDate').innerHTML = afterDate.getHours()+':'+afterDate.getMinutes()+stri;
-    document.getElementById('afterDate').setAttribute('value', nextDate.getHours()+':'+nextDate.getMinutes()+stri);
+    document.getElementById('afterDate').setAttribute('value', diffMins);
 
     d2.setMinutes(d2.getMinutes() + 30);
     after2Date = d2;
@@ -462,8 +474,10 @@ if(now.getMinutes() <= 30){
     }else{
     stri = '';
     }
+    var diffMs = (after2Date - new Date()); // milliseconds between dates
+    var diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000) + 60; // minutes
     document.getElementById('after2Date').innerHTML = after2Date.getHours()+':'+after2Date.getMinutes()+stri;
-    document.getElementById('after2Date').setAttribute('value', nextDate.getHours()+':'+nextDate.getMinutes()+stri);
+    document.getElementById('after2Date').setAttribute('value', diffMins);
 
     d2.setMinutes(d2.getMinutes() + 30);
     after3Date = d2;
@@ -473,8 +487,10 @@ if(now.getMinutes() <= 30){
     }else{
     stri = '';
     }
+    var diffMs = (after3Date - new Date()); // milliseconds between dates
+    var diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000) + 60; // minutes
     document.getElementById('after3Date').innerHTML = after3Date.getHours()+':'+after3Date.getMinutes()+stri;
-    document.getElementById('after3Date').setAttribute('value', nextDate.getHours()+':'+nextDate.getMinutes()+stri);
+    document.getElementById('after3Date').setAttribute('value', diffMins);
 
 }
 

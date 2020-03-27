@@ -1,4 +1,6 @@
 <?php
+use App\Order;
+use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,10 +62,10 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
     Route::get('/delete_order/{order_id}', 'OrdersController@deleteOrder')->name('Delete order');
 
     // Print order route
-    Route::post('/print_order/{order_id}', 'OrdersController@print')->name('Print order route');
+    Route::get('/print_order/{order_id}', 'OrdersController@print')->name('Print order route');
 
     // Schedule page route
-    Route::get('/schedule', 'ScheduleController@index')->name('Schedule page');
+    Route::get('/schedule', 'ScheduleController@index')->name('Schedule');
 
     // edit date route
     Route::post('/edit_date/{date_id}', 'ScheduleController@edit')->name('Edit date');
@@ -107,7 +109,9 @@ Route::post('/send_order', 'OrdersController@send')->name('Send order')->middlew
 Route::get('/mollie', 'PublicController@payTest');
 
 // Payment success route
-Route::get('/payment_success/{order_secret}', 'PublicController@paymentSuccess');
+Route::get('/payment_success/{order_secret}', 'PublicController@paymentSuccess')->name('Order');
 
 // Service closed route
 Route::get('/service_closed', 'PublicController@closed')->name('Service closed');
+
+Route::get('/cron_job', 'OrdersController@cron');

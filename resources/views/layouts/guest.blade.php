@@ -214,7 +214,7 @@ btn btn-primary" type="button" >
             @endphp
     @endforeach
     <!-- Cart button -->
-    <button data-toggle="modal" data-target="#cart" style="position: fixed; bottom: 10px; right: 10px; padding: 10px; border-radius: 20px; font-size: 20px" class="btn btn-warning"><i style="font-size: 40px" class="fas fa-shopping-cart"></i> ({{$count}})</button>
+    <button data-toggle="modal" data-target="#cart" style="position: fixed; bottom: 10px; right: 10px; padding: 10px; border-radius: 20px; font-size: 20px;z-index: 1000" class="btn btn-warning"><i style="font-size: 40px" class="fas fa-shopping-cart"></i> ({{$count}})</button>
 
     <!-- Modal Cart -->
     <div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

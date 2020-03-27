@@ -14,10 +14,10 @@
             <tr>
             <th scope="col">#</th>
             <th scope="col">Typ</th>
-            <th scope="col">Afhaaltijd</th>
-            <th scope="col">Waarde</th>
+            <!-- <th scope="col">Afhaaltijd</th> -->
+            <th scope="col">Bedrag</th>
             <th scope="col">Paid</th>
-            <th scope="col">Zahlungsmethode</th>
+            <th scope="col">Betaalmethode</th>
             <th scope="col">Alle orders</th>
             </tr>
         </thead>
@@ -106,7 +106,9 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button class="btn btn-success" data-toggle="modal" data-target="#print{{$order->id}}">Print order</button>
+                    <a href="{{ url('/print_order/'.$order->id) }}">
+                        <button class="btn btn-success">Print order</button>
+                    </a>
                     <a href="{{ url('/delete_order/'.$order->id) }}">
                         <button type="button" style="background:black" class="btn btn-primary">Delete order</button>
                     </a>

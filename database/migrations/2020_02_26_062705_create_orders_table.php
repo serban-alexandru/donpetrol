@@ -17,6 +17,8 @@ class CreateOrdersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name')->default('order');
             $table->string('type'); // eat in / take out 
+            $table->boolean('sent_to_pos')->default(0); 
+            $table->boolean('confirmation_email')->default(0);
             $table->string('delivery_time');
             $table->unsignedBigInteger('user_id');
             $table->text('comments');
