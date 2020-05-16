@@ -3,17 +3,17 @@
 @section('content')
     <div class="container-fluid">
         <div class="alert" style="background-color: black; color: white;">
-            <h1>Categorieën</h1>
+            <h1>@lang('all.categories')</h1>
         </div>
         <div class="table-responsive">
             <table class="table" style="text-align: center">
                 <thead> 
                     <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Products</th>
-                    <th scope="col">Categories</th>
-                    <th scope="col">Actions</th>
+                    <th scope="col">@lang('all.name')</th>
+                    <th scope="col">@lang('all.products')</th>
+                    <th scope="col">@lang('all.categories')</th>
+                    <th scope="col">@lang('all.actions')</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,7 +32,7 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">{{ $category->name }}</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
@@ -41,7 +41,7 @@
                                 @csrf
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <label>Name:</label>
+                                        <label>@lang('all.name'):</label>
                                         <input value="{{$category->name}}" type="text" required placeholder="name" name="name" class="form-control">
                                     </div>
                                     <div class="form-group">
@@ -49,7 +49,7 @@
                                         <input value="{{$category->icon}}" type="text" required placeholder="icon" name="icon" class="form-control">
                                     </div>
                                     <div class="form-group">
-                                        <label>Description:</label>
+                                        <label>@lang('all.description'):</label>
                                         <textarea name="description" cols="30" rows="10" placeholder="description" class="form-control">{{$category->description}}</textarea>
                                     </div>
                                 </div>

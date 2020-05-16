@@ -15,9 +15,9 @@
                 <thead> 
                     <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Actions</th>
+                    <th scope="col">@lang('all.name')</th>
+                    <th scope="col">@lang('all.price')</th>
+                    <th scope="col">@lang('all.actions')</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -37,7 +37,7 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Bewerk</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">@lang('all.modify_product')</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
@@ -46,25 +46,19 @@
                         @csrf
                         <div class="modal-body">
                             <div class="form-group">
-                                <label>Name:</label>
+                                <label>@lang('all.name'):</label>
                                 <input type="text" name="name" value="{{$product->name}}" required class="form-control">
                             </div>
                             <div class="form-group">
-                                <label>Description:</label>
+                                <label>@lang('all.description'):</label>
                                 <textarea name="description" cols="30" rows="5" class="form-control">{{$product->description}}</textarea>
                             </div>
                             <div class="form-group">
-                                <label>Price:</label>
+                                <label>@lang('all.price'):</label>
                                 <input type="number" step="0.1" value="{{$product->price}}" name="price" required class="form-control">
                             </div>
-                            <!-- <div class="form-group">
-                                <label>Table part:</label>
-                                <input type="text" name="table_part" value="{{$product->table_part}}" required class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Table number:</label>
-                                <input type="text" name="table_number" value="{{$product->table_number}}" required class="form-control">
-                            </div> -->
+                            <h3>@lang('all.pos_details')</h3>
+                            <br>
                             <div class="form-group">
                                 <label>Article id:</label>
                                 <input type="text" name="article_id" required value="{{$product->article_id}}" class="form-control">
@@ -99,8 +93,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
-                            <button type="submit" class="btn btn-warning">Wijzigingen opslaan</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang('all.close')</button>
+                            <button type="submit" class="btn btn-warning">@lang('all.modify_product')</button>
                         </div>
                         </form>
                     </div>
@@ -112,7 +106,7 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Verwijder</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">@lang('all.delete_product')</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
@@ -135,14 +129,14 @@
             {{$products->links()}}
         </div>
 
-        <button class="btn btn-success" data-toggle="modal" data-target="#addModal">Product toevoegen</button>
+        <button class="btn btn-success" data-toggle="modal" data-target="#addModal">@lang('all.add_product')</button>
 
         <!-- Modal -->
         <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Product toevoegen</h5>
+            <h5 class="modal-title" id="exampleModalLabel">@lang('all.add_product')</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -151,25 +145,19 @@
             @csrf
             <div class="modal-body">
                 <div class="form-group">
-                    <label>Naam:</label>
+                    <label>@lang('all.name'):</label>
                     <input type="text" name="name" required class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>Beschrijving:</label>
+                    <label>@lang('all.description'):</label>
                     <textarea name="description" cols="30" rows="5" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
-                    <label>Prijs:</label>
+                    <label>@lang('all.price'):</label>
                     <input type="number" step="0.1" name="price" required class="form-control">
                 </div>
-                <!-- <div class="form-group">
-                    <label>Table part:</label>
-                    <input type="text" name="table_part" required class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Table number:</label>
-                    <input type="text" name="table_number" required class="form-control">
-                </div> -->
+                <h3>@lang('all.pos_details')</h3>
+                <br>
                 <div class="form-group">
                     <label>Article id:</label>
                     <input type="text" name="article_id" required class="form-control">
@@ -205,8 +193,8 @@
                 <input type="text" hidden name="category_id" value="{{$category->id}}" class="form-control">
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
-                <button type="submit" class="btn btn-success">Product toevoegen</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang('all.close')</button>
+                <button type="submit" class="btn btn-success">@lang('all.add_product')</button>
             </div>
             </form>
             </div>

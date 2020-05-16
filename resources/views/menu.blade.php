@@ -126,7 +126,7 @@
                                             <input type="number" name="quantity" id="numberx{{$product->id}}" value="1" min="1" />
                                             <button style="margin-top: 1px" type="button" class="btn btn-warning" id="increase" onclick="increaseValuex{{$product->id}}()">+</button>
                                             <div style="margin: 5px 0px">€ {{ $product->price }}</div>
-                                            <button @if($category->id == 2) type="button" data-toggle="modal" data-target="#bonus{{$product->id}}" @else type="submit" @endif class="btn btn-warning">Voeg toe</button>
+                                            <button @if($category->id == 2) type="button" data-toggle="modal" data-target="#bonus{{$product->id}}" @else type="submit" @endif class="btn btn-warning">ADD</button>
                                     </div>
                                 </div>
 
@@ -135,7 +135,7 @@
                             <div class="modal-dialog" role="document" style="margin: 10px 5%">
                                 <div class="modal-content" style="width: 90vw">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Wilt u graag ook frietjes & mayo bij uw burger?</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">@lang('all.fries_mayo')</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
@@ -181,8 +181,8 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn" style="background-color: black">Voeg toe</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang('all.close')</button>
+                                    <button type="submit" class="btn" style="background-color: black">+</button>
                                 </div>
                                 </div>
                             </div>
@@ -211,7 +211,7 @@
                                             <input type="number" name="quantity" id="number{{$product->id}}" value="1" min="1" />
                                             <button style="margin-top: 1px" type="button" class="btn btn-warning" id="increase" onclick="increaseValue{{$product->id}}()">+</button>
                                             <div style="margin: 5px 0px">€ {{ $product->price }}</div>
-                                            <button @if($category->id == 2) type="button" data-toggle="modal" data-target="#bonus{{$product->id}}" @else type="submit" @endif class="btn btn-warning">Voeg toe</button>
+                                            <button @if($category->id == 2) type="button" data-toggle="modal" data-target="#bonus{{$product->id}}" @else type="submit" @endif class="btn btn-warning">ADD</button>
                                     </div>
                                 </div>
 
@@ -220,7 +220,7 @@
                             <div class="modal-dialog" role="document" style="margin: 10px 5%">
                                 <div class="modal-content" style="width: 90vw">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Wilt u graag ook frietjes & mayo bij uw burger?</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">@lang('all.fries_mayo')</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
@@ -266,8 +266,8 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn" style="background-color: black">Voeg toe</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">@lang('all.close')</button>
+                                    <button type="submit" class="btn" style="background-color: black">ADD</button>
                                 </div>
                                 </div>
                             </div>

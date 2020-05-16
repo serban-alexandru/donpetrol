@@ -16,7 +16,7 @@
       <div class="modal-dialog" role="document" style="margin: 0px">
         <div class="modal-content" style="width: 100vw; min-height: 100vh">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Uw bestelling</h5>
+            <h5 class="modal-title" id="exampleModalLabel">@lang('all.your_order')</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -24,7 +24,7 @@
           <div class="modal-body">
 
             @php
-              $sum=0;
+              $sum=0; 
             @endphp
 
             @foreach(Session::get('cartItems') as $item)
@@ -60,19 +60,19 @@
             <div class="">
 
               <div class="alert alert-success" style="float: left;font-size: 16px; padding: 17px;background-color:black">
-              Totaal:€ {{$sum}}
+              @lang('all.total'):€ {{$sum}}
               </div>
               <br><br><br>
               <a href="{{ url('/checkout') }}">
                 <button class="btn btn-success" type="button" style="padding: 17px; margin-left: -2px;background-color:black">
-                Afrekenen
+                @lang('all.to_pay')
                 </button>
               </a>
             </div>
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-success" style="background-color:black" data-dismiss="modal">Sluiten</button>
+            <button type="button" class="btn btn-success" style="background-color:black" data-dismiss="modal">@lang('all.close')</button>
           </div>
         </div>
       </div>

@@ -14,7 +14,7 @@ class DaysSeeder extends Seeder
     {
         
         $day = new WeekDay;
-        $day->name = 'maandag';
+        $day->name = 'Monday';
         $day->hour_start = '09';
         $day->minutes_start = '00';
         $day->hour_end = '15';
@@ -22,7 +22,7 @@ class DaysSeeder extends Seeder
         $day->save();
 
         $day = new WeekDay;
-        $day->name = 'dinsdag';
+        $day->name = 'Tuesday';
         $day->hour_start = '09';
         $day->minutes_start = '00';
         $day->hour_end = '15';
@@ -30,7 +30,7 @@ class DaysSeeder extends Seeder
         $day->save();
 
         $day = new WeekDay;
-        $day->name = 'woensdag';
+        $day->name = 'Wednesday';
         $day->hour_start = '09';
         $day->minutes_start = '00';
         $day->hour_end = '15';
@@ -38,7 +38,7 @@ class DaysSeeder extends Seeder
         $day->save();
 
         $day = new WeekDay;
-        $day->name = 'donderdag';
+        $day->name = 'Thursday';
         $day->hour_start = '09';
         $day->minutes_start = '00';
         $day->hour_end = '15';
@@ -46,7 +46,7 @@ class DaysSeeder extends Seeder
         $day->save();
 
         $day = new WeekDay;
-        $day->name = 'vrijdag';
+        $day->name = 'Friday';
         $day->hour_start = '09';
         $day->minutes_start = '00';
         $day->hour_end = '15';
@@ -54,7 +54,7 @@ class DaysSeeder extends Seeder
         $day->save();
 
         $day = new WeekDay;
-        $day->name = 'zaterdag';
+        $day->name = 'Saturday';
         $day->hour_start = '09';
         $day->minutes_start = '00';
         $day->hour_end = '15';
@@ -62,7 +62,7 @@ class DaysSeeder extends Seeder
         $day->save();
 
         $day = new WeekDay;
-        $day->name = 'zondag';
+        $day->name = 'Sunday';
         $day->hour_start = '09';
         $day->minutes_start = '00';
         $day->hour_end = '15';

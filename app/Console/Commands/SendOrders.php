@@ -39,7 +39,6 @@ class SendOrders extends Command
     public function handle()
     {
 
-        // error_log('Some message here.');
-        \Log::info('This is some useful information.');
+        \Log::info('Comenzi trimise la pos.');
     }
 }

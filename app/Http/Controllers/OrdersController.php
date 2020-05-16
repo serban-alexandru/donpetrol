@@ -397,66 +397,8 @@ class OrdersController extends Controller
                 $xml_all_items .=$xml_mayo;
             }
 
-            // Item example
-            // <item xsi:type="urn:TOrderItem">
-            //     <ArticleId xsi:type="xsd:long">5000001013</ArticleId>
-            //     <PriceId xsi:type="xsd:long">5000000206</PriceId>
-            //     <OrderItemType xsi:type="xsd:int">0</OrderItemType>
-            //     <ArticleNumber xsi:type="xsd:int">201</ArticleNumber>
-            //     <ArticleName xsi:type="xsd:string">Koffie</ArticleName>
-            //     <DepartmentId xsi:type="xsd:long">5000000171</DepartmentId>
-            //     <DepartmentNumber xsi:type="xsd:int">3</DepartmentNumber>
-            //     <DepartmentName xsi:type="xsd:string">Hot</DepartmentName>
-            //     <GroupName xsi:type="xsd:string">1.Without Alcohol</GroupName>
-            //     <CategoryName xsi:type="xsd:string">1.Bar</CategoryName>
-            //     <Quantity xsi:type="xsd:int">1</Quantity>
-            //     <SalesAreaNumber xsi:type="xsd:int">1</SalesAreaNumber>
-            //     <SalesAreaName xsi:type="xsd:string">Take Away</SalesAreaName>
-            // </item>
-            
-            // Fries
-            // <item xsi:type="urn:TOrderItem">
-            //     <ArticleId xsi:type="xsd:long">10000000513</ArticleId>
-            //     <ManualPrice xsi:type="xsd:double">.env("FRIES_PRICE").</ManualPrice>
-            //     <OrderItemType xsi:type="xsd:int">0</OrderItemType>
-            //     <ArticleNumber xsi:type="xsd:int">601</ArticleNumber>
-            //     <ArticleName xsi:type="xsd:string">Extra Frietjes</ArticleName>
-            //     <DepartmentId xsi:type="xsd:long">10000000499</DepartmentId>
-            //     <DepartmentNumber xsi:type="xsd:int">20</DepartmentNumber>
-            //     <DepartmentName xsi:type="xsd:string">Suppl. Keuken</DepartmentName>
-            //     <GroupName xsi:type="xsd:string">4.Keuken</GroupName>
-            //     <CategoryName xsi:type="xsd:string">2.Keuken</CategoryName>
-            //     <Quantity xsi:type="xsd:int">.$potatoes.</Quantity>
-            //     <SalesAreaNumber xsi:type="xsd:int">1</SalesAreaNumber>
-            //     <SalesAreaName xsi:type="xsd:string">Take Away</SalesAreaName>
-            // </item>
-
-            //Mayo
-            // <item xsi:type="urn:TOrderItem">
-            //     <ArticleId xsi:type="xsd:long">10000000563</ArticleId>
-            //     <ArticleName xsi:type="xsd:string">Extra Mayo</ArticleName>
-            //     <ArticleNumber xsi:type="xsd:int">603</ArticleNumber>            
-            //     <ManualPrice xsi:type="xsd:double">.env("MAYO_PRICE").</ManualPrice>
-            //     <OrderItemType xsi:type="xsd:int">0</OrderItemType>
-            //     <DepartmentId xsi:type="xsd:long">10000000499</DepartmentId>
-            //     <DepartmentNumber xsi:type="xsd:int">20</DepartmentNumber>
-            //     <DepartmentName xsi:type="xsd:string">Suppl. Keuken</DepartmentName>
-            //     <GroupName xsi:type="xsd:string">4.Keuken</GroupName>
-            //     <CategoryName xsi:type="xsd:string">2.Keuken</CategoryName>
-            //     <Quantity xsi:type="xsd:int">.$mayo.</Quantity>
-            //     <SalesAreaNumber xsi:type="xsd:int">1</SalesAreaNumber>
-            //     <SalesAreaName xsi:type="xsd:string">Take Away</SalesAreaName>
-            // </item>
-
-            // start xml creation
-
-            // $xml_data = '
             $item = 'asd';
             $item .='aaa';
-            // return $item;
-            // return $xml_all_items;
-            // return $order->products;
-            // return $order->products[0]->product;
 
             foreach($order->products as $product){
 
@@ -507,20 +449,13 @@ class OrdersController extends Controller
             </soapenv:Envelope>
             ';
             
-            $xml_top .= $xml_items;
-            $xml_top .= $xml_bottom;
-            // End xml creation
+        $xml_top .= $xml_items;
+        $xml_top .= $xml_bottom;
+        
+        // url pos !!
         $URL = "http://donpetrol.mine.nu:3063/soap/ITPAPIPOS";
 
-            // $ch = curl_init($URL);
-            // curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: text/xml'));
-            // curl_setopt($ch, CURLOPT_POST, 1);
-            // curl_setopt($ch, CURLOPT_POSTFIELDS, "$xml_top");
-            // curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            // $output = curl_exec($ch);
-            // curl_close($ch);
-            // return 'send to pos';
-            $order->delivery_time = Carbon::now()->addMinutes($request->delivery_time);
+        $order->delivery_time = Carbon::now()->addMinutes($request->delivery_time);
         }else{
             $order->delivery_time = Carbon::now()->addMinutes($request->delivery_time);
         }
@@ -529,7 +464,6 @@ class OrdersController extends Controller
         $order->secret = $secret;
         $order->save();
 
-        // return $order;
         foreach(Auth::user()->cartItems as $item){
 
             $product = new OrderHasProduct;
@@ -729,66 +663,8 @@ class OrdersController extends Controller
             $xml_all_items .=$xml_mayo;
         }
 
-        // Item example
-        // <item xsi:type="urn:TOrderItem">
-        //     <ArticleId xsi:type="xsd:long">5000001013</ArticleId>
-        //     <PriceId xsi:type="xsd:long">5000000206</PriceId>
-        //     <OrderItemType xsi:type="xsd:int">0</OrderItemType>
-        //     <ArticleNumber xsi:type="xsd:int">201</ArticleNumber>
-        //     <ArticleName xsi:type="xsd:string">Koffie</ArticleName>
-        //     <DepartmentId xsi:type="xsd:long">5000000171</DepartmentId>
-        //     <DepartmentNumber xsi:type="xsd:int">3</DepartmentNumber>
-        //     <DepartmentName xsi:type="xsd:string">Hot</DepartmentName>
-        //     <GroupName xsi:type="xsd:string">1.Without Alcohol</GroupName>
-        //     <CategoryName xsi:type="xsd:string">1.Bar</CategoryName>
-        //     <Quantity xsi:type="xsd:int">1</Quantity>
-        //     <SalesAreaNumber xsi:type="xsd:int">1</SalesAreaNumber>
-        //     <SalesAreaName xsi:type="xsd:string">Take Away</SalesAreaName>
-        // </item>
-        
-        // Fries
-        // <item xsi:type="urn:TOrderItem">
-        //     <ArticleId xsi:type="xsd:long">10000000513</ArticleId>
-        //     <ManualPrice xsi:type="xsd:double">.env("FRIES_PRICE").</ManualPrice>
-        //     <OrderItemType xsi:type="xsd:int">0</OrderItemType>
-        //     <ArticleNumber xsi:type="xsd:int">601</ArticleNumber>
-        //     <ArticleName xsi:type="xsd:string">Extra Frietjes</ArticleName>
-        //     <DepartmentId xsi:type="xsd:long">10000000499</DepartmentId>
-        //     <DepartmentNumber xsi:type="xsd:int">20</DepartmentNumber>
-        //     <DepartmentName xsi:type="xsd:string">Suppl. Keuken</DepartmentName>
-        //     <GroupName xsi:type="xsd:string">4.Keuken</GroupName>
-        //     <CategoryName xsi:type="xsd:string">2.Keuken</CategoryName>
-        //     <Quantity xsi:type="xsd:int">.$potatoes.</Quantity>
-        //     <SalesAreaNumber xsi:type="xsd:int">1</SalesAreaNumber>
-        //     <SalesAreaName xsi:type="xsd:string">Take Away</SalesAreaName>
-        // </item>
-
-        //Mayo
-        // <item xsi:type="urn:TOrderItem">
-        //     <ArticleId xsi:type="xsd:long">10000000563</ArticleId>
-        //     <ArticleName xsi:type="xsd:string">Extra Mayo</ArticleName>
-        //     <ArticleNumber xsi:type="xsd:int">603</ArticleNumber>            
-        //     <ManualPrice xsi:type="xsd:double">.env("MAYO_PRICE").</ManualPrice>
-        //     <OrderItemType xsi:type="xsd:int">0</OrderItemType>
-        //     <DepartmentId xsi:type="xsd:long">10000000499</DepartmentId>
-        //     <DepartmentNumber xsi:type="xsd:int">20</DepartmentNumber>
-        //     <DepartmentName xsi:type="xsd:string">Suppl. Keuken</DepartmentName>
-        //     <GroupName xsi:type="xsd:string">4.Keuken</GroupName>
-        //     <CategoryName xsi:type="xsd:string">2.Keuken</CategoryName>
-        //     <Quantity xsi:type="xsd:int">.$mayo.</Quantity>
-        //     <SalesAreaNumber xsi:type="xsd:int">1</SalesAreaNumber>
-        //     <SalesAreaName xsi:type="xsd:string">Take Away</SalesAreaName>
-        // </item>
-
-        // start xml creation
-
-        // $xml_data = '
         $item = 'asd';
         $item .='aaa';
-        // return $item;
-        // return $xml_all_items;
-        // return $order->products;
-        // return $order->products[0]->product;
 
         foreach($order->products as $product){
 
@@ -841,18 +717,11 @@ class OrdersController extends Controller
         
         $xml_top .= $xml_items;
         $xml_top .= $xml_bottom;
-        // End xml creation
-     $URL = "http://donpetrol.mine.nu:3063/soap/ITPAPIPOS";
+        // End xml creation 
+        // url POS
+        $URL = "http://donpetrol.mine.nu:3063/soap/ITPAPIPOS";
 
-        // $ch = curl_init($URL);
-        // curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: text/xml'));
-        // curl_setopt($ch, CURLOPT_POST, 1);
-        // curl_setopt($ch, CURLOPT_POSTFIELDS, "$xml_top");
-        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        // $output = curl_exec($ch);
-        // curl_close($ch);
-
-        return 'send to pos';
+        return 'sent to pos';
 
         // print_r($output);
         return redirect()->back()->with('success', 'Order sent to POS');
@@ -861,15 +730,13 @@ class OrdersController extends Controller
 
     public function cron(){
 
+        // cronjob that prints orders 15 minutes before delivery time
         $orders = Order::all();
 
         foreach($orders as $order){
 
             if(Carbon::now() -> diffInMinutes($order->delivery_time) <= 15){
 
-                // $order->ok = 1;
-                // $order->now = Carbon::now();
-                // send order to pos
                 $table_nr = 50;
                 $table = OrderTable::all()->last();
 
@@ -947,66 +814,8 @@ class OrdersController extends Controller
                     $xml_all_items .=$xml_mayo;
                 }
 
-                // Item example
-                // <item xsi:type="urn:TOrderItem">
-                //     <ArticleId xsi:type="xsd:long">5000001013</ArticleId>
-                //     <PriceId xsi:type="xsd:long">5000000206</PriceId>
-                //     <OrderItemType xsi:type="xsd:int">0</OrderItemType>
-                //     <ArticleNumber xsi:type="xsd:int">201</ArticleNumber>
-                //     <ArticleName xsi:type="xsd:string">Koffie</ArticleName>
-                //     <DepartmentId xsi:type="xsd:long">5000000171</DepartmentId>
-                //     <DepartmentNumber xsi:type="xsd:int">3</DepartmentNumber>
-                //     <DepartmentName xsi:type="xsd:string">Hot</DepartmentName>
-                //     <GroupName xsi:type="xsd:string">1.Without Alcohol</GroupName>
-                //     <CategoryName xsi:type="xsd:string">1.Bar</CategoryName>
-                //     <Quantity xsi:type="xsd:int">1</Quantity>
-                //     <SalesAreaNumber xsi:type="xsd:int">1</SalesAreaNumber>
-                //     <SalesAreaName xsi:type="xsd:string">Take Away</SalesAreaName>
-                // </item>
-                
-                // Fries
-                // <item xsi:type="urn:TOrderItem">
-                //     <ArticleId xsi:type="xsd:long">10000000513</ArticleId>
-                //     <ManualPrice xsi:type="xsd:double">.env("FRIES_PRICE").</ManualPrice>
-                //     <OrderItemType xsi:type="xsd:int">0</OrderItemType>
-                //     <ArticleNumber xsi:type="xsd:int">601</ArticleNumber>
-                //     <ArticleName xsi:type="xsd:string">Extra Frietjes</ArticleName>
-                //     <DepartmentId xsi:type="xsd:long">10000000499</DepartmentId>
-                //     <DepartmentNumber xsi:type="xsd:int">20</DepartmentNumber>
-                //     <DepartmentName xsi:type="xsd:string">Suppl. Keuken</DepartmentName>
-                //     <GroupName xsi:type="xsd:string">4.Keuken</GroupName>
-                //     <CategoryName xsi:type="xsd:string">2.Keuken</CategoryName>
-                //     <Quantity xsi:type="xsd:int">.$potatoes.</Quantity>
-                //     <SalesAreaNumber xsi:type="xsd:int">1</SalesAreaNumber>
-                //     <SalesAreaName xsi:type="xsd:string">Take Away</SalesAreaName>
-                // </item>
-
-                //Mayo
-                // <item xsi:type="urn:TOrderItem">
-                //     <ArticleId xsi:type="xsd:long">10000000563</ArticleId>
-                //     <ArticleName xsi:type="xsd:string">Extra Mayo</ArticleName>
-                //     <ArticleNumber xsi:type="xsd:int">603</ArticleNumber>            
-                //     <ManualPrice xsi:type="xsd:double">.env("MAYO_PRICE").</ManualPrice>
-                //     <OrderItemType xsi:type="xsd:int">0</OrderItemType>
-                //     <DepartmentId xsi:type="xsd:long">10000000499</DepartmentId>
-                //     <DepartmentNumber xsi:type="xsd:int">20</DepartmentNumber>
-                //     <DepartmentName xsi:type="xsd:string">Suppl. Keuken</DepartmentName>
-                //     <GroupName xsi:type="xsd:string">4.Keuken</GroupName>
-                //     <CategoryName xsi:type="xsd:string">2.Keuken</CategoryName>
-                //     <Quantity xsi:type="xsd:int">.$mayo.</Quantity>
-                //     <SalesAreaNumber xsi:type="xsd:int">1</SalesAreaNumber>
-                //     <SalesAreaName xsi:type="xsd:string">Take Away</SalesAreaName>
-                // </item>
-
-                // start xml creation
-
-                // $xml_data = '
                 $item = 'asd';
                 $item .='aaa';
-                // return $item;
-                // return $xml_all_items;
-                // return $order->products;
-                // return $order->products[0]->product;
 
                 foreach($order->products as $product){
 
@@ -1060,13 +869,12 @@ class OrdersController extends Controller
                 $xml_top .= $xml_items;
                 $xml_top .= $xml_bottom;
                 // End xml creation
-            $URL = "http://donpetrol.mine.nu:3063/soap/ITPAPIPOS";
-
-                // echo 'Order '.$order->id.'<br>';
-
+                $URL = "http://donpetrol.mine.nu:3063/soap/ITPAPIPOS";
                 
                 try{
                     if($order->sent_to_pos == 0){
+                    // Send the order to POS
+
                     // $ch = curl_init($URL);
                     // curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: text/xml'));
                     // curl_setopt($ch, CURLOPT_POST, 1);
@@ -1082,12 +890,8 @@ class OrdersController extends Controller
                 }catch(Exception $e){
                     echo 'Order '.$order->id.'<br>';
                 }
-                // print_r($output);
             }else{
-                // $order->ok = 0;
-                $order->now = Carbon::now();
-                // print order 
-                
+                $order->now = Carbon::now();                
             }
     
         }

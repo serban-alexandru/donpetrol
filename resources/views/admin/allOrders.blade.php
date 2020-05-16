@@ -4,7 +4,7 @@
 
 <div class="container-fluid">
     <div class="alert" style="background-color: black; color: white;">
-        <h1>Bestellingen</h1>
+        <h1>@lang('all.orders')</h1>
     </div>
 
     <div class="table-responsive">
@@ -13,12 +13,12 @@
         <thead>
             <tr>
             <th scope="col">#</th>
-            <th scope="col">Typ</th>
-            <!-- <th scope="col">Afhaaltijd</th> -->
-            <th scope="col">Bedrag</th>
-            <th scope="col">Paid</th>
-            <th scope="col">Betaalmethode</th>
-            <th scope="col">Alle orders</th>
+            <th scope="col">@lang('all.type')</th>
+            <th scope="col"><i class="fas fa-clock"></i></th>
+            <th scope="col">@lang('all.amount')</th>
+            <th scope="col">@lang('all.paid')</th>
+            <th scope="col">@lang('all.payment_method')</th>
+            <th scope="col">@lang('all.see_products')</th>
             </tr>
         </thead>
         <tbody>
@@ -36,11 +36,6 @@
             <tr>
                 <th scope="row">{{ $key+1 }}</th>
                 <td>
-                <!-- @if($order->type == 'eat_in')
-                Eat in
-                @else
-                Take out
-                @endif -->
                 Take away
                 </td>
                 <td>

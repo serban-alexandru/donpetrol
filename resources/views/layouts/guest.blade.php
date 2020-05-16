@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{App::getLocale()}}">
 <head>
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/img/apple-icon.png')}}">
@@ -41,70 +41,44 @@
     } */
     </style>
   <div class="wrapper">
-    <!-- <div class="sidebar" data-color="purple" data-background-color="white">
-      <div class="logo" style="background-color: white">
-        <a href="#" class="simple-text logo-normal">
-            Don Petrol
-        </a>
-      </div>
-      <div class="sidebar-wrapper" style="background-color: white; text-align: left;">
-        <ul class="nav" style="min-height: 250px">
-          <!-- @if(Route::currentRouteName() == "Home" )
-            <li class="nav-item active">
-            <a class="nav-link" href="#">
-          @else
-            <li class="nav-item">
-            <a class="nav-link" href="{{ url('/home') }}">
-          @endif
-          <i class="fas fa-tachometer-alt"></i>
-              <p>Home</p>
-            </a>
-          </li>
-
-          @if(Route::currentRouteName() == "Categories" )
-            <li class="nav-item active">
-            <a class="nav-link" href="#">
-          @else
-            <li class="nav-item">
-            <a class="nav-link" href="{{ url('/categories') }}">
-          @endif
-          <i class="fas fa-list"></i>
-              <p>Categories</p>
-            </a>
-          </li>
-
-          @if(Route::currentRouteName() == "Products" )
-            <li class="nav-item active">
-            <a class="nav-link" href="#">
-          @else
-            <li class="nav-item">
-            <a class="nav-link" href="{{ url('/products') }}">
-          @endif
-          <i class="fab fa-product-hunt"></i>
-              <p>Products</p>
-            </a>
-          </li>
-
-          @if(Route::currentRouteName() == "Order" )
-            <li class="nav-item active">
-            <a class="nav-link" href="#">
-          @else
-            <li class="nav-item">
-            <a class="nav-link" href="{{ url('/order') }}">
-          @endif
-          <i class="fas fa-shopping-cart"></i>
-              <p>Create order</p>
-            </a>
-          </li> 
-        </ul>
-      </div>
-    </div> -->
     <div class="main-panel" style="width: 100%">
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="{{ url('/menu') }}">Menu</a>
+            <a class="navbar-brand" href="{{ url('/menu') }}">@lang('all.menu')</a>
+          </div>
+          <div class="navbar-wrapper">
+            <!-- <a class="navbar-brand" href="{{ url('/') }}"><button class="btn btn-warning" style="background-color: black">Welcome page</button></a> -->
+            <div class="dropdown" style="padding: 0.625rem 0; max-height: 50px; margin-top: -15px">
+              <button class="btn btn-secondary dropdown-toggle" style="font-size: 13px" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{App::getLocale()}}<img src="{{ asset('/flags/'.App::getLocale().'.png') }}" alt="{{App::getLocale()}}" style="height: 16px; margin-left: 5px">
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="min-width: 40px; width: 100%; height: 80px">
+              @if(App::isLocale('ro'))
+                <a class="dropdown-item" href="{{ url('/set_lang/en') }}" style="text-align: center;height: 40px; background: white; width: 100%; margin: 0px">
+                  EN<img src="{{ asset('/flags/en.png') }}" alt="en" style="height: 16px; margin-left: 5px; width: 30px">
+                </a>
+                <a class="dropdown-item" href="{{ url('/set_lang/nl-be') }}" style="text-align: center;height: 40px; background: white; width: 100%; margin: 0px">
+                  BE<img src="{{ asset('/flags/nl-be.png') }}" alt="en" style="height: 16px; margin-left: 5px; width: 30px">
+                </a>
+              @elseif(App::isLocale('en'))
+                <a class="dropdown-item" href="{{ url('/set_lang/ro') }}" style="text-align: center;height: 40px; background: white; width: 100%; margin: 0px">
+                  RO<img src="{{ asset('/flags/ro.png') }}" alt="ro" style="height: 16px; margin-left: 5px; width: 30px">
+                </a>
+                <a class="dropdown-item" href="{{ url('/set_lang/nl-be') }}" style="text-align: center;height: 40px; background: white; width: 100%; margin: 0px">
+                  BE<img src="{{ asset('/flags/nl-be.png') }}" alt="en" style="height: 16px; margin-left: 5px; width: 30px">
+                </a>
+              @elseif(App::isLocale('nl-be'))
+                <a class="dropdown-item" href="{{ url('/set_lang/en') }}" style="text-align: center;height: 40px; background: white; width: 100%; margin: 0px">
+                  EN<img src="{{ asset('/flags/en.png') }}" alt="en" style="height: 16px; margin-left: 5px; width: 30px">
+                </a>
+                <a class="dropdown-item" href="{{ url('/set_lang/ro') }}" style="text-align: center;height: 40px; background: white; width: 100%; margin: 0px">
+                  RO<img src="{{ asset('/flags/ro.png') }}" alt="ro" style="height: 16px; margin-left: 5px; width: 30px">
+                </a>
+              @endif
+              </div>
+            </div>
           </div>
 
           <a href="{{ url('/menu') }}">
@@ -119,13 +93,8 @@ btn btn-primary" type="button" >
             <ul class="navbar-nav">
             @guest
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a class="nav-link" href="{{ route('login') }}">@lang('all.login')</a>
                     </li>
-                    <!-- @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
-                    @endif -->
             @endguest
             @auth
               <li class="nav-item dropdown">
@@ -140,13 +109,13 @@ btn btn-primary" type="button" >
                       {{Auth::user()->name}}
                   </a>
                   <a class="dropdown-item" href="{{ url('/home') }}">
-                      Menu
+                      @lang('all.menu')
                   </a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
+                        @lang('all.logout')
                     </a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -221,7 +190,7 @@ btn btn-primary" type="button" >
       <div class="modal-dialog" role="document" style="margin: 0px">
         <div class="modal-content" style="width: 100vw; min-height: 100vh">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Your cart</h5>
+            <h5 class="modal-title" id="exampleModalLabel">@lang('all.your_order')</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -265,36 +234,20 @@ btn btn-primary" type="button" >
             <div class="">
 
               <div class="alert alert-success" style="float: left;font-size: 16px; padding: 17px;background:black">
-              Totaal:€ {{$sum}}
+              @lang('all.total'):€ {{$sum}}
               </div>
 
-              <!-- <div class="alert alert-success" style="width: 100px; float: left; padding: 6px; margin-left: 10px">
-              <select name="type" class="form-control" required style="color: white">
-                <option value="" required style="color: black" hidden>Order type</option>
-                <option value="1" required style="color: black">Take out</option>
-                <option value="2" required style="color: black">Eat in</option>
-              </select>
-              </div>
-
-              <div class="alert alert-success" style="width: 100px; float: left; padding: 6px; margin-left: 10px">
-              <select name="time" class="form-control" required style="color: white">
-                <option value="" required style="color: black" hidden>Choose time</option>
-                <option value="1" required style="color: black" id="nextDate"></option>
-                <option value="2" required style="color: black" id="afterDate"></option>
-                <option value="3" required style="color: black" id="after2Date"></option>
-              </select>
-              </div> -->
               <br><br><br>
               <a href="{{ url('/checkout') }}">
                 <button class="btn btn-success" type="button" style="padding: 17px; margin-left: -2px;background-color:black">
-                  Afrekenen 
+                  @lang('all.to_pay') 
                 </button>
               </a>
             </div>
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-success" style="background-color: black" data-dismiss="modal">Sluiten</button>
+            <button type="button" class="btn btn-success" style="background-color: black" data-dismiss="modal">@lang('all.close')</button>
           </div>
         </div>
       </div>
